@@ -277,63 +277,86 @@
 
 
 ====================================================================================================
-  4. CUADRO DE ELIMINATORIAS
+  4. CUADRO DE ELIMINATORIAS (Bracket Modal Consistente)
 ====================================================================================================
 
+  Clasificados modales (resultado mas probable por grupo):
+  Grupo   1ro                 2do                 3ro
+  -------------------------------------------------------------------
+  A       Mexico              South Korea         Czech Republic
+  B       Switzerland         Canada              Bosnia
+  C       Brazil              Morocco             Scotland
+  D       Turkey              United States       Paraguay
+  E       Germany             Ecuador             Ivory Coast
+  F       Netherlands         Japan               Sweden
+  G       Belgium             Egypt               Iran
+  H       Spain               Uruguay             Cape Verde
+  I       France              Norway              Senegal
+  J       Argentina           Austria             Algeria
+  K       Portugal            Colombia            DR Congo
+  L       England             Croatia             Ghana
+
   RONDA DE 32 (16 partidos)
-  #    Estructura               Avanza (mas probable)     Prob
+  #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    1ro A vs 3ro             Mexico                    64.0%
-  2    2do C vs 2do D           Morocco                   33.8%
-  3    1ro B vs 3ro             Switzerland               45.8%
-  4    2do E vs 2do F           Japan                     27.0%
-  5    1ro G vs 3ro             Belgium                   55.4%
-  6    2do I vs 2do J           Norway                    26.4%
-  7    1ro H vs 3ro             Spain                     74.3%
-  8    2do K vs 2do L           Colombia                  33.5%
-  9    1ro C vs 3ro             Brazil                    45.7%
-  10   2do A vs 2do B           Canada                    27.8%
-  11   1ro D vs 3ro             Turkey                    32.3%
-  12   2do G vs 2do H           Uruguay                   46.7%
-  13   1ro I vs 3ro             France                    67.5%
-  14   1ro F vs 2do I           Netherlands               27.9%
-  15   1ro J vs 3ro             Argentina                 74.3%
-  16   1ro L vs 2do K           England                   71.9%
+  1    Mexico vs Czech Republic                  Mexico              82.0%
+  2    Ecuador vs Japan                          Japan               66.0%
+  3    Switzerland vs Bosnia                     Switzerland         85.7%
+  4    Germany vs Croatia                        Germany             74.3%
+  5    Belgium vs Scotland                       Belgium             78.2%
+  6    Norway vs Austria                         Norway              62.7%
+  7    Spain vs Paraguay                         Spain               92.7%
+  8    Netherlands vs Colombia                   Netherlands         62.7%
+  9    Brazil vs Ivory Coast                     Brazil              82.3%
+  10   South Korea vs Canada                     Canada              67.8%
+  11   Turkey vs Sweden                          Turkey              77.3%
+  12   Egypt vs Uruguay                          Uruguay             68.1%
+  13   France vs Iran                            France              94.2%
+  14   Portugal vs United States                 Portugal            73.9%
+  15   Argentina vs Cape Verde                   Argentina           97.6%
+  16   England vs Morocco                        England             71.9%
 
   OCTAVOS DE FINAL (8 partidos)
-  #    Partido mas probable                    Avanza          Prob
+  #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Mexico vs Morocco (21.8%)               Mexico          31.6%
-  2    Switzerland vs Japan (12.4%)            Switzerland     19.3%
-  3    Belgium vs Norway (14.4%)               Belgium         28.7%
-  4    Spain vs Colombia (24.9%)               Spain           55.2%
-  5    Brazil vs Switzerland (12.7%)           Brazil          35.8%
-  6    Turkey vs Uruguay (14.8%)               Uruguay         25.1%
-  7    France vs Netherlands (21.3%)           France          63.4%
-  8    Argentina vs England (53.2%)            England         46.5%
+  1    Mexico vs Japan                           Japan               55.0%
+  2    Switzerland vs Germany                    Germany             70.6%
+  3    Belgium vs Norway                         Belgium             53.0%
+  4    Spain vs Netherlands                      Spain               66.4%
+  5    Brazil vs Canada                          Brazil              74.4%
+  6    Turkey vs Uruguay                         Turkey              53.3%
+  7    France vs Portugal                        France              61.4%
+  8    Argentina vs England                      England             56.8%
 
   CUARTOS DE FINAL (4 partidos)
-  #    Partido mas probable                    Avanza          Prob
+  #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Mexico vs Switzerland (6.2%)            Mexico          16.7%
-  2    Belgium vs Spain (15.7%)                Spain           37.8%
-  3    Brazil vs Uruguay (9.1%)                Brazil          25.3%
-  4    France vs England (29.3%)               France          35.0%
+  1    Japan vs Germany                          Germany             56.8%
+  2    Belgium vs Spain                          Spain               70.3%
+  3    Brazil vs Turkey                          Brazil              72.5%
+  4    France vs England                         England             51.9%
 
   SEMIFINALES (2 partidos)
-  #    Partido mas probable                    Avanza          Prob
+  #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Mexico vs Spain (6.3%)                  Spain           26.7%
-  2    Brazil vs France (8.9%)                 France          25.3%
+  1    Germany vs Spain                          Spain               61.9%
+  2    Brazil vs England                         England             63.7%
 
   FINAL
   ---------------------------------------------------------------------------
-  Final mas probable: France vs Spain (6.7%)
-  Campeon mas probable: France (19.6%)
+  Spain vs England
+  CAMPEON: England (55.7%)
+  Subcampeon: Spain
 
-  CAMINO MAS PROBABLE DEL CAMPEON (France):
-  Grupo I: 1ro (72.2%) -> R32: vs 3ro (67.5%) -> R16: vs Netherlands (63.4%)
-  -> QF: vs England (35.0%) -> SF: vs Brazil (25.3%) -> Final: vs Spain (6.7%)
+  CAMINO DEL CAMPEON (England):
+  Grupo L: 1ro (88.6%) -> R32: vs Morocco (71.9%) -> R16: vs Argentina (56.8%)
+  -> QF: vs France (51.9%) -> SF: vs Brazil (63.7%) -> Final: vs Spain (55.7%)
+
+  NOTA: Este es el bracket MODAL (resultado mas probable de cada grupo,
+  un solo cuadro consistente). Las probabilidades de campeon Monte Carlo
+  (Seccion 1) son mas precisas porque consideran TODOS los escenarios.
+  France lidera ahi (19.6%) porque tiene caminos mas faciles en otros
+  escenarios, aunque en el modal pierde vs England en cuartos.
 
 
 ====================================================================================================
