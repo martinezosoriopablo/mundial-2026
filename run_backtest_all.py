@@ -19,7 +19,7 @@ from src.strength_hybrid import (
 )
 from src.features import (
     compute_momentum, compute_defensive_strength, compute_league_composite,
-    compute_defending_champion_feature,
+    compute_defending_champion_feature, compute_h2h_advantage,
 )
 from run_wc2026 import sample_scoreline, sample_knockout_scoreline
 
@@ -330,7 +330,9 @@ def train_backtest_model(df, cutoff):
     l1 = {"elo": elo_norm, "value": squad_values, "league": league_composite,
           "momentum": momentum_norm, "defense": defense_norm, "champion": defending}
 
-    return HybridModel(_blend_all_features(l1, mw), best_ha, best_scale, mw)
+    h2h = compute_h2h_advantage(df, cutoff)
+
+    return HybridModel(_blend_all_features(l1, mw), best_ha, best_scale, mw, h2h=h2h)
 
 
 # =========================================================================
@@ -338,7 +340,8 @@ def train_backtest_model(df, cutoff):
 # =========================================================================
 
 def predict_lambdas(model, h, a, neutral=True):
-    d = model.strength.get(h, 0) - model.strength.get(a, 0) + (model.home_adv if not neutral else 0)
+    h2h_adj = model.get_h2h_adj(h, a)
+    d = model.strength.get(h, 0) - model.strength.get(a, 0) + (model.home_adv if not neutral else 0) + h2h_adj
     return (max(0.2, min(math.exp(0.25 + d / model.scale), 6.0)),
             max(0.2, min(math.exp(0.25 - d / model.scale), 6.0)))
 
