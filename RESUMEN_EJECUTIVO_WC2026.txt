@@ -277,7 +277,67 @@
 
 
 ====================================================================================================
-  4. ESTADISTICAS DE GOLES
+  4. CUADRO DE ELIMINATORIAS
+====================================================================================================
+
+  RONDA DE 32 (16 partidos)
+  #    Estructura               Avanza (mas probable)     Prob
+  ---------------------------------------------------------------------------
+  1    1ro A vs 3ro             Mexico                    64.0%
+  2    2do C vs 2do D           Morocco                   33.8%
+  3    1ro B vs 3ro             Switzerland               45.8%
+  4    2do E vs 2do F           Japan                     27.0%
+  5    1ro G vs 3ro             Belgium                   55.4%
+  6    2do I vs 2do J           Norway                    26.4%
+  7    1ro H vs 3ro             Spain                     74.3%
+  8    2do K vs 2do L           Colombia                  33.5%
+  9    1ro C vs 3ro             Brazil                    45.7%
+  10   2do A vs 2do B           Canada                    27.8%
+  11   1ro D vs 3ro             Turkey                    32.3%
+  12   2do G vs 2do H           Uruguay                   46.7%
+  13   1ro I vs 3ro             France                    67.5%
+  14   1ro F vs 2do I           Netherlands               27.9%
+  15   1ro J vs 3ro             Argentina                 74.3%
+  16   1ro L vs 2do K           England                   71.9%
+
+  OCTAVOS DE FINAL (8 partidos)
+  #    Partido mas probable                    Avanza          Prob
+  ---------------------------------------------------------------------------
+  1    Mexico vs Morocco (21.8%)               Mexico          31.6%
+  2    Switzerland vs Japan (12.4%)            Switzerland     19.3%
+  3    Belgium vs Norway (14.4%)               Belgium         28.7%
+  4    Spain vs Colombia (24.9%)               Spain           55.2%
+  5    Brazil vs Switzerland (12.7%)           Brazil          35.8%
+  6    Turkey vs Uruguay (14.8%)               Uruguay         25.1%
+  7    France vs Netherlands (21.3%)           France          63.4%
+  8    Argentina vs England (53.2%)            England         46.5%
+
+  CUARTOS DE FINAL (4 partidos)
+  #    Partido mas probable                    Avanza          Prob
+  ---------------------------------------------------------------------------
+  1    Mexico vs Switzerland (6.2%)            Mexico          16.7%
+  2    Belgium vs Spain (15.7%)                Spain           37.8%
+  3    Brazil vs Uruguay (9.1%)                Brazil          25.3%
+  4    France vs England (29.3%)               France          35.0%
+
+  SEMIFINALES (2 partidos)
+  #    Partido mas probable                    Avanza          Prob
+  ---------------------------------------------------------------------------
+  1    Mexico vs Spain (6.3%)                  Spain           26.7%
+  2    Brazil vs France (8.9%)                 France          25.3%
+
+  FINAL
+  ---------------------------------------------------------------------------
+  Final mas probable: France vs Spain (6.7%)
+  Campeon mas probable: France (19.6%)
+
+  CAMINO MAS PROBABLE DEL CAMPEON (France):
+  Grupo I: 1ro (72.2%) -> R32: vs 3ro (67.5%) -> R16: vs Netherlands (63.4%)
+  -> QF: vs England (35.0%) -> SF: vs Brazil (25.3%) -> Final: vs Spain (6.7%)
+
+
+====================================================================================================
+  5. ESTADISTICAS DE GOLES
 ====================================================================================================
 
   Total partidos:         103 (72 fase de grupos + 31 eliminatorias)
@@ -295,7 +355,7 @@
 
 
 ====================================================================================================
-  5. MODELO vs CASAS DE APUESTAS
+  6. MODELO vs CASAS DE APUESTAS
 ====================================================================================================
 
   Equipo                 Modelo  Mercado     Diff     Odds       Senial
@@ -339,7 +399,7 @@
 
 
 ====================================================================================================
-  6. METODOLOGIA
+  7. METODOLOGIA
 ====================================================================================================
 
   MODELO HIBRIDO DE 14 FEATURES EN 2 CAPAS:
