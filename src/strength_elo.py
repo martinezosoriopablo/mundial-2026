@@ -80,13 +80,23 @@ class EloModel:
 
 
 def _k_factor(tournament: str) -> float:
+    """K factor: how much a single match can move ratings.
+
+    Key insight: WC qualifiers (K=30) are discounted vs continental
+    tournaments (K=50) because volume inflates ratings. Brazil plays
+    18 CONMEBOL qualifiers per cycle, winning ~14, each adding small
+    delta that accumulates. Continental finals (Copa, Euro) are higher
+    stakes and better signal.
+    """
     t = tournament.lower()
     if "world cup" in t and "qualif" not in t:
         return 60.0
     if any(x in t for x in ("confederations", "copa america", "euro", "african", "asian")):
         return 50.0
     if "qualif" in t:
-        return 40.0
+        return 30.0  # was 40 — reduced to prevent qualifier volume inflation
+    if "nations league" in t:
+        return 35.0
     return 20.0
 
 
@@ -110,12 +120,24 @@ def compute_elo_ratings(
     cutoff: pd.Timestamp,
     initial_rating: float = 1500.0,
     home_adv_elo: float = 100.0,
+    decay_per_year: float = 0.94,
+    quality_exponent: float = 0.3,
 ) -> dict[str, float]:
-    """Compute Elo ratings for all teams using matches before cutoff."""
+    """Compute Elo ratings with time decay and opponent quality adjustment.
+
+    Two corrections vs standard Elo:
+    1. Time decay: between matches, ratings regress toward the mean (1500)
+       at rate decay_per_year. Half-life ~11 years at 0.94.
+       This prevents Chile's 2015 Copa America from inflating their 2026 rating.
+    2. Opponent quality: K is multiplied by (opponent_elo / 1500)^exponent.
+       Beating Germany (1800) gives K*1.06, beating Bolivia (1200) gives K*0.95.
+       This compounds with the expected result adjustment already in Elo.
+    """
     train = df[df["date"] < cutoff].sort_values("date")
     train = train.dropna(subset=["home_score", "away_score"])
 
     ratings: dict[str, float] = {}
+    last_match_date: dict[str, pd.Timestamp] = {}
 
     for _, row in train.iterrows():
         home = row["home_team"]
@@ -124,9 +146,23 @@ def compute_elo_ratings(
         a_score = int(row["away_score"])
         tournament = str(row.get("tournament", "Friendly"))
         is_neutral = str(row.get("neutral", "FALSE")).upper() == "TRUE"
+        match_date = row["date"]
 
         r_h = ratings.get(home, initial_rating)
         r_a = ratings.get(away, initial_rating)
+
+        # --- Time decay: regress toward mean since last match ---
+        for team, r in [(home, r_h), (away, r_a)]:
+            if team in last_match_date:
+                years_gap = (match_date - last_match_date[team]).days / 365.25
+                if years_gap > 0:
+                    decay = decay_per_year ** years_gap
+                    new_r = initial_rating + (r - initial_rating) * decay
+                    if team == home:
+                        r_h = new_r
+                    else:
+                        r_a = new_r
+                    ratings[team] = new_r
 
         ha = 0 if is_neutral else home_adv_elo
         diff = r_h + ha - r_a
@@ -142,9 +178,26 @@ def compute_elo_ratings(
         k = _k_factor(tournament)
         g = _goal_diff_multiplier(h_score - a_score)
 
-        delta = k * g * (actual_h - exp_h)
-        ratings[home] = r_h + delta
-        ratings[away] = r_a - delta
+        # --- Opponent quality: scale K by opponent strength ---
+        # Home team's update scaled by away team's quality (and vice versa)
+        opp_quality_h = (max(r_a, 800) / initial_rating) ** quality_exponent
+        opp_quality_a = (max(r_h, 800) / initial_rating) ** quality_exponent
+
+        delta_h = k * g * opp_quality_h * (actual_h - exp_h)
+        delta_a = k * g * opp_quality_a * ((1 - actual_h) - (1 - exp_h))
+
+        ratings[home] = r_h + delta_h
+        ratings[away] = r_a + delta_a
+        last_match_date[home] = match_date
+        last_match_date[away] = match_date
+
+    # --- Final decay to cutoff: penalize teams that haven't played recently ---
+    for team in ratings:
+        if team in last_match_date:
+            years_gap = (cutoff - last_match_date[team]).days / 365.25
+            if years_gap > 0.1:  # more than ~1 month
+                decay = decay_per_year ** years_gap
+                ratings[team] = initial_rating + (ratings[team] - initial_rating) * decay
 
     return ratings
 

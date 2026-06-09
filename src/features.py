@@ -143,14 +143,44 @@ def compute_defensive_strength(df: pd.DataFrame, cutoff: pd.Timestamp,
 
 
 def compute_league_composite(path: Path = LEAGUE_PLAYERS_PATH) -> dict[str, float]:
-    """Weighted league quality composite per team (z-scored)."""
+    """Weighted league quality composite with domestic discount (z-scored).
+
+    Key insight: an English player in the Premier League is the baseline —
+    they play there by default (language, culture, proximity). A Moroccan
+    in the PL had to be BETTER than English players to earn that spot
+    (selection bias). So we discount players who play in their OWN
+    country's top league — it's less informative about their quality.
+
+    domestic_ratio = players in own country's top league / total squad
+    discount = 1 - domestic_ratio * 0.40  (40% haircut for domestic players)
+    """
+    # Map national team -> their own league column
+    TEAM_TO_OWN_LEAGUE = {
+        "France": "france", "England": "england", "Spain": "spain",
+        "Germany": "germany", "Italy": "italy", "Portugal": "portugal",
+        "Netherlands": "netherlands", "Brazil": "brazil", "Argentina": "argentina",
+    }
+    DOMESTIC_DISCOUNT = 0.40  # 40% haircut
+
     df = pd.read_csv(path)
     composites = {}
     for _, row in df.iterrows():
+        team = row["team"]
         total = row["total_squad"]
         weighted_sum = sum(row.get(lg, 0) * w for lg, w in LEAGUE_WEIGHTS.items()
                           if lg in row.index)
-        composites[row["team"]] = weighted_sum / total
+        raw_composite = weighted_sum / total
+
+        # Domestic discount: if team has a top league, discount players
+        # who play in their own league (less signal about quality)
+        own_league = TEAM_TO_OWN_LEAGUE.get(team)
+        if own_league and own_league in row.index:
+            domestic_in_own = row[own_league]
+            domestic_ratio = domestic_in_own / total
+            discount = 1 - domestic_ratio * DOMESTIC_DISCOUNT
+            raw_composite *= discount
+
+        composites[team] = raw_composite
     return _zscore(composites)
 
 
