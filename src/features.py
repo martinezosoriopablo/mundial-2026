@@ -15,6 +15,7 @@ Computes team-level features from multiple data sources:
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from collections import defaultdict
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 LEAGUE_PLAYERS_PATH = DATA_DIR / "league_players.csv"
@@ -332,6 +333,78 @@ def compute_composition_threshold(path: Path = DIVERSITY_PATH) -> dict[str, floa
             scores[team] = 0.0
 
     return _zscore(scores)
+
+
+def compute_h2h_advantage(df: pd.DataFrame, cutoff: pd.Timestamp,
+                          decay_per_year: float = 0.94,
+                          min_matches: int = 3,
+                          max_years: int = 25) -> dict[tuple[str, str], float]:
+    """Compute head-to-head advantage between team pairs with time decay.
+
+    For each pair (A, B), looks at historical matches and computes a weighted
+    win rate advantage for A. Recent matches matter more (decay 0.94/year).
+
+    Returns dict mapping (home, away) -> h2h_adjustment.
+    Positive = home has historical edge. Negative = away has edge.
+    Only returns entries for pairs with min_matches or more encounters.
+
+    The adjustment is meant to be added to the strength difference when
+    computing Poisson lambdas: small nudge (~5-8% of scale).
+    """
+    earliest = cutoff - pd.Timedelta(days=max_years * 365)
+    df_h2h = df[(df["date"] >= earliest) & (df["date"] < cutoff)].copy()
+    df_h2h = df_h2h.dropna(subset=["home_score", "away_score"])
+
+    pair_data = defaultdict(list)
+
+    for _, r in df_h2h.iterrows():
+        h, a = r["home_team"], r["away_team"]
+        hs, as_ = int(r["home_score"]), int(r["away_score"])
+        match_date = pd.Timestamp(r["date"])
+
+        years_ago = (cutoff - match_date).days / 365.25
+        weight = decay_per_year ** years_ago
+
+        tourn = str(r.get("tournament", "")).lower()
+        is_wc = "world cup" in tourn and "qualif" not in tourn
+        is_major = any(kw in tourn for kw in [
+            "world cup", "euro ", "copa am", "nations league",
+            "africa cup", "asian cup", "gold cup"
+        ])
+        if is_wc:
+            weight *= 1.5
+        elif is_major:
+            weight *= 1.2
+        elif "qualif" in tourn:
+            weight *= 0.9
+        else:
+            weight *= 0.5
+
+        key = tuple(sorted([h, a]))
+        if h == key[0]:
+            result = 1.0 if hs > as_ else (0.5 if hs == as_ else 0.0)
+        else:
+            result = 1.0 if as_ > hs else (0.5 if hs == as_ else 0.0)
+
+        pair_data[key].append((result, weight))
+
+    h2h = {}
+    for (teamA, teamB), matches in pair_data.items():
+        if len(matches) < min_matches:
+            continue
+
+        weighted_wins = sum(r * w for r, w in matches)
+        total_weight = sum(w for _, w in matches)
+        if total_weight < 1e-8:
+            continue
+
+        win_rate_A = weighted_wins / total_weight
+        advantage_A = (win_rate_A - 0.5) * 2.0
+
+        h2h[(teamA, teamB)] = advantage_A
+        h2h[(teamB, teamA)] = -advantage_A
+
+    return h2h
 
 
 def compute_frontrunner_curse(path: Path = BETTING_ODDS_PATH) -> dict[str, float]:

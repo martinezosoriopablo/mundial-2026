@@ -72,17 +72,26 @@ def load_squad_values(path: Path = SQUAD_VALUES_PATH) -> dict[str, float]:
 class HybridModel:
     """Multi-feature strength model."""
 
+    H2H_WEIGHT = 0.07  # h2h adjusts lambdas by up to ~7% of scale
+
     def __init__(self, blended_strength: dict[str, float],
-                 home_adv: float, scale: float, weights: dict[str, float]):
+                 home_adv: float, scale: float, weights: dict[str, float],
+                 h2h: dict[tuple[str, str], float] | None = None):
         self.strength = blended_strength
         self.home_adv = home_adv
         self.scale = scale
         self.weights = weights
+        self.h2h = h2h or {}
+
+    def get_h2h_adj(self, home: str, away: str) -> float:
+        """Get head-to-head adjustment for strength difference."""
+        return self.h2h.get((home, away), 0.0) * self.H2H_WEIGHT * self.scale
 
     def predict_match(self, home: str, away: str, neutral: bool = False) -> tuple:
         s_home = self.strength.get(home, 0.0)
         s_away = self.strength.get(away, 0.0)
-        diff = s_home - s_away + (self.home_adv if not neutral else 0)
+        h2h_adj = self.get_h2h_adj(home, away)
+        diff = s_home - s_away + (self.home_adv if not neutral else 0) + h2h_adj
         home_lambda = math.exp(0.25 + diff / self.scale)
         away_lambda = math.exp(0.25 - diff / self.scale)
         return _poisson_1x2(home_lambda, away_lambda)
@@ -123,7 +132,7 @@ def train_hybrid_model(
         compute_age_fitness, compute_coach_tenure,
         compute_host_advantage, compute_population_factor,
         compute_diversity_index, compute_composition_threshold,
-        compute_frontrunner_curse,
+        compute_frontrunner_curse, compute_h2h_advantage,
     )
 
     ratings = compute_elo_ratings(df, cutoff)
@@ -308,5 +317,21 @@ def train_hybrid_model(
     print(f"    Total features: {len(cal_feat_names)} backtestable + "
           f"{len(l2_features)-1} tournament-specific + market")
 
+    # === HEAD-TO-HEAD ===
+    h2h = compute_h2h_advantage(df, cutoff)
+    h2h_pairs = len(h2h) // 2  # each pair stored both ways
+    print(f"\n    Head-to-head: {h2h_pairs} pairs with 3+ historical matches")
+
+    # Show some notable h2h for WC teams
+    notable = []
+    for (t1, t2), adv in sorted(h2h.items(), key=lambda x: -abs(x[1]))[:20]:
+        if t1 < t2:  # avoid duplicates
+            notable.append((t1, t2, adv))
+    if notable:
+        print(f"    Top h2h edges:")
+        for t1, t2, adv in notable[:5]:
+            favored = t1 if adv > 0 else t2
+            print(f"      {t1} vs {t2}: {favored} +{abs(adv):.2f}")
+
     final_weights = {**{f"L1_{k}": v for k, v in model_w.items()}, **L2_WEIGHTS}
-    return HybridModel(final_blend, best_ha, best_scale, final_weights)
+    return HybridModel(final_blend, best_ha, best_scale, final_weights, h2h=h2h)

@@ -300,63 +300,69 @@
   #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
   1    Mexico vs Czech Republic                  Mexico              82.0%
-  2    Ecuador vs Japan                          Japan               66.0%
+  2    Ecuador vs Japan                          Japan               66.5%
   3    Switzerland vs Bosnia                     Switzerland         85.7%
   4    Germany vs Croatia                        Germany             74.3%
-  5    Belgium vs Scotland                       Belgium             78.2%
-  6    Norway vs Austria                         Norway              62.7%
-  7    Spain vs Paraguay                         Spain               92.7%
+  5    Belgium vs Scotland                       Belgium             81.8%
+  6    Norway vs Austria                         Norway              61.8%
+  7    Spain vs Paraguay                         Spain               94.2%
   8    Netherlands vs Colombia                   Netherlands         62.7%
   9    Brazil vs Ivory Coast                     Brazil              82.3%
   10   South Korea vs Canada                     Canada              67.8%
-  11   Turkey vs Sweden                          Turkey              77.3%
+  11   Turkey vs Sweden                          Turkey              77.7%
   12   Egypt vs Uruguay                          Uruguay             68.1%
   13   France vs Iran                            France              94.2%
-  14   Portugal vs United States                 Portugal            73.9%
+  14   Portugal vs United States                 Portugal            74.2%
   15   Argentina vs Cape Verde                   Argentina           97.6%
   16   England vs Morocco                        England             71.9%
 
   OCTAVOS DE FINAL (8 partidos)
   #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Mexico vs Japan                           Japan               55.0%
-  2    Switzerland vs Germany                    Germany             70.6%
-  3    Belgium vs Norway                         Belgium             53.0%
-  4    Spain vs Netherlands                      Spain               66.4%
+  1    Mexico vs Japan                           Japan               51.9%
+  2    Switzerland vs Germany                    Germany             71.5%
+  3    Belgium vs Norway                         Belgium             56.8%
+  4    Spain vs Netherlands                      Spain               65.8%
   5    Brazil vs Canada                          Brazil              74.4%
   6    Turkey vs Uruguay                         Turkey              53.3%
-  7    France vs Portugal                        France              61.4%
+  7    France vs Portugal                        France              63.4%
   8    Argentina vs England                      England             56.8%
 
   CUARTOS DE FINAL (4 partidos)
   #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Japan vs Germany                          Germany             56.8%
-  2    Belgium vs Spain                          Spain               70.3%
-  3    Brazil vs Turkey                          Brazil              72.5%
-  4    France vs England                         England             51.9%
+  1    Japan vs Germany                          Germany             52.7%
+  2    Belgium vs Spain                          Spain               74.7%
+  3    Brazil vs Turkey                          Brazil              75.7%
+  4    France vs England                         France              51.7%  *h2h
 
   SEMIFINALES (2 partidos)
   #    Partido                                   Avanza              Prob
   ---------------------------------------------------------------------------
-  1    Germany vs Spain                          Spain               61.9%
-  2    Brazil vs England                         England             63.7%
+  1    Germany vs Spain                          Spain               63.8%
+  2    Brazil vs France                          France              63.7%
 
   FINAL
   ---------------------------------------------------------------------------
-  Spain vs England
-  CAMPEON: England (55.7%)
+  Spain vs France
+  CAMPEON: France (52.4%)
   Subcampeon: Spain
 
-  CAMINO DEL CAMPEON (England):
-  Grupo L: 1ro (88.6%) -> R32: vs Morocco (71.9%) -> R16: vs Argentina (56.8%)
-  -> QF: vs France (51.9%) -> SF: vs Brazil (63.7%) -> Final: vs Spain (55.7%)
+  CAMINO DEL CAMPEON (France):
+  Grupo I: 1ro (72.5%) -> R32: vs Iran (94.2%) -> R16: vs Portugal (63.4%)
+  -> QF: vs England (51.7%) -> SF: vs Brazil (63.7%) -> Final: vs Spain (52.4%)
 
-  NOTA: Este es el bracket MODAL (resultado mas probable de cada grupo,
-  un solo cuadro consistente). Las probabilidades de campeon Monte Carlo
-  (Seccion 1) son mas precisas porque consideran TODOS los escenarios.
-  France lidera ahi (19.6%) porque tiene caminos mas faciles en otros
-  escenarios, aunque en el modal pierde vs England en cuartos.
+  HEAD-TO-HEAD CLAVE (con time decay 0.94/anio):
+  France vs England:  +0.70 France (dominio historico, h2h volteo el QF)
+  Belgium vs France:  -0.78 France (bestia negra)
+  Brazil vs France:   -0.38 France (ventaja reciente)
+  Spain vs France:    +0.27 Spain  (leve ventaja en la final)
+  Mexico vs Japan:    +0.60 Mexico (pero Japan gana por fuerza bruta)
+
+  NOTA: Bracket MODAL (resultado mas probable de cada grupo, un cuadro
+  consistente). El h2h inclina partidos apretados: France gana el QF
+  vs England por dominio historico (+0.70), cambiando todo el bracket.
+  Sin h2h, England era campeon; con h2h, France.
 
 
 ====================================================================================================
@@ -452,6 +458,9 @@
     - K de clasificatorias reducido (30 vs 40): evita inflacion por volumen
     - Descuento domestico en liga: ser ingles en la PL no es lo mismo
       que ser marroqui en la PL (sesgo de seleccion)
+    - Head-to-head con time decay: historial directo entre equipos
+      ajusta lambdas de Poisson (~7% del scale). Mundiales pesan 1.5x,
+      amistosos 0.5x. Minimo 3 partidos en 25 anios. 3,065 pares.
 
   SIMULACION:
     - 10,000 mundiales simulados via Monte Carlo
