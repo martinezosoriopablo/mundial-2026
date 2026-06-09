@@ -1,0 +1,323 @@
+Loading data and training models...
+Training Hybrid model (Elo + Squad Value)...
+    Hybrid params: alpha=0.05 (value weight), scale=1.75, home_adv=0.30, cal_RPS=0.1524
+
+=======================================================
+TOP 25 BLENDED STRENGTH (Elo + Squad Value)
+=======================================================
+   1. Spain                     +2.707
+   2. Argentina                 +2.537
+   3. France                    +2.415
+   4. England                   +2.263
+   5. Brazil                    +2.194
+   6. Colombia                  +2.047
+   7. Portugal                  +1.989
+   8. Germany                   +1.976
+   9. Ecuador                   +1.974
+  10. Netherlands               +1.963
+  11. Belgium                   +1.892
+  12. Morocco                   +1.840
+  13. Japan                     +1.827
+  14. Uruguay                   +1.777
+  15. Turkey                    +1.751
+  16. Switzerland               +1.742
+  17. Croatia                   +1.720
+  18. Norway                    +1.683
+  19. Mexico                    +1.643
+  20. Senegal                   +1.620
+  21. Paraguay                  +1.557
+  22. Austria                   +1.524
+  23. Italy                     +1.517
+  24. Denmark                   +1.492
+  25. Canada                    +1.428
+
+###########################################################################
+#  FIFA WORLD CUP 2026 SIMULATION  --  Model: Hybrid (Elo+Value)
+#  Seed: 2026
+###########################################################################
+
+===========================================================================
+GROUP STAGE RESULTS
+===========================================================================
+
+  --- Group A ---
+  Mexico                    2 - 0              South Africa  (75%/16%/9%)
+  Mexico                    3 - 1               South Korea  (45%/26%/29%)
+  Mexico                    6 - 0            Czech Republic  (58%/23%/19%)
+  South Africa              0 - 1               South Korea  (13%/20%/67%)
+  South Africa              1 - 0            Czech Republic  (21%/24%/55%) <!>
+  South Korea               1 - 0            Czech Republic  (49%/25%/26%)
+
+  --- Group B ---
+  Canada                    3 - 3               Switzerland  (27%/26%/48%)
+  Canada                    2 - 0                     Qatar  (79%/14%/7%)
+  Canada                    2 - 1    Bosnia and Herzegovina  (71%/18%/11%)
+  Switzerland               4 - 0                     Qatar  (87%/9%/4%)
+  Switzerland               4 - 1    Bosnia and Herzegovina  (81%/13%/6%)
+  Qatar                     0 - 1    Bosnia and Herzegovina  (29%/26%/45%)
+
+  --- Group C ---
+  Brazil                    2 - 1                   Morocco  (49%/25%/25%)
+  Brazil                    5 - 0                     Haiti  (86%/10%/4%)
+  Brazil                    2 - 0                  Scotland  (72%/17%/10%)
+  Morocco                   0 - 1                     Haiti  (77%/15%/8%) <!>
+  Morocco                   4 - 3                  Scotland  (60%/22%/18%)
+  Haiti                     2 - 2                  Scotland  (21%/24%/55%)
+
+  --- Group D ---
+  United States             2 - 1                  Paraguay  (27%/26%/48%) <!>
+  United States             1 - 0                 Australia  (32%/26%/42%)
+  United States             0 - 0                    Turkey  (21%/24%/55%)
+  Paraguay                  0 - 1                 Australia  (42%/26%/31%)
+  Paraguay                  2 - 1                    Turkey  (30%/26%/44%)
+  Australia                 0 - 0                    Turkey  (25%/25%/50%)
+
+  --- Group E ---
+  Germany                   7 - 0                   Curaçao  (89%/8%/3%)
+  Germany                   3 - 0               Ivory Coast  (65%/21%/15%)
+  Germany                   1 - 0                   Ecuador  (37%/27%/37%)
+  Curaçao                   0 - 0               Ivory Coast  (13%/20%/67%)
+  Curaçao                   0 - 4                   Ecuador  (3%/8%/89%)
+  Ivory Coast               0 - 2                   Ecuador  (15%/21%/65%)
+
+  --- Group F ---
+  Netherlands               2 - 1                     Japan  (42%/26%/32%)
+  Netherlands               1 - 0                   Tunisia  (77%/15%/8%)
+  Netherlands               4 - 1                    Sweden  (72%/17%/10%)
+  Japan                     6 - 1                   Tunisia  (73%/17%/10%)
+  Japan                     0 - 1                    Sweden  (68%/19%/13%) <!>
+  Tunisia                   0 - 2                    Sweden  (31%/26%/42%)
+
+  --- Group G ---
+  Belgium                   1 - 2                     Egypt  (62%/22%/16%) <!>
+  Belgium                   3 - 0                      Iran  (54%/24%/22%)
+  Belgium                   4 - 0               New Zealand  (77%/15%/8%)
+  Egypt                     0 - 1                      Iran  (29%/26%/45%)
+  Egypt                     2 - 1               New Zealand  (52%/25%/23%)
+  Iran                      2 - 0               New Zealand  (61%/22%/17%)
+
+  --- Group H ---
+  Spain                     1 - 1                Cape Verde  (97%/2%/1%)
+  Spain                     4 - 0              Saudi Arabia  (95%/4%/1%)
+  Spain                     4 - 0                   Uruguay  (70%/18%/12%)
+  Cape Verde                1 - 0              Saudi Arabia  (30%/26%/43%)
+  Cape Verde                0 - 2                   Uruguay  (6%/12%/82%)
+  Saudi Arabia              2 - 6                   Uruguay  (8%/15%/77%)
+
+  --- Group I ---
+  France                    0 - 2                   Senegal  (66%/20%/14%) <!>
+  France                    5 - 0                    Norway  (63%/21%/16%)
+  France                    3 - 0                      Iraq  (87%/9%/4%)
+  Senegal                   5 - 2                    Norway  (35%/27%/39%)
+  Senegal                   4 - 0                      Iraq  (64%/21%/15%)
+  Norway                    3 - 0                      Iraq  (66%/20%/14%)
+
+  --- Group J ---
+  Argentina                 2 - 0                   Algeria  (76%/15%/8%)
+  Argentina                 4 - 0                   Austria  (73%/17%/10%)
+  Argentina                 2 - 2                    Jordan  (90%/7%/3%)
+  Algeria                   2 - 1                   Austria  (33%/26%/41%)
+  Algeria                   4 - 2                    Jordan  (57%/23%/20%)
+  Austria                   6 - 2                    Jordan  (61%/22%/17%)
+
+  --- Group K ---
+  Portugal                  1 - 0                Uzbekistan  (67%/19%/13%)
+  Portugal                  1 - 1                  Colombia  (35%/27%/39%)
+  Portugal                  2 - 1                  DR Congo  (72%/18%/11%)
+  Uzbekistan                3 - 1                  Colombia  (12%/19%/69%) <!>
+  Uzbekistan                1 - 1                  DR Congo  (41%/26%/32%)
+  Colombia                  3 - 1                  DR Congo  (74%/17%/10%)
+
+  --- Group L ---
+  England                   1 - 1                   Croatia  (56%/23%/20%)
+  England                   3 - 1                     Ghana  (93%/5%/2%)
+  England                   4 - 1                    Panama  (77%/15%/8%)
+  Croatia                   2 - 0                     Ghana  (82%/12%/6%)
+  Croatia                   0 - 0                    Panama  (59%/23%/18%)
+  Ghana                     1 - 1                    Panama  (16%/22%/62%)
+
+===========================================================================
+GROUP STANDINGS
+===========================================================================
+
+  Group A
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Mexico                       9   3   0   0   11    1  +10 Q
+  South Korea                  6   2   0   1    3    3   +0 Q
+  South Africa                 3   1   0   2    1    3   -2 ?
+  Czech Republic               0   0   0   3    0    8   -8  
+
+  Group B
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Switzerland                  7   2   1   0   11    4   +7 Q
+  Canada                       7   2   1   0    7    4   +3 Q
+  Bosnia and Herzegovina       3   1   0   2    3    6   -3 ?
+  Qatar                        0   0   0   3    0    7   -7  
+
+  Group C
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Brazil                       9   3   0   0    9    1   +8 Q
+  Haiti                        4   1   1   1    3    7   -4 Q
+  Morocco                      3   1   0   2    5    6   -1 ?
+  Scotland                     1   0   1   2    5    8   -3  
+
+  Group D
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  United States                7   2   1   0    3    1   +2 Q
+  Australia                    4   1   1   1    1    1   +0 Q
+  Paraguay                     3   1   0   2    3    4   -1 ?
+  Turkey                       2   0   2   1    1    2   -1  
+
+  Group E
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Germany                      9   3   0   0   11    0  +11 Q
+  Ecuador                      6   2   0   1    6    1   +5 Q
+  Ivory Coast                  1   0   1   2    0    5   -5 ?
+  Curaçao                      1   0   1   2    0   11  -11  
+
+  Group F
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Netherlands                  9   3   0   0    7    2   +5 Q
+  Sweden                       6   2   0   1    4    4   +0 Q
+  Japan                        3   1   0   2    7    4   +3 ?
+  Tunisia                      0   0   0   3    1    9   -8  
+
+  Group G
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Belgium                      6   2   0   1    8    2   +6 Q
+  Egypt                        6   2   0   1    4    3   +1 Q
+  Iran                         6   2   0   1    3    3   +0 ?
+  New Zealand                  0   0   0   3    1    8   -7  
+
+  Group H
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Spain                        7   2   1   0    9    1   +8 Q
+  Uruguay                      6   2   0   1    8    6   +2 Q
+  Cape Verde                   4   1   1   1    2    3   -1 ?
+  Saudi Arabia                 0   0   0   3    2   11   -9  
+
+  Group I
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Senegal                      9   3   0   0   11    2   +9 Q
+  France                       6   2   0   1    8    2   +6 Q
+  Norway                       3   1   0   2    5   10   -5 ?
+  Iraq                         0   0   0   3    0   10  -10  
+
+  Group J
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Argentina                    7   2   1   0    8    2   +6 Q
+  Algeria                      6   2   0   1    6    5   +1 Q
+  Austria                      3   1   0   2    7    8   -1 ?
+  Jordan                       1   0   1   2    6   12   -6  
+
+  Group K
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  Portugal                     7   2   1   0    4    2   +2 Q
+  Uzbekistan                   4   1   1   1    4    3   +1 Q
+  Colombia                     4   1   1   1    5    5   +0 ?
+  DR Congo                     1   0   1   2    3    6   -3  
+
+  Group L
+  Team                       Pts   W   D   L   GF   GA   GD
+  ----------------------------------------------------
+  England                      7   2   1   0    8    3   +5 Q
+  Croatia                      5   1   2   0    3    1   +2 Q
+  Panama                       2   0   2   1    2    5   -3 ?
+  Ghana                        1   0   1   2    2    6   -4  
+
+===========================================================================
+BEST 3RD-PLACED TEAMS (qualified)
+===========================================================================
+  Group G: Iran                      6pts  GD=+0
+  Group K: Colombia                  4pts  GD=+0
+  Group H: Cape Verde                4pts  GD=-1
+  Group F: Japan                     3pts  GD=+3
+  Group J: Austria                   3pts  GD=-1
+  Group C: Morocco                   3pts  GD=-1
+  Group D: Paraguay                  3pts  GD=-1
+  Group A: South Africa              3pts  GD=-2
+
+===========================================================================
+  ROUND OF 32
+===========================================================================
+  Mexico                  3 - 2 (pens)                     Iran  -> Mexico
+  Haiti                       2 - 1                   Australia  -> Haiti
+  Switzerland                 0 - 3                    Colombia  -> Colombia
+  Ecuador                     0 - 1                      Sweden  -> Sweden
+  Belgium                     2 - 0                  Cape Verde  -> Belgium
+  France                      4 - 0                     Algeria  -> France
+  Spain                       2 - 1                       Japan  -> Spain
+  Uzbekistan              1 - 2 (pens)                  Croatia  -> Croatia
+  Brazil                      2 - 3                     Austria  -> Austria
+  South Korea            0 - 1 (a.e.t.)                  Canada  -> Canada
+  United States               0 - 2                     Morocco  -> Morocco
+  Egypt                       1 - 3                     Uruguay  -> Uruguay
+  Senegal                 1 - 2 (pens)                 Paraguay  -> Paraguay
+  Netherlands                 0 - 2                      France  -> France
+  Argentina                   8 - 0                South Africa  -> Argentina
+  England                     3 - 0                  Uzbekistan  -> England
+
+===========================================================================
+  ROUND OF 16
+===========================================================================
+  Mexico                      1 - 0                       Haiti  -> Mexico
+  Colombia                    3 - 1                      Sweden  -> Colombia
+  Belgium                2 - 4 (a.e.t.)                  France  -> France
+  Spain                       4 - 3                     Croatia  -> Spain
+  Austria                     2 - 1                      Canada  -> Austria
+  Morocco                3 - 2 (a.e.t.)                 Uruguay  -> Morocco
+  Paraguay                    0 - 3                      France  -> France
+  Argentina                   3 - 1                     England  -> Argentina
+
+===========================================================================
+  QUARTER-FINALS
+===========================================================================
+  Mexico                      1 - 2                    Colombia  -> Colombia
+  France                      1 - 3                       Spain  -> Spain
+  Austria                     4 - 1                     Morocco  -> Austria
+  France                      1 - 0                   Argentina  -> France
+
+===========================================================================
+  SEMI-FINALS
+===========================================================================
+  Colombia                    2 - 1                       Spain  -> Colombia
+  Austria                     0 - 1                      France  -> France
+
+===========================================================================
+  3RD PLACE MATCH
+===========================================================================
+  Spain                       3 - 2                     Austria  -> Spain
+
+===========================================================================
+  FINAL
+===========================================================================
+  Colombia                1 - 2 (pens)                   France  -> France
+
+***************************************************************************
+*
+*  CHAMPION:    France
+*  RUNNER-UP:   Colombia
+*  3RD PLACE:   Spain
+*
+***************************************************************************
+
+  Total matches: 104
+  Total goals: 331
+  Goals per match: 3.18
+
+
+===========================================================================
+SUMMARY
+===========================================================================
+  Hybrid model champion: France
