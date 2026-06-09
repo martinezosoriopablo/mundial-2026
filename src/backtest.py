@@ -1,21 +1,34 @@
 import pandas as pd
 import numpy as np
 from src.data_loader import load_results, get_tournament_matches, WORLD_CUP_DATES
-from src.strength_static import train_model
+from src.strength_static import train_model as train_static
 from src.metrics import match_outcome, rps, log_loss_1x2, brier_multi, calibration_ece
 
 
-def backtest(tournament_ids: list[str], df: pd.DataFrame | None = None) -> pd.DataFrame:
-    """Walk-forward backtest over specified tournaments. Returns one row per match."""
+def backtest(
+    tournament_ids: list[str],
+    df: pd.DataFrame | None = None,
+    model_type: str = "static",
+) -> pd.DataFrame:
+    """Walk-forward backtest over specified tournaments. Returns one row per match.
+
+    model_type: "static" (v0 Poisson) or "elo" (Fase 2.1)
+    """
     if df is None:
         df = load_results()
+
+    if model_type == "elo":
+        from src.strength_elo import train_elo_model
+        train_fn = train_elo_model
+    else:
+        train_fn = train_static
 
     rows = []
     for tid in tournament_ids:
         info = WORLD_CUP_DATES[tid]
         cutoff = pd.Timestamp(info["cutoff"])
-        print(f"  Training model for {tid} (cutoff={cutoff.date()})...")
-        model = train_model(df, cutoff)
+        print(f"  Training {model_type} model for {tid} (cutoff={cutoff.date()})...")
+        model = train_fn(df, cutoff)
         matches = get_tournament_matches(df, info["name"], info["year"])
         print(f"  Found {len(matches)} matches for {tid}")
 
