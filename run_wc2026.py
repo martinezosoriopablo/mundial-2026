@@ -449,13 +449,22 @@ def main():
     for i, (team, s) in enumerate(ranked, 1):
         print(f"  {i:>2}. {team:<25} {s:>+.3f}")
 
-    # Simulate with Hybrid model
-    champion = run_simulation(hybrid_model, predict_lambdas_hybrid, "Hybrid (Multi-Feature)", seed=2026)
+    # Simulate multiple seeds for variety
+    seeds = [2026, 7, 42, 1986, 2010]
+    champions = {}
+    for seed in seeds:
+        champ = run_simulation(hybrid_model, predict_lambdas_hybrid,
+                               "Hybrid (Multi-Feature)", seed=seed)
+        champions[seed] = champ
 
     print(f"\n\n{'=' * 75}")
-    print("SUMMARY")
+    print("RESUMEN - 5 SIMULACIONES")
     print("=" * 75)
-    print(f"  Hybrid model champion: {champion}")
+    for seed, champ in champions.items():
+        print(f"  Seed {seed:<6} -> Campeon: {champ}")
+    from collections import Counter
+    counts = Counter(champions.values())
+    print(f"\n  Campeon mas frecuente: {counts.most_common(1)[0][0]} ({counts.most_common(1)[0][1]}/5)")
 
 
 if __name__ == "__main__":
