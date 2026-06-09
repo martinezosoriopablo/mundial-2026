@@ -23,6 +23,9 @@ def backtest(
     elif model_type == "gas":
         from src.strength_gas import train_gas_model
         train_fn = train_gas_model
+    elif model_type == "hybrid":
+        from src.strength_hybrid import train_hybrid_model
+        train_fn = train_hybrid_model
     else:
         train_fn = train_static
 

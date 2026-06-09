@@ -5,6 +5,7 @@ import numpy as np
 from src.data_loader import load_results
 from src.strength_elo import train_elo_model
 from src.strength_gas import train_gas_model
+from src.strength_hybrid import train_hybrid_model
 from src.wc2026 import GROUPS_2026
 
 # ---------------------------------------------------------------------------
@@ -16,6 +17,16 @@ def predict_lambdas_elo(model, home, away, neutral=True):
     r_home = model.ratings.get(home, 1500.0)
     r_away = model.ratings.get(away, 1500.0)
     diff = r_home - r_away + (model.home_adv if not neutral else 0)
+    home_lambda = math.exp(0.25 + diff / model.scale)
+    away_lambda = math.exp(0.25 - diff / model.scale)
+    return max(0.2, min(home_lambda, 6.0)), max(0.2, min(away_lambda, 6.0))
+
+
+def predict_lambdas_hybrid(model, home, away, neutral=True):
+    """Extract expected goals (lambdas) from Hybrid model."""
+    s_home = model.strength.get(home, 0.0)
+    s_away = model.strength.get(away, 0.0)
+    diff = s_home - s_away + (model.home_adv if not neutral else 0)
     home_lambda = math.exp(0.25 + diff / model.scale)
     away_lambda = math.exp(0.25 - diff / model.scale)
     return max(0.2, min(home_lambda, 6.0)), max(0.2, min(away_lambda, 6.0))
@@ -33,21 +44,32 @@ def predict_lambdas_gas(model, home, away, neutral=True):
     return max(0.2, min(home_lambda, 6.0)), max(0.2, min(away_lambda, 6.0))
 
 
-def sample_scoreline(rng, home_lambda, away_lambda):
-    """Sample a match scoreline from Poisson distribution."""
-    return int(rng.poisson(home_lambda)), int(rng.poisson(away_lambda))
+def sample_scoreline(rng, home_lambda, away_lambda, method="poisson", r=8.0):
+    """Sample a match scoreline.
+
+    method="poisson": classic Poisson (variance = mean)
+    method="negbin":  Negative Binomial (variance > mean, more upsets)
+    r: dispersion parameter for negbin (lower = more variance)
+    """
+    if method == "negbin":
+        h = int(rng.negative_binomial(r, r / (r + max(home_lambda, 0.15))))
+        a = int(rng.negative_binomial(r, r / (r + max(away_lambda, 0.15))))
+    else:
+        h = int(rng.poisson(home_lambda))
+        a = int(rng.poisson(away_lambda))
+    return h, a
 
 
-def sample_knockout_scoreline(rng, home_lambda, away_lambda):
+def sample_knockout_scoreline(rng, home_lambda, away_lambda, method="poisson", r=8.0):
     """Sample a knockout match scoreline. If draw after 90min, go to ET/pens."""
-    h, a = sample_scoreline(rng, home_lambda, away_lambda)
+    h, a = sample_scoreline(rng, home_lambda, away_lambda, method, r)
     extra_time = False
     penalties = False
 
     if h == a:
         extra_time = True
         # Extra time: 1/3 of normal expected goals
-        eh, ea = sample_scoreline(rng, home_lambda / 3, away_lambda / 3)
+        eh, ea = sample_scoreline(rng, home_lambda / 3, away_lambda / 3, method, r)
         h += eh
         a += ea
 
@@ -416,31 +438,24 @@ def main():
     df = load_results()
     cutoff = pd.Timestamp("2026-06-11")  # WC2026 start date
 
-    print("Training Elo model...")
-    elo_model = train_elo_model(df, cutoff)
+    print("Training Hybrid model (Multi-Feature, 14 signals)...")
+    hybrid_model = train_hybrid_model(df, cutoff)
 
-    print("Training GAS model...")
-    gas_model = train_gas_model(df, cutoff)
+    # Print top 25 blended strength
+    print("\n" + "=" * 55)
+    print("TOP 25 BLENDED STRENGTH (Multi-Feature)")
+    print("=" * 55)
+    ranked = sorted(hybrid_model.strength.items(), key=lambda x: -x[1])[:25]
+    for i, (team, s) in enumerate(ranked, 1):
+        print(f"  {i:>2}. {team:<25} {s:>+.3f}")
 
-    # Print top 20 Elo ratings
-    print("\n" + "=" * 50)
-    print("TOP 20 ELO RATINGS (pre-tournament)")
-    print("=" * 50)
-    top20 = sorted(elo_model.ratings.items(), key=lambda x: -x[1])[:20]
-    for i, (team, rating) in enumerate(top20, 1):
-        print(f"  {i:>2}. {team:<25} {rating:.0f}")
-
-    # Simulate with Elo model
-    elo_champion = run_simulation(elo_model, predict_lambdas_elo, "Elo (v2.1)", seed=2026)
-
-    # Simulate with GAS model
-    gas_champion = run_simulation(gas_model, predict_lambdas_gas, "GAS (v2.2)", seed=2026)
+    # Simulate with Hybrid model
+    champion = run_simulation(hybrid_model, predict_lambdas_hybrid, "Hybrid (Multi-Feature)", seed=2026)
 
     print(f"\n\n{'=' * 75}")
     print("SUMMARY")
     print("=" * 75)
-    print(f"  Elo model champion:  {elo_champion}")
-    print(f"  GAS model champion:  {gas_champion}")
+    print(f"  Hybrid model champion: {champion}")
 
 
 if __name__ == "__main__":

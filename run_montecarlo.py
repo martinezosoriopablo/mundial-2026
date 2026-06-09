@@ -1,21 +1,26 @@
-"""Monte Carlo simulation of World Cup 2026 - champion probabilities."""
+"""Monte Carlo simulation of World Cup 2026 - champion probabilities.
+
+Compares two goal-sampling methods:
+  1. Poisson (classic): variance = mean
+  2. Negative Binomial: variance > mean (more upsets, more realistic)
+"""
 
 import math
 import numpy as np
 import pandas as pd
 from src.data_loader import load_results
 from src.strength_elo import train_elo_model
-from src.strength_gas import train_gas_model
+from src.strength_hybrid import train_hybrid_model
 from src.wc2026 import GROUPS_2026
 from run_wc2026 import (
     predict_lambdas_elo,
-    predict_lambdas_gas,
+    predict_lambdas_hybrid,
     sample_scoreline,
     sample_knockout_scoreline,
 )
 
 
-def sim_group_stage_fast(model, get_lambdas, groups, rng):
+def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.0):
     """Simulate group stage, return (standings dict, best 3rd place teams)."""
     standings = {}
 
@@ -27,7 +32,7 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng):
         for i in range(4):
             for j in range(i + 1, 4):
                 lh, la = get_lambdas(model, teams[i], teams[j], neutral=True)
-                gh, ga_ = sample_scoreline(rng, lh, la)
+                gh, ga_ = sample_scoreline(rng, lh, la, method, r)
                 gf[i] += gh; ga[i] += ga_
                 gf[j] += ga_; ga[j] += gh
                 if gh > ga_:
@@ -37,7 +42,6 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng):
                 else:
                     pts[j] += 3
 
-        # Rank by pts, GD, GF, random
         indices = list(range(4))
         indices.sort(key=lambda k: (pts[k], gf[k] - ga[k], gf[k], rng.random()), reverse=True)
         standings[gname] = {
@@ -47,7 +51,6 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng):
             "gf": [gf[k] for k in indices],
         }
 
-    # Best 3rd place
     thirds = []
     for g in sorted(standings):
         s = standings[g]
@@ -58,22 +61,21 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng):
     return standings, best_thirds
 
 
-def sim_knockout_match(model, get_lambdas, home, away, rng):
+def sim_knockout_match(model, get_lambdas, home, away, rng, method="poisson", r=8.0):
     """Simulate a knockout match, return winner."""
     lh, la = get_lambdas(model, home, away, neutral=True)
-    gh, ga, _, _ = sample_knockout_scoreline(rng, lh, la)
+    gh, ga, _, _ = sample_knockout_scoreline(rng, lh, la, method, r)
     return home if gh > ga else away
 
 
-def sim_tournament(model, get_lambdas, groups, rng):
+def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0):
     """Simulate full tournament, return (champion, finalist, semifinalists)."""
-    standings, best_thirds = sim_group_stage_fast(model, get_lambdas, groups, rng)
+    standings, best_thirds = sim_group_stage_fast(model, get_lambdas, groups, rng, method, r)
 
     winners = {g: standings[g]["ranked"][0] for g in standings}
     runners = {g: standings[g]["ranked"][1] for g in standings}
 
-    # Build R32 bracket
-    tl = best_thirds  # list of 8 best 3rd-place teams
+    tl = best_thirds
     r32 = [
         (winners["A"], tl[0]), (runners["C"], runners["D"]),
         (winners["B"], tl[1]), (runners["E"], runners["F"]),
@@ -85,26 +87,16 @@ def sim_tournament(model, get_lambdas, groups, rng):
         (winners["J"], tl[7]), (winners["L"], runners["K"]),
     ]
 
-    # R32
-    r32w = [sim_knockout_match(model, get_lambdas, h, a, rng) for h, a in r32]
-
-    # R16
+    r32w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in r32]
     r16 = [(r32w[i], r32w[i + 1]) for i in range(0, 16, 2)]
-    r16w = [sim_knockout_match(model, get_lambdas, h, a, rng) for h, a in r16]
-
-    # QF
+    r16w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in r16]
     qf = [(r16w[i], r16w[i + 1]) for i in range(0, 8, 2)]
-    qfw = [sim_knockout_match(model, get_lambdas, h, a, rng) for h, a in qf]
-
-    # SF
+    qfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in qf]
     sf = [(qfw[0], qfw[1]), (qfw[2], qfw[3])]
-    sfw = [sim_knockout_match(model, get_lambdas, h, a, rng) for h, a in sf]
-
-    # Final
-    champion = sim_knockout_match(model, get_lambdas, sfw[0], sfw[1], rng)
+    sfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in sf]
+    champion = sim_knockout_match(model, get_lambdas, sfw[0], sfw[1], rng, method, r)
     finalist = sfw[1] if champion == sfw[0] else sfw[0]
 
-    # Semifinalists (losers of SF)
     sf_losers = []
     for i, (h, a) in enumerate(sf):
         sf_losers.append(a if sfw[i] == h else h)
@@ -112,7 +104,8 @@ def sim_tournament(model, get_lambdas, groups, rng):
     return champion, finalist, sf_losers, qfw
 
 
-def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42):
+def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42,
+                   method="poisson", r=8.0):
     """Run Monte Carlo tournament simulation."""
     rng = np.random.default_rng(seed)
 
@@ -121,19 +114,19 @@ def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42):
     semifinal_count = {}
     qf_count = {}
 
-    print(f"\n  Simulating {n_sims:,} tournaments with {model_name}...", flush=True)
+    print(f"\n  Simulating {n_sims:,} tournaments with {model_name} [{method}]...", flush=True)
 
     for i in range(n_sims):
-        if (i + 1) % 2000 == 0:
+        if (i + 1) % 2500 == 0:
             print(f"    {i + 1:,}/{n_sims:,}...", flush=True)
 
         champ, final, sf_losers, qf_winners = sim_tournament(
-            model, get_lambdas, GROUPS_2026, rng
+            model, get_lambdas, GROUPS_2026, rng, method, r
         )
 
         champion_count[champ] = champion_count.get(champ, 0) + 1
         finalist_count[final] = finalist_count.get(final, 0) + 1
-        finalist_count[champ] = finalist_count.get(champ, 0) + 1  # champion also reached final
+        finalist_count[champ] = finalist_count.get(champ, 0) + 1
         semifinal_count[champ] = semifinal_count.get(champ, 0) + 1
         semifinal_count[final] = semifinal_count.get(final, 0) + 1
         for t in sf_losers:
@@ -148,20 +141,58 @@ def print_results(champion_count, finalist_count, semifinal_count, qf_count,
                   n_sims, model_name):
     """Print formatted results table."""
     print(f"\n{'=' * 72}")
-    print(f"  WORLD CUP 2026 PROBABILITIES  --  {model_name}  ({n_sims:,} sims)")
+    print(f"  {model_name}  ({n_sims:,} sims)")
     print(f"{'=' * 72}")
     print(f"  {'Team':<22} {'Champion':>10} {'Final':>10} {'Semi':>10} {'QF':>10}")
     print(f"  {'-' * 66}")
 
-    # Sort by champion probability
     sorted_teams = sorted(champion_count.keys(), key=lambda t: -champion_count[t])
 
-    for team in sorted_teams[:30]:
+    for team in sorted_teams[:25]:
         p_champ = champion_count.get(team, 0) / n_sims * 100
         p_final = finalist_count.get(team, 0) / n_sims * 100
         p_semi = semifinal_count.get(team, 0) / n_sims * 100
         p_qf = qf_count.get(team, 0) / n_sims * 100
         print(f"  {team:<22} {p_champ:>9.1f}% {p_final:>9.1f}% {p_semi:>9.1f}% {p_qf:>9.1f}%")
+
+
+def print_comparison(poi_champ, nb_champ, n_sims):
+    """Side-by-side comparison of Poisson vs Negative Binomial."""
+    print(f"\n{'=' * 72}")
+    print(f"  COMPARACION: Poisson vs Negative Binomial (Hybrid, {n_sims:,} sims)")
+    print(f"{'=' * 72}")
+    print(f"  {'Team':<22} {'Poisson':>10} {'Neg.Binom':>10} {'Diff':>10}")
+    print(f"  {'-' * 56}")
+
+    all_teams = set(list(poi_champ.keys()) + list(nb_champ.keys()))
+    combined = {}
+    for t in all_teams:
+        p_poi = poi_champ.get(t, 0) / n_sims * 100
+        p_nb = nb_champ.get(t, 0) / n_sims * 100
+        combined[t] = (p_poi, p_nb)
+
+    for team in sorted(combined, key=lambda t: -(combined[t][0] + combined[t][1]) / 2)[:25]:
+        p_poi, p_nb = combined[team]
+        diff = p_nb - p_poi
+        arrow = ""
+        if abs(diff) >= 0.5:
+            arrow = " <--" if diff < 0 else " -->"
+        print(f"  {team:<22} {p_poi:>9.1f}% {p_nb:>9.1f}% {diff:>+9.1f}%{arrow}")
+
+    # Summary stats
+    top6_poi = sorted(poi_champ.values(), reverse=True)[:6]
+    top6_nb = sorted(nb_champ.values(), reverse=True)[:6]
+    conc_poi = sum(top6_poi) / n_sims * 100
+    conc_nb = sum(top6_nb) / n_sims * 100
+
+    unique_champs_poi = sum(1 for v in poi_champ.values() if v > 0)
+    unique_champs_nb = sum(1 for v in nb_champ.values() if v > 0)
+
+    print(f"\n  {'Metrica':<35} {'Poisson':>10} {'Neg.Binom':>10}")
+    print(f"  {'-' * 56}")
+    print(f"  {'Top 6 concentracion':<35} {conc_poi:>9.1f}% {conc_nb:>9.1f}%")
+    print(f"  {'Equipos distintos campeon':<35} {unique_champs_poi:>10} {unique_champs_nb:>10}")
+    print(f"  {'Interpretacion':<35} {'predecible':>10} {'sorpresas':>10}")
 
 
 def main():
@@ -171,43 +202,25 @@ def main():
     df = load_results()
     cutoff = pd.Timestamp("2026-06-11")
 
-    print("Training Elo model...")
-    elo_model = train_elo_model(df, cutoff)
+    print("Training Hybrid model (Multi-Feature)...")
+    hybrid_model = train_hybrid_model(df, cutoff)
 
-    print("Training GAS model...")
-    gas_model = train_gas_model(df, cutoff)
-
-    # Elo Monte Carlo
-    elo_champ, elo_final, elo_semi, elo_qf, n = run_montecarlo(
-        elo_model, predict_lambdas_elo, "Elo (v2.1)", n_sims=N_SIMS, seed=42
+    # === Poisson ===
+    poi_champ, poi_final, poi_semi, poi_qf, n = run_montecarlo(
+        hybrid_model, predict_lambdas_hybrid, "Hybrid + Poisson",
+        n_sims=N_SIMS, seed=42, method="poisson"
     )
-    print_results(elo_champ, elo_final, elo_semi, elo_qf, n, "Elo (v2.1)")
+    print_results(poi_champ, poi_final, poi_semi, poi_qf, n, "Hybrid + Poisson")
 
-    # GAS Monte Carlo
-    gas_champ, gas_final, gas_semi, gas_qf, n = run_montecarlo(
-        gas_model, predict_lambdas_gas, "GAS (v2.2)", n_sims=N_SIMS, seed=42
+    # === Negative Binomial ===
+    nb_champ, nb_final, nb_semi, nb_qf, n = run_montecarlo(
+        hybrid_model, predict_lambdas_hybrid, "Hybrid + Neg.Binomial (r=8)",
+        n_sims=N_SIMS, seed=42, method="negbin", r=8.0
     )
-    print_results(gas_champ, gas_final, gas_semi, gas_qf, n, "GAS (v2.2)")
+    print_results(nb_champ, nb_final, nb_semi, nb_qf, n, "Hybrid + Neg.Binomial (r=8)")
 
-    # Combined / Ensemble (average champion probabilities)
-    print(f"\n{'=' * 72}")
-    print(f"  ENSEMBLE (average of Elo + GAS)")
-    print(f"{'=' * 72}")
-    print(f"  {'Team':<22} {'Elo':>10} {'GAS':>10} {'Average':>10}")
-    print(f"  {'-' * 56}")
-
-    all_teams = set(list(elo_champ.keys()) + list(gas_champ.keys()))
-    ensemble = {}
-    for t in all_teams:
-        p_elo = elo_champ.get(t, 0) / N_SIMS * 100
-        p_gas = gas_champ.get(t, 0) / N_SIMS * 100
-        ensemble[t] = (p_elo + p_gas) / 2
-
-    for team in sorted(ensemble, key=lambda t: -ensemble[t])[:20]:
-        p_elo = elo_champ.get(team, 0) / N_SIMS * 100
-        p_gas = gas_champ.get(team, 0) / N_SIMS * 100
-        avg = ensemble[team]
-        print(f"  {team:<22} {p_elo:>9.1f}% {p_gas:>9.1f}% {avg:>9.1f}%")
+    # === Comparison ===
+    print_comparison(poi_champ, nb_champ, N_SIMS)
 
 
 if __name__ == "__main__":
