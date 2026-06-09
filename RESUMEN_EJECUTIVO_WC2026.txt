@@ -1,0 +1,387 @@
+====================================================================================================
+  MUNDIAL 2026 - RESUMEN EJECUTIVO
+  Modelo predictivo basado en 10,000 simulaciones Monte Carlo
+====================================================================================================
+
+  Fecha: 9 de junio de 2026 (2 dias antes del inicio)
+  Modelo: Hibrido 14 features | Elo corregido | Poisson goal sampling
+  Validacion: Backtest fuera de muestra 2010-2022, Brier Score < mercado
+
+
+====================================================================================================
+  1. QUIEN GANA EL MUNDIAL?
+====================================================================================================
+
+  #   Equipo                 Campeon     Final      Semi        QF   Mercado   vs Mkt
+  ----------------------------------------------------------------------------------
+  1   France                   19.6%     31.2%     43.3%     76.6%     14.9%  +4.7pp  ###################
+  2   Spain                    17.4%     30.8%     45.9%     66.6%     15.8%  +1.6pp  #################
+  3   England                  15.8%     23.8%     32.0%     52.1%     10.8%  +5.0pp  ###############
+  4   Argentina                10.8%     18.4%     27.2%     47.9%      8.7%  +2.1pp  ##########
+  5   Brazil                    9.7%     18.9%     39.9%     58.8%      9.1%  +0.6pp  #########
+  6   Morocco                   4.3%     10.7%     27.1%     46.4%      1.7%  +2.6pp  ####
+  7   Netherlands               3.1%      7.5%     16.6%     33.2%      4.1%  -1.0pp  ###
+  8   Portugal                  2.8%      5.6%      8.7%     15.2%      9.1%  -6.3pp  ##
+  9   Japan                     2.5%      6.4%     15.1%     31.3%      1.9%  +0.6pp  ##
+  10  Mexico                    2.5%      7.5%     19.8%     37.1%      1.5%  +1.0pp  ##
+  11  Belgium                   2.5%      7.2%     16.2%     37.7%      2.1%  +0.4pp  ##
+  12  Germany                   1.8%      4.0%      8.9%     14.0%      5.8%  -4.0pp  #
+  13  Norway                    1.3%      4.2%      8.5%     24.5%      2.4%  -1.1pp  #
+  14  Switzerland               0.9%      3.5%     13.1%     28.9%      1.7%  -0.8pp  
+  15  Turkey                    0.8%      3.0%     11.0%     26.2%      1.1%  -0.3pp  
+  16  Canada                    0.8%      3.2%     12.4%     27.8%      0.4%  +0.4pp  
+  17  Colombia                  0.7%      2.3%      5.4%     14.7%      2.1%  -1.4pp  
+  18  United States             0.7%      2.4%      9.7%     24.1%      1.4%  -0.7pp  
+  19  Uruguay                   0.6%      2.6%     10.9%     30.2%      1.3%  -0.7pp  
+  20  Ecuador                   0.4%      1.5%      5.8%     14.1%      0.9%  -0.6pp  
+
+  LECTURA: France es nuestro favorito (19.6%), seguido de Spain (17.4%)
+  y England (15.8%). El mercado tiene a Spain primero (15.8%).
+
+
+====================================================================================================
+  2. FINALES MAS PROBABLES
+====================================================================================================
+
+  France vs Spain: 6.7%  ####################
+  England vs Spain: 6.3%  ##################
+  Argentina vs Spain: 4.0%  ############
+  Brazil vs Spain: 3.5%  ##########
+  Brazil vs France: 2.9%  ########
+  England vs France: 2.3%  ######
+  Brazil vs England: 2.1%  ######
+  Argentina vs France: 2.1%  ######
+  France vs Morocco: 1.9%  #####
+  Brazil vs Morocco: 1.9%  #####
+
+
+====================================================================================================
+  3. FASE DE GRUPOS - TABLAS Y PARTIDOS
+====================================================================================================
+
+  ============================================= GRUPO A =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Mexico                   6.8   6.6   2.3  +4.3   70.6%  19.8%   7.4%   2.2%   90.3%
+  2    South Korea              4.2   4.0   4.0  -0.0   15.8%  37.4%  29.6%  17.1%   53.2%
+  3    Czech Republic           3.5   3.5   4.6  -1.0   10.0%  28.8%  34.8%  26.4%   38.9%
+  4    South Africa             2.2   2.6   5.9  -3.2    3.6%  14.0%  28.2%  54.2%   17.6%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Mexico vs South Africa                    2.6 - 0.6     2-0    79%   14%    7%
+  Mexico vs South Korea                     1.9 - 0.8     1-0    62%   22%   16%
+  Mexico vs Czech Republic                  2.1 - 0.8     1-0    68%   19%   13%
+  South Africa vs South Korea               1.0 - 1.7     0-1    20%   24%   56%
+  South Africa vs Czech Republic            1.0 - 1.6     1-1    26%   25%   49%
+  South Korea vs Czech Republic             1.4 - 1.2     1-1    42%   27%   31%
+
+  ============================================= GRUPO B =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Switzerland              6.5   6.8   2.5  +4.2   49.1%  40.7%   9.1%   1.1%   89.8%
+  2    Canada                   6.4   6.6   2.6  +4.1   47.0%  42.1%   9.7%   1.2%   89.1%
+  3    Bosnia and Herzegovina   2.9   3.2   5.5  -2.2    3.5%  14.2%  57.9%  24.4%   17.7%
+  4    Qatar                    1.2   2.0   8.0  -6.0    0.4%   3.0%  23.4%  73.3%    3.4%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Canada vs Switzerland                     1.3 - 1.3     1-1    35%   27%   38%
+  Canada vs Qatar                           3.1 - 0.5     3-0    87%    9%    4%
+  Canada vs Bosnia and Herzegovina          2.2 - 0.7     2-0    72%   17%   11%
+  Switzerland vs Qatar                      3.2 - 0.5     3-0    87%    9%    4%
+  Switzerland vs Bosnia and Herzegovina     2.3 - 0.7     2-0    73%   17%   10%
+  Qatar vs Bosnia and Herzegovina           0.9 - 1.8     0-1    20%   23%   57%
+
+  ============================================= GRUPO C =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Brazil                   6.7   7.1   2.4  +4.7   57.4%  34.1%   7.4%   1.1%   91.5%
+  2    Morocco                  6.0   6.1   2.8  +3.3   37.9%  47.2%  12.9%   2.0%   85.1%
+  3    Scotland                 3.0   3.3   5.3  -2.0    4.3%  15.4%  58.2%  22.1%   19.8%
+  4    Haiti                    1.2   2.0   8.1  -6.1    0.4%   3.2%  21.5%  74.9%    3.6%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Brazil vs Morocco                         1.5 - 1.1     1-1    45%   26%   30%
+  Brazil vs Haiti                           3.3 - 0.5     3-0    89%    8%    3%
+  Brazil vs Scotland                        2.3 - 0.7     2-0    73%   17%   10%
+  Morocco vs Haiti                          2.9 - 0.6     3-0    85%   10%    5%
+  Morocco vs Scotland                       2.1 - 0.8     2-0    67%   20%   13%
+  Haiti vs Scotland                         0.9 - 1.8     0-1    19%   23%   58%
+
+  ============================================= GRUPO D =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Turkey                   5.6   5.2   2.9  +2.3   44.2%  32.2%  16.6%   7.0%   76.4%
+  2    United States            5.5   5.0   3.0  +2.0   41.1%  34.1%  17.5%   7.3%   75.2%
+  3    Paraguay                 3.2   3.3   4.8  -1.5    9.7%  20.1%  36.4%  33.8%   29.8%
+  4    Australia                2.4   2.7   5.5  -2.8    5.0%  13.6%  29.5%  51.9%   18.6%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  United States vs Paraguay                 1.8 - 0.9     1-0    58%   24%   19%
+  United States vs Australia                2.0 - 0.8     1-0    65%   20%   15%
+  United States vs Turkey                   1.2 - 1.3     1-1    36%   27%   38%
+  Paraguay vs Australia                     1.4 - 1.1     1-1    44%   27%   29%
+  Paraguay vs Turkey                        0.9 - 1.8     0-1    18%   23%   59%
+  Australia vs Turkey                       0.8 - 2.1     0-2    13%   20%   67%
+
+  ============================================= GRUPO E =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Germany                  6.9   7.4   2.2  +5.2   66.3%  24.5%   8.5%   0.7%   90.8%
+  2    Ecuador                  5.0   5.1   3.5  +1.6   21.9%  42.0%  31.4%   4.7%   64.0%
+  3    Ivory Coast              4.2   4.3   4.2  +0.1   11.5%  31.2%  48.3%   8.9%   42.7%
+  4    Curaçao                  0.9   1.8   8.7  -7.0    0.2%   2.3%  11.8%  85.7%    2.5%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Germany vs Curaçao                        3.7 - 0.5     3-0    92%    6%    2%
+  Germany vs Ivory Coast                    2.0 - 0.8     2-0    65%   21%   15%
+  Germany vs Ecuador                        1.7 - 0.9     1-0    56%   24%   20%
+  Curaçao vs Ivory Coast                    0.7 - 2.4     0-2     9%   16%   75%
+  Curaçao vs Ecuador                        0.6 - 2.7     0-2     6%   13%   81%
+  Ivory Coast vs Ecuador                    1.1 - 1.5     1-1    29%   26%   45%
+
+  ============================================= GRUPO F =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Netherlands              6.4   6.5   2.6  +3.9   49.8%  40.1%   8.6%   1.6%   89.9%
+  2    Japan                    6.3   6.3   2.7  +3.6   46.0%  42.1%  10.1%   1.8%   88.1%
+  3    Sweden                   2.6   2.9   5.7  -2.8    3.0%  12.3%  50.5%  34.2%   15.4%
+  4    Tunisia                  1.6   2.3   7.1  -4.8    1.2%   5.5%  30.9%  62.5%    6.6%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Netherlands vs Japan                      1.3 - 1.3     1-1    38%   27%   35%
+  Netherlands vs Tunisia                    2.8 - 0.6     2-0    83%   12%    5%
+  Netherlands vs Sweden                     2.4 - 0.7     2-0    75%   16%    9%
+  Japan vs Tunisia                          2.7 - 0.6     2-0    82%   12%    6%
+  Japan vs Sweden                           2.3 - 0.7     2-0    72%   17%   10%
+  Tunisia vs Sweden                         1.1 - 1.5     1-1    26%   26%   48%
+
+  ============================================= GRUPO G =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Belgium                  7.1   7.3   2.1  +5.2   74.6%  18.9%   5.6%   0.9%   93.5%
+  2    Egypt                    4.3   4.2   4.0  +0.2   13.8%  40.0%  33.8%  12.4%   53.8%
+  3    Iran                     3.9   3.9   4.4  -0.5   10.6%  33.8%  39.4%  16.2%   44.4%
+  4    New Zealand              1.5   2.2   7.1  -4.9    1.0%   7.3%  21.2%  70.5%    8.3%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Belgium vs Egypt                          2.0 - 0.8     2-0    65%   20%   15%
+  Belgium vs Iran                           2.1 - 0.8     2-0    69%   19%   13%
+  Belgium vs New Zealand                    3.2 - 0.5     3-0    88%    9%    3%
+  Egypt vs Iran                             1.4 - 1.2     1-1    41%   27%   33%
+  Egypt vs New Zealand                      2.0 - 0.8     2-0    66%   20%   14%
+  Iran vs New Zealand                       1.9 - 0.9     1-0    62%   22%   16%
+
+  ============================================= GRUPO H =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Spain                    8.0  10.4   1.6  +8.8   83.5%  15.9%   0.5%   0.0%   99.5%
+  2    Uruguay                  5.6   5.9   3.3  +2.6   16.0%  72.7%   9.8%   1.5%   88.7%
+  3    Cape Verde               1.8   2.3   8.1  -5.8    0.3%   5.7%  44.0%  50.1%    6.0%
+  4    Saudi Arabia             1.8   2.3   8.0  -5.6    0.2%   5.7%  45.7%  48.4%    5.9%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Spain vs Cape Verde                       4.2 - 0.4     4-0    96%    3%    1%
+  Spain vs Saudi Arabia                     4.1 - 0.4     4-0    95%    4%    1%
+  Spain vs Uruguay                          2.0 - 0.8     2-0    66%   20%   14%
+  Cape Verde vs Saudi Arabia                1.3 - 1.3     1-1    36%   27%   37%
+  Cape Verde vs Uruguay                     0.6 - 2.6     0-2     7%   14%   79%
+  Saudi Arabia vs Uruguay                   0.6 - 2.6     0-2     7%   14%   79%
+
+  ============================================= GRUPO I =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    France                   7.2   7.8   2.1  +5.7   72.2%  21.2%   6.2%   0.4%   93.4%
+  2    Norway                   4.8   4.9   3.6  +1.2   18.0%  44.4%  31.9%   5.7%   62.4%
+  3    Senegal                  4.0   4.1   4.4  -0.3    9.4%  31.4%  47.7%  11.5%   40.8%
+  4    Iraq                     1.0   1.8   8.4  -6.6    0.3%   3.0%  14.2%  82.4%    3.4%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  France vs Senegal                         2.2 - 0.8     2-0    69%   19%   12%
+  France vs Norway                          1.9 - 0.9     1-0    61%   22%   17%
+  France vs Iraq                            3.7 - 0.4     3-0    93%    5%    2%
+  Senegal vs Norway                         1.1 - 1.5     1-1    28%   26%   46%
+  Senegal vs Iraq                           2.2 - 0.8     2-0    70%   18%   12%
+  Norway vs Iraq                            2.5 - 0.6     2-0    79%   14%    7%
+
+  ============================================= GRUPO J =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Argentina                7.4   8.1   2.0  +6.1   77.1%  18.0%   4.6%   0.3%   95.1%
+  2    Austria                  4.4   4.4   4.0  +0.4   11.8%  41.0%  38.7%   8.5%   52.8%
+  3    Algeria                  4.2   4.3   4.2  +0.1   10.8%  37.5%  41.8%   9.9%   48.3%
+  4    Jordan                   1.0   1.9   8.4  -6.6    0.3%   3.5%  14.9%  81.3%    3.8%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Argentina vs Algeria                      2.1 - 0.8     2-0    69%   18%   12%
+  Argentina vs Austria                      2.1 - 0.8     2-0    68%   19%   13%
+  Argentina vs Jordan                       3.9 - 0.4     3-0    94%    5%    2%
+  Algeria vs Austria                        1.2 - 1.3     1-1    35%   26%   39%
+  Algeria vs Jordan                         2.3 - 0.7     2-0    72%   18%   10%
+  Austria vs Jordan                         2.3 - 0.7     2-0    73%   17%   10%
+
+  ============================================= GRUPO K =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    Portugal                 7.2   7.6   2.1  +5.5   71.4%  24.3%   3.8%   0.5%   95.7%
+  2    Colombia                 5.4   5.3   3.2  +2.1   25.4%  54.5%  15.8%   4.3%   80.0%
+  3    DR Congo                 2.3   2.8   6.2  -3.4    1.9%  12.3%  43.7%  42.2%   14.1%
+  4    Uzbekistan               2.0   2.5   6.7  -4.2    1.3%   8.9%  36.7%  53.0%   10.2%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  Portugal vs Uzbekistan                    3.1 - 0.5     2-0    87%    9%    4%
+  Portugal vs Colombia                      1.7 - 1.0     1-0    55%   24%   21%
+  Portugal vs DR Congo                      2.8 - 0.6     3-0    83%   11%    5%
+  Uzbekistan vs Colombia                    0.7 - 2.2     0-2    11%   17%   72%
+  Uzbekistan vs DR Congo                    1.2 - 1.4     1-1    33%   26%   41%
+  Colombia vs DR Congo                      2.1 - 0.8     2-0    68%   19%   13%
+
+  ============================================= GRUPO L =============================================
+
+  Pos  Equipo                   Pts    GF    GC    GD     1ro    2do    3ro    4to  Clasif
+  -----------------------------------------------------------------------------------------------
+  1    England                  8.1  10.2   1.5  +8.6   88.7%  10.6%   0.7%   0.1%   99.3%
+  2    Croatia                  5.0   5.0   3.8  +1.2   10.3%  68.0%  17.0%   4.7%   78.3%
+  3    Ghana                    2.3   2.7   6.9  -4.2    0.7%  13.2%  47.4%  38.7%   13.8%
+  4    Panama                   1.7   2.3   7.9  -5.6    0.3%   8.3%  34.9%  56.5%    8.6%
+
+  Partido                                  Pronostico    Moda      1     X     2
+  ---------------------------------------------------------------------------
+  England vs Croatia                        2.3 - 0.7     2-0    74%   17%    9%
+  England vs Ghana                          3.7 - 0.4     3-0    93%    5%    2%
+  England vs Panama                         4.2 - 0.4     4-0    95%    4%    1%
+  Croatia vs Ghana                          2.1 - 0.8     1-0    67%   20%   13%
+  Croatia vs Panama                         2.3 - 0.7     2-0    72%   18%   10%
+  Ghana vs Panama                           1.4 - 1.1     1-1    43%   26%   31%
+
+
+====================================================================================================
+  4. ESTADISTICAS DE GOLES
+====================================================================================================
+
+  Total partidos:         103 (72 fase de grupos + 31 eliminatorias)
+  Goles totales:          316 promedio (255-384 rango)
+  Goles por partido:      3.07
+  Goles fase de grupos:   ~221 (en 72 partidos)
+
+  Comparacion historica:
+    WC 2022: 172 goles / 64 partidos = 2.69 goles/partido
+    WC 2018: 169 goles / 64 partidos = 2.64 goles/partido
+    WC 2026: 316 goles / 103 partidos = 3.07 goles/partido
+
+  Mas goles por partido que mundiales anteriores por la cantidad de
+  equipos debiles (Haiti, Qatar, Curazao, Panama) vs selecciones top.
+
+
+====================================================================================================
+  5. MODELO vs CASAS DE APUESTAS
+====================================================================================================
+
+  Equipo                 Modelo  Mercado     Diff     Odds       Senial
+  --------------------------------------------------------------------
+  France                  19.6%    14.9%    +4.7pp    +480      VALOR +
+  Spain                   17.4%    15.8%    +1.6pp    +450        justo
+  England                 15.8%    10.8%    +5.0pp    +700      VALOR +
+  Argentina               10.8%     8.7%    +2.1pp    +900      VALOR +
+  Brazil                   9.7%     9.1%    +0.6pp    +850        justo
+  Morocco                  4.3%     1.7%    +2.6pp   +5000      VALOR +
+  Netherlands              3.1%     4.1%    -1.0pp   +2000        justo
+  Portugal                 2.8%     9.1%    -6.3pp    +850       caro -
+  Japan                    2.5%     1.9%    +0.6pp   +4500        justo
+  Mexico                   2.5%     1.5%    +1.0pp   +5500        justo
+  Belgium                  2.5%     2.1%    +0.4pp   +4000        justo
+  Germany                  1.8%     5.8%    -4.0pp   +1400       caro -
+  Norway                   1.3%     2.4%    -1.1pp   +3500        justo
+  Switzerland              0.9%     1.7%    -0.8pp   +5000        justo
+  Turkey                   0.8%     1.1%    -0.3pp   +8000        justo
+  Canada                   0.8%     0.4%    +0.4pp  +22500        justo
+  Colombia                 0.7%     2.1%    -1.4pp   +4000        justo
+  United States            0.7%     1.4%    -0.7pp   +6000        justo
+  Uruguay                  0.6%     1.3%    -0.7pp   +6500        justo
+  Ecuador                  0.4%     0.9%    -0.6pp  +10000        justo
+  Croatia                  0.2%     1.7%    -1.5pp   +5000        justo
+  Senegal                  0.2%     0.9%    -0.7pp  +10000        justo
+  South Korea              0.1%     0.6%    -0.5pp  +15000        justo
+
+  Correlacion Spearman: 0.836
+  Error promedio (MAE): 1.68pp
+
+  APUESTAS DE VALOR (modelo > mercado):
+    -> France: modelo 19.6% vs mercado 14.9% (odds +480)
+    -> England: modelo 15.8% vs mercado 10.8% (odds +700)
+    -> Argentina: modelo 10.8% vs mercado 8.7% (odds +900)
+    -> Morocco: modelo 4.3% vs mercado 1.7% (odds +5000)
+
+  SOBREVALUADOS POR MERCADO (mercado > modelo):
+    -> Portugal: mercado 9.1% vs modelo 2.8%
+    -> Germany: mercado 5.8% vs modelo 1.8%
+
+
+====================================================================================================
+  6. METODOLOGIA
+====================================================================================================
+
+  MODELO HIBRIDO DE 14 FEATURES EN 2 CAPAS:
+
+  Layer 1 - Backtestable (calibrado con Ridge Regression):
+    1. Elo rating (50%) - con time decay y ajuste por calidad del rival
+    2. Valor de mercado del plantel (11%)
+    3. Liga composite (7%) - con descuento domestico
+    4. Momentum (14%) - ultimos 10 partidos, ponderado por Elo rival
+    5. Solidez defensiva (18%) - goles recibidos ultimos 10 partidos
+    6. Campeon defensor (8%) - penalidad historica por repetir
+
+  Layer 2 - Especifico del torneo (priors informados):
+    7. Odds de mercado (32%) - probabilidades implicitas de apuestas
+    8. Edad del plantel (5%) - distancia a la edad optima (26.9)
+    9. Antiguedad del DT (4%) - sweet spot 2-8 anios
+   10. Ventaja local (2%) - sede USA/Mexico/Canada
+   11. Poblacion (2%) - pool de talento
+   12. Solidez defensiva L2 (6%)
+   13. Diversidad diaspora (3%) - amplitud de reclutamiento
+   14. Composicion historica (3%) - umbral de participaciones
+   15. Frontrunner curse (5%) - penalidad al favorito extremo
+
+  INNOVACIONES CLAVE:
+    - Elo con time decay (0.94/anio): resultados viejos pesan menos
+    - Elo ajustado por calidad: ganarle a Alemania > ganarle a Bolivia
+    - K de clasificatorias reducido (30 vs 40): evita inflacion por volumen
+    - Descuento domestico en liga: ser ingles en la PL no es lo mismo
+      que ser marroqui en la PL (sesgo de seleccion)
+
+  SIMULACION:
+    - 10,000 mundiales simulados via Monte Carlo
+    - Goles muestreados con distribucion de Poisson
+    - Lambdas derivadas de la diferencia de fuerza entre equipos
+    - Analogia: pricing de opciones financieras via Monte Carlo
+
+  VALIDACION (backtest fuera de muestra 2010-2022):
+    - Brier Score modelo: 0.0426 vs mercado: 0.0447 (modelo MEJOR)
+    - Campeon real siempre en top 5 del modelo (4/4 mundiales)
+    - Spearman promedio: ~0.50 (p<0.05)
+
+====================================================================================================
+  Generado el 9 de junio de 2026
+  github.com/marti - Modelo predictivo WC 2026
+====================================================================================================
