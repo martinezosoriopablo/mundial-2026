@@ -12,7 +12,7 @@ def backtest(
 ) -> pd.DataFrame:
     """Walk-forward backtest over specified tournaments. Returns one row per match.
 
-    model_type: "static" (v0 Poisson) or "elo" (Fase 2.1)
+    model_type: "static" (v0 Poisson), "elo" (Fase 2.1), or "gas" (Fase 2.2)
     """
     if df is None:
         df = load_results()
@@ -20,6 +20,9 @@ def backtest(
     if model_type == "elo":
         from src.strength_elo import train_elo_model
         train_fn = train_elo_model
+    elif model_type == "gas":
+        from src.strength_gas import train_gas_model
+        train_fn = train_gas_model
     else:
         train_fn = train_static
 

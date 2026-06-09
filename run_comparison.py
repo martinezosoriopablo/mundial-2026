@@ -1,79 +1,88 @@
-"""Compare v0 Static model vs v2.1 Elo model on WC backtests."""
+"""Compare all models on WC backtests: Static (v0), Elo (v2.1), GAS (v2.2)."""
+import numpy as np
 from src.backtest import backtest, backtest_report
+from src.metrics import rps
+
+
+def _team_rps(bt, tournament_id, team):
+    matches = bt[
+        (bt["tournament_id"] == tournament_id)
+        & ((bt["home_team"] == team) | (bt["away_team"] == team))
+    ]
+    if len(matches) == 0:
+        return None, 0
+    total = sum(
+        rps(np.array([r["p_home"], r["p_draw"], r["p_away"]]), r["outcome"])
+        for _, r in matches.iterrows()
+    )
+    return total / len(matches), len(matches)
 
 
 def main():
     tournaments = ["WC2010", "WC2014", "WC2018", "WC2022"]
+    models = [
+        ("static", "Static (v0)"),
+        ("elo", "Elo (v2.1)"),
+        ("gas", "GAS (v2.2)"),
+    ]
 
-    print("=" * 65)
-    print("MODEL COMPARISON: Static (v0) vs Elo (v2.1)")
-    print("=" * 65)
+    print("=" * 78)
+    print("MODEL COMPARISON: Static vs Elo vs GAS")
+    print("=" * 78)
 
-    # Run static baseline
-    print("\n>>> Running STATIC model backtest...")
-    bt_static = backtest(tournaments, model_type="static")
-    r_static = backtest_report(bt_static)
+    results = {}
+    bt_all = {}
+    for model_type, label in models:
+        print(f"\n>>> Running {label} backtest...")
+        bt = backtest(tournaments, model_type=model_type)
+        results[model_type] = backtest_report(bt)
+        bt_all[model_type] = bt
 
-    # Run Elo model
-    print("\n>>> Running ELO model backtest...")
-    bt_elo = backtest(tournaments, model_type="elo")
-    r_elo = backtest_report(bt_elo)
-
-    # Comparison table
-    print("\n" + "=" * 65)
-    print(f"{'Metric':<20} {'Static (v0)':>15} {'Elo (v2.1)':>15} {'Delta':>10}")
-    print("-" * 65)
+    # Overall metrics
+    print("\n" + "=" * 78)
+    header = f"{'Metric':<15}"
+    for _, label in models:
+        header += f" {label:>16}"
+    print(header)
+    print("-" * 78)
 
     for metric in ["rps_mean", "log_loss", "brier", "ece"]:
-        v0 = r_static[metric]
-        v1 = r_elo[metric]
-        delta = v1 - v0
-        better = "<--" if delta < 0 else ""
-        print(f"  {metric:<18} {v0:>15.4f} {v1:>15.4f} {delta:>+10.4f} {better}")
+        line = f"  {metric:<13}"
+        vals = [results[m][metric] for m, _ in models]
+        best = min(vals)
+        for v in vals:
+            marker = " *" if v == best else "  "
+            line += f" {v:>14.4f}{marker}"
+        print(line)
 
-    print("\n--- PER TOURNAMENT RPS ---")
-    print(f"{'Tournament':<12} {'Static':>10} {'Elo':>10} {'Delta':>10}")
-    print("-" * 45)
+    # Per-tournament RPS
+    print(f"\n--- PER TOURNAMENT RPS ---")
+    header = f"{'Tournament':<12}"
+    for _, label in models:
+        header += f" {label:>16}"
+    print(header)
+    print("-" * 65)
+
     for tid in tournaments:
-        v0 = r_static[f"{tid}_rps"]
-        v1 = r_elo[f"{tid}_rps"]
-        delta = v1 - v0
-        better = "<--" if delta < 0 else ""
-        print(f"  {tid:<10} {v0:>10.4f} {v1:>10.4f} {delta:>+10.4f} {better}")
+        line = f"  {tid:<10}"
+        vals = [results[m][f"{tid}_rps"] for m, _ in models]
+        best = min(vals)
+        for v in vals:
+            marker = " *" if v == best else "  "
+            line += f" {v:>14.4f}{marker}"
+        print(line)
 
-    # Check champion decline test
+    # Champion decline check
     print("\n--- CHAMPION DECLINE CHECK ---")
-    # Spain 2014 (defending WC2010): did Elo assign them lower prob?
-    for bt, name in [(bt_static, "Static"), (bt_elo, "Elo")]:
-        spain_matches = bt[
-            (bt["tournament_id"] == "WC2014")
-            & ((bt["home_team"] == "Spain") | (bt["away_team"] == "Spain"))
-        ]
-        if len(spain_matches) > 0:
-            avg_rps = 0
-            for _, row in spain_matches.iterrows():
-                from src.metrics import rps
-                import numpy as np
-                probs = np.array([row["p_home"], row["p_draw"], row["p_away"]])
-                avg_rps += rps(probs, row["outcome"])
-            avg_rps /= len(spain_matches)
-            print(f"  {name}: Spain WC2014 avg RPS = {avg_rps:.4f} ({len(spain_matches)} matches)")
-
-    # Germany 2018
-    for bt, name in [(bt_static, "Static"), (bt_elo, "Elo")]:
-        ger_matches = bt[
-            (bt["tournament_id"] == "WC2018")
-            & ((bt["home_team"] == "Germany") | (bt["away_team"] == "Germany"))
-        ]
-        if len(ger_matches) > 0:
-            avg_rps = 0
-            for _, row in ger_matches.iterrows():
-                from src.metrics import rps
-                import numpy as np
-                probs = np.array([row["p_home"], row["p_draw"], row["p_away"]])
-                avg_rps += rps(probs, row["outcome"])
-            avg_rps /= len(ger_matches)
-            print(f"  {name}: Germany WC2018 avg RPS = {avg_rps:.4f} ({len(ger_matches)} matches)")
+    for team, tid, context in [
+        ("Spain", "WC2014", "defending champ, group stage exit"),
+        ("Germany", "WC2018", "defending champ, group stage exit"),
+    ]:
+        print(f"\n  {team} at {tid} ({context}):")
+        for model_type, label in models:
+            avg, n = _team_rps(bt_all[model_type], tid, team)
+            if avg is not None:
+                print(f"    {label:<16}: avg RPS = {avg:.4f} ({n} matches)")
 
 
 if __name__ == "__main__":
