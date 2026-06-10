@@ -1,0 +1,235 @@
+==============================================================================================================
+  COMPARACION: MODELO ANTES vs DESPUES DE REMEDIACION
+  Simulaciones: 10,000 por modelo | Fecha: 2026-06-10
+==============================================================================================================
+
+==============================================================================================================
+  SECCION 1: RESUMEN DE MODELOS
+==============================================================================================================
+
+                                                  ANTES (overfitted)         DESPUES (honesto)
+  --------------------------------------------------------------------------------------------
+  Modelo:                                       14 features + market        4 L1 + Dixon-Coles
+  RPS:                                     0.1627 (in-sample, with market leak) 0.1992 (honest OOS, 14 tournaments, 610 matches)
+  Dixon-Coles:                                                    No            Si (rho=-0.15)
+  Market odds:                                           Si (32% L2)             No (circular)
+  Momentum:                                              Si (14% L1)          No (empeora RPS)
+  Champion feature:                                       Si (8% L1)          No (empeora RPS)
+  H2H:                                                            Si          No (empeora RPS)
+  Backtesting:                                         Dudoso (leak)     Walk-forward 14 torn.
+
+
+==============================================================================================================
+  SECCION 2: PROBABILIDAD DE CAMPEON (Monte Carlo 10,000 sims)
+==============================================================================================================
+
+  #    Equipo                    ANTES  DESPUES     Diff     Cambio           Barra ANTES        Barra DESPUES
+  ------------------------------------------------------------------------------------------------------------
+  1    Spain                     17.4%    40.8%   +23.4pp    +134% >>> ################################## #################################################################################
+  2    France                    19.6%    17.8%    -1.8pp      -9%   ~ ####################################### ###################################
+  3    Argentina                 10.8%    10.4%    -0.4pp      -4%   ~ ##################### ####################
+  4    Morocco                    4.3%     6.8%    +2.5pp     +59% >>> ########             #############       
+  5    England                   15.8%     5.1%   -10.7pp     -67% <<< ############################### ##########          
+  6    Brazil                     9.7%     3.3%    -6.4pp     -66% <<< ###################  ######              
+  7    Germany                    1.8%     2.5%    +0.7pp     +37%   ~ ###                  ####                
+  8    Portugal                   2.8%     2.2%    -0.6pp     -21%   ~ #####                ####                
+  9    Japan                      2.5%     1.8%    -0.7pp     -28%   ~ #####                ###                 
+  10   Senegal                    0.0%     1.7%    +1.7pp      NEW   ~                      ###                 
+  11   Netherlands                3.1%     1.4%    -1.7pp     -54%   ~ ######               ##                  
+  12   Mexico                     2.5%     0.8%    -1.7pp     -70%   ~ #####                #                   
+  13   Belgium                    2.5%     0.7%    -1.8pp     -72%   ~ #####                #                   
+  14   Norway                     1.3%     0.6%    -0.7pp     -52%   ~ ##                   #                   
+  15   Ecuador                    0.4%     0.6%    +0.2pp     +52%   ~                      #                   
+  16   Algeria                    0.0%     0.5%    +0.5pp      NEW   ~                      #                   
+  17   Colombia                   0.7%     0.5%    -0.2pp     -23%   ~ #                    #                   
+  18   Turkey                     0.8%     0.5%    -0.3pp     -38%   ~ #                    #                   
+  19   Canada                     0.8%     0.4%    -0.4pp     -49%   ~ #                                        
+  20   Switzerland                0.9%     0.4%    -0.5pp     -58%   ~ #                                        
+  21   Ivory Coast                0.0%     0.3%    +0.3pp      NEW   ~                                          
+  22   Uruguay                    0.6%     0.3%    -0.3pp     -52%   ~ #                                        
+  23   Croatia                    0.0%     0.1%    +0.1pp      NEW   ~                                          
+  24   Egypt                      0.0%     0.1%    +0.1pp      NEW   ~                                          
+  25   Austria                    0.0%     0.1%    +0.1pp      NEW   ~                                          
+
+
+==============================================================================================================
+  SECCION 3: MAYORES CAMBIOS (Campeon %)
+==============================================================================================================
+
+  SUBIERON:
+    Spain                    17.4% ->   40.8%  (+23.4pp) ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    Morocco                   4.3% ->    6.8%  (+2.5pp) +++++++
+    Senegal                   0.0% ->    1.7%  (+1.7pp) +++++
+    Germany                   1.8% ->    2.5%  (+0.7pp) +
+    Algeria                   0.0% ->    0.5%  (+0.5pp) +
+    Ivory Coast               0.0% ->    0.3%  (+0.3pp) 
+    Ecuador                   0.4% ->    0.6%  (+0.2pp) 
+    Croatia                   0.0% ->    0.1%  (+0.1pp) 
+
+  BAJARON:
+    England                  15.8% ->    5.1%  (-10.7pp) -------------------------------
+    Brazil                    9.7% ->    3.3%  (-6.4pp) -------------------
+    Belgium                   2.5% ->    0.7%  (-1.8pp) -----
+    France                   19.6% ->   17.8%  (-1.8pp) -----
+    Mexico                    2.5% ->    0.8%  (-1.7pp) -----
+    Netherlands               3.1% ->    1.4%  (-1.7pp) -----
+    Japan                     2.5% ->    1.8%  (-0.7pp) --
+    Norway                    1.3% ->    0.6%  (-0.7pp) --
+    United States             0.7% ->    0.0%  (-0.7pp) --
+    Portugal                  2.8% ->    2.2%  (-0.6pp) -
+
+
+==============================================================================================================
+  SECCION 4: PROBABILIDAD DE FINALISTA
+==============================================================================================================
+
+  #    Equipo                    ANTES  DESPUES     Diff
+  -------------------------------------------------------
+  1    Spain                     30.8%    56.2%   +25.4pp
+  2    France                    31.2%    31.2%    -0.0pp
+  3    Argentina                 18.4%    21.2%    +2.8pp
+  4    Morocco                   10.7%    17.1%    +6.4pp
+  5    England                   23.8%    11.7%   -12.1pp
+  6    Brazil                    18.9%     9.9%    -9.0pp
+  7    Germany                    4.0%     6.9%    +2.9pp
+  8    Portugal                   5.6%     6.2%    +0.6pp
+  9    Japan                      6.4%     5.1%    -1.3pp
+  10   Senegal                    0.0%     5.5%    +5.5pp
+  11   Netherlands                7.5%     3.9%    -3.6pp
+  12   Mexico                     7.5%     2.7%    -4.8pp
+  13   Belgium                    7.2%     2.9%    -4.3pp
+  14   Norway                     4.2%     2.1%    -2.1pp
+  15   Ecuador                    0.0%     1.9%    +1.9pp
+  16   Algeria                    0.0%     1.9%    +1.9pp
+  17   Colombia                   2.3%     1.6%    -0.7pp
+  18   Turkey                     3.0%     2.3%    -0.7pp
+  19   Canada                     3.2%     2.0%    -1.2pp
+  20   Switzerland                3.5%     1.8%    -1.7pp
+
+
+==============================================================================================================
+  SECCION 5: PROBABILIDAD DE SEMIFINALISTA
+==============================================================================================================
+
+  #    Equipo                    ANTES  DESPUES     Diff
+  -------------------------------------------------------
+  1    Spain                     45.9%    66.1%   +20.2pp
+  2    France                    43.3%    42.2%    -1.1pp
+  3    Argentina                 27.2%    30.2%    +3.1pp
+  4    Morocco                   27.1%    35.0%    +7.9pp
+  5    England                   32.0%    20.4%   -11.6pp
+  6    Brazil                    39.9%    22.2%   -17.7pp
+  7    Germany                    8.9%    23.8%   +14.9pp
+  8    Portugal                   8.7%    11.7%    +3.0pp
+  9    Japan                     15.1%    14.2%    -0.9pp
+  10   Senegal                    0.0%    11.7%   +11.7pp
+  11   Netherlands               16.6%    12.2%    -4.4pp
+  12   Mexico                    19.8%    12.1%    -7.7pp
+  13   Belgium                   16.2%     8.3%    -7.9pp
+  14   Norway                     8.5%     6.3%    -2.2pp
+  15   Ecuador                    5.8%    10.4%    +4.6pp
+  16   Algeria                    0.0%     5.0%    +5.0pp
+  17   Colombia                   5.4%     4.4%    -1.0pp
+  18   Turkey                    11.0%     9.3%    -1.7pp
+  19   Canada                    12.4%    10.4%    -2.0pp
+  20   Switzerland               13.1%     9.5%    -3.6pp
+
+
+==============================================================================================================
+  SECCION 6: GANADORES DE GRUPO
+==============================================================================================================
+
+  Grupo   1ro ANTES              1ro DESPUES               Cambio?
+  -----------------------------------------------------------------
+  A       Mexico (71%)           Mexico (64%)                    =
+  B       Switzerland (49%)      Canada (52%)               CAMBIO
+  C       Brazil (57%)           Morocco (57%)              CAMBIO
+  D       Turkey (44%)           Turkey (51%)                    =
+  E       Germany (66%)          Germany (53%)                   =
+  F       Netherlands (50%)      Japan (54%)                CAMBIO
+  G       Belgium (75%)          Belgium (60%)                   =
+  H       Spain                  Spain (95%)                     =
+  I       France                 France (72%)                    =
+  J       Argentina              Argentina (79%)                 =
+  K       Portugal               Portugal (61%)                  =
+  L       England                England (86%)                   =
+
+
+==============================================================================================================
+  SECCION 7: RANKING DE FUERZA DEL MODELO NUEVO
+==============================================================================================================
+
+  #    Equipo                   Fuerza  Campeon%
+  -----------------------------------------------
+  1    Spain                    2.938     40.8%
+  2    France                   2.645     17.8%
+  3    Argentina                2.489     10.4%
+  4    England                  2.350      5.1%
+  5    Morocco                  2.288      6.8%
+  6    Brazil                   2.108      3.3%
+  7    Portugal                 2.103      2.2%
+  8    Japan                    1.989      1.8%
+  9    Germany                  1.986      2.5%
+  10   Senegal                  1.968      1.7%
+  11   Netherlands              1.900      1.4%
+  12   Colombia                 1.754      0.5%
+  13   Mexico                   1.738      0.8%
+  14   Norway                   1.736      0.6%
+  15   Belgium                  1.720      0.7%
+  16   Algeria                  1.703      0.5%
+  17   Ecuador                  1.676      0.6%
+  18   Turkey                   1.650      0.5%
+  19   Canada                   1.593      0.4%
+  20   Switzerland              1.564      0.4%
+  21   Ivory Coast              1.531      0.3%
+  22   Uruguay                  1.516      0.3%
+  23   Croatia                  1.429      0.1%
+  24   Austria                  1.377      0.1%
+  25   South Korea              1.287      0.1%
+
+
+==============================================================================================================
+  SECCION 8: INTERPRETACION
+==============================================================================================================
+
+  El modelo ANTES favorecia a France (19.6%) como campeon.
+  El modelo DESPUES favorece a Spain (40.8%).
+
+  Cambios principales tras la remediacion:
+
+  1. MARKET ODDS ELIMINADAS: El modelo viejo usaba odds de casas de apuestas
+     como feature (32% del Layer 2). Esto era circular: comparar el modelo
+     contra el mercado cuando el modelo USA el mercado no tiene sentido.
+
+  2. MOMENTUM/CHAMPION ELIMINADOS: Features narrativas que agregaban ruido.
+     La ablation mostro que cada una empeoraba el RPS out-of-sample.
+
+  3. DIXON-COLES AGREGADO: Correccion de correlacion en marcadores bajos
+     (0-0, 1-0, 0-1, 1-1). Mejora calibracion de empates.
+
+  4. RPS HONESTO: El modelo viejo reportaba RPS 0.1627 pero con leak de
+     market odds. El nuevo reporta 0.1992 sobre 14 torneos walk-forward.
+     Es un numero peor, pero REAL. El viejo era una ilusion.
+
+  5. CONCENTRACION DEL PODER: Al remover features ruidosas, el modelo
+     se concentra mas en las senales reales (Elo + valor de mercado).
+     Esto puede cambiar la distribucion de probabilidades.
+
+
+==============================================================================================================
+  SECCION 9: DETALLE TECNICO
+==============================================================================================================
+
+  Modelo actual:
+    Scale: 1.75
+    Home advantage: 0.30
+    Dixon-Coles rho: -0.15
+    L1 weights: L1_elo=0.67, L1_value=0.14, L1_league=0.06, L1_defense=0.14
+    L2 weights: model=0.84, age=0.05, coach=0.04, host=0.02, population=0.02, diversity=0.03
+
+  RPS out-of-sample: 0.1992 (honest OOS, 14 tournaments, 610 matches)
+  Backtest: 14 torneos (WC 2010/14/18/22, Euro 2012/16/20/24, Copa Am 2011/15/16/19/21/24)
+
+  Modelo anterior (eliminado):
+    Features: 14 features (incl. market odds, momentum, champion)
+    RPS reportado: 0.1627 (in-sample, with market leak)

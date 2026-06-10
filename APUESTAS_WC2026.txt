@@ -1,0 +1,470 @@
+==============================================================================================================
+  SISTEMA DE APUESTAS COMBINADAS - MUNDIAL FIFA 2026
+  Modelo: Hybrid + Dixon-Coles + H2H | Scale=3.50 | Upset sigma=0.15
+  Estrategia: Parlays de 2-3 partidos en ventanas de 2 dias
+==============================================================================================================
+
+
+==============================================================================================================
+  SECCION 1: CALENDARIO COMPLETO CON PROBABILIDADES DE APUESTA
+==============================================================================================================
+
+  Fecha        Gr  Partido                                          1       X       2      1X      X2      12 Mejor apuesta   
+  -------------------------------------------------------------------------------------------------------------------
+  2026-06-11   A   Mexico vs South Africa                      58.6%  25.5%  16.0%  84.0%  41.4%  74.5% 1X (84%)        
+  2026-06-11   A   South Korea vs Czech Republic               42.7%  29.8%  27.6%  72.4%  57.3%  70.2% 1X (72%)        
+  2026-06-11   B   Canada vs Switzerland                       34.7%  30.4%  35.0%  65.0%  65.3%  69.6% 12 (70%)        
+  2026-06-11   B   Qatar vs Bosnia and Herzegovina             30.1%  30.1%  39.7%  60.3%  69.9%  69.9% 12 (70%)        
+
+  2026-06-12   C   Brazil vs Morocco                           36.6%  30.3%  33.1%  66.9%  63.4%  69.7% 12 (70%)        
+  2026-06-12   C   Haiti vs Scotland                           26.0%  29.4%  44.6%  55.4%  74.0%  70.6% X2 (74%)        
+  2026-06-12   D   United States vs Paraguay                   38.7%  30.2%  31.1%  68.9%  61.3%  69.8% 12 (70%)        
+  2026-06-12   D   Australia vs Turkey                         27.1%  29.7%  43.3%  56.7%  72.9%  70.3% X2 (73%)        
+
+  2026-06-13   E   Germany vs Curaçao                          69.6%  20.6%   9.9%  90.1%  30.4%  79.4% 1X (90%)        
+  2026-06-13   E   Ivory Coast vs Ecuador                      25.9%  29.4%  44.7%  55.3%  74.1%  70.6% X2 (74%)        
+  2026-06-13   F   Netherlands vs Japan                        35.7%  30.4%  33.9%  66.1%  64.3%  69.6% 12 (70%)        
+  2026-06-13   F   Tunisia vs Sweden                           32.3%  30.3%  37.4%  62.6%  67.7%  69.7% 12 (70%)        
+
+  2026-06-14   G   Belgium vs Egypt                            44.2%  29.5%  26.3%  73.7%  55.8%  70.5% 1X (74%)        
+  2026-06-14   G   Iran vs New Zealand                         50.6%  28.1%  21.3%  78.7%  49.4%  71.9% 1X (79%)        
+  2026-06-14   H   Spain vs Cape Verde                         81.8%  13.6%   4.6%  95.4%  18.2%  86.4% 1X (95%)        
+  2026-06-14   H   Saudi Arabia vs Uruguay                     16.2%  25.6%  58.2%  41.8%  83.8%  74.4% X2 (84%)        
+
+  2026-06-15   I   France vs Senegal                           53.1%  27.4%  19.6%  80.4%  46.9%  72.6% 1X (80%)        
+  2026-06-15   I   Norway vs Iraq                              52.1%  27.7%  20.3%  79.7%  47.9%  72.3% 1X (80%)        
+  2026-06-15   J   Argentina vs Algeria                        53.4%  27.3%  19.3%  80.7%  46.6%  72.7% 1X (81%)        
+  2026-06-15   J   Austria vs Jordan                           49.0%  28.5%  22.5%  77.5%  51.0%  71.5% 1X (77%)        
+
+  2026-06-16   K   Portugal vs Uzbekistan                      55.2%  26.7%  18.1%  81.9%  44.8%  73.3% 1X (82%)        
+  2026-06-16   K   Colombia vs DR Congo                        51.2%  27.9%  20.9%  79.1%  48.8%  72.1% 1X (79%)        
+  2026-06-16   L   England vs Croatia                          48.8%  28.5%  22.7%  77.3%  51.2%  71.5% 1X (77%)        
+  2026-06-16   L   Ghana vs Panama                             26.0%  29.5%  44.6%  55.4%  74.0%  70.5% X2 (74%)        
+
+  2026-06-18   A   Mexico vs South Korea                       44.8%  29.4%  25.8%  74.2%  55.2%  70.6% 1X (74%)        
+  2026-06-18   A   South Africa vs Czech Republic              29.1%  30.0%  40.9%  59.1%  70.9%  70.0% X2 (71%)        
+  2026-06-18   B   Canada vs Qatar                             67.5%  21.6%  10.9%  89.1%  32.5%  78.4% 1X (89%)        
+  2026-06-18   B   Switzerland vs Bosnia and Herzegovina       62.7%  23.8%  13.5%  86.5%  37.3%  76.2% 1X (86%)        
+
+  2026-06-19   C   Brazil vs Haiti                             65.1%  22.7%  12.1%  87.9%  34.9%  77.3% 1X (88%)        
+  2026-06-19   C   Morocco vs Scotland                         53.2%  27.3%  19.4%  80.6%  46.8%  72.7% 1X (81%)        
+  2026-06-19   D   United States vs Australia                  38.4%  30.2%  31.3%  68.7%  61.6%  69.8% 12 (70%)        
+  2026-06-19   D   Paraguay vs Turkey                          27.4%  29.7%  42.8%  57.2%  72.6%  70.3% X2 (73%)        
+
+  2026-06-20   E   Germany vs Ivory Coast                      48.1%  28.7%  23.2%  76.8%  51.9%  71.3% 1X (77%)        
+  2026-06-20   E   Curaçao vs Ecuador                          11.5%  22.1%  66.4%  33.6%  88.5%  77.9% X2 (89%)        
+  2026-06-20   F   Netherlands vs Tunisia                      58.4%  25.5%  16.1%  83.9%  41.6%  74.5% 1X (84%)        
+  2026-06-20   F   Japan vs Sweden                             55.8%  26.5%  17.7%  82.3%  44.2%  73.5% 1X (82%)        
+
+  2026-06-21   G   Belgium vs Iran                             43.5%  29.6%  26.8%  73.2%  56.5%  70.4% 1X (73%)        
+  2026-06-21   G   Egypt vs New Zealand                        49.5%  28.4%  22.1%  77.9%  50.5%  71.6% 1X (78%)        
+  2026-06-21   H   Spain vs Saudi Arabia                       79.6%  15.0%   5.4%  94.6%  20.4%  85.0% 1X (95%)        
+  2026-06-21   H   Cape Verde vs Uruguay                       14.0%  24.2%  61.7%  38.3%  86.0%  75.8% X2 (86%)        
+
+  2026-06-22   I   France vs Norway                            53.6%  27.2%  19.2%  80.8%  46.4%  72.8% 1X (81%)        
+  2026-06-22   I   Senegal vs Iraq                             52.5%  27.5%  19.9%  80.1%  47.5%  72.5% 1X (80%)        
+  2026-06-22   J   Argentina vs Austria                        56.8%  26.1%  17.1%  82.9%  43.2%  73.9% 1X (83%)        
+  2026-06-22   J   Algeria vs Jordan                           52.4%  27.6%  20.1%  79.9%  47.6%  72.4% 1X (80%)        
+
+  2026-06-23   K   Portugal vs Colombia                        38.0%  30.3%  31.8%  68.2%  62.0%  69.7% 12 (70%)        
+  2026-06-23   K   Uzbekistan vs DR Congo                      34.2%  30.4%  35.4%  64.6%  65.8%  69.6% 12 (70%)        
+  2026-06-23   L   England vs Ghana                            70.7%  20.0%   9.3%  90.7%  29.3%  80.0% 1X (91%)        
+  2026-06-23   L   Croatia vs Panama                           47.0%  29.0%  24.1%  75.9%  53.0%  71.0% 1X (76%)        
+
+  2026-06-25   A   Mexico vs Czech Republic                    52.2%  27.6%  20.2%  79.8%  47.8%  72.4% 1X (80%)        
+  2026-06-25   A   South Africa vs South Korea                 22.5%  28.5%  49.0%  51.0%  77.5%  71.5% X2 (77%)        
+  2026-06-25   B   Canada vs Bosnia and Herzegovina            62.5%  23.9%  13.6%  86.4%  37.5%  76.1% 1X (86%)        
+  2026-06-25   B   Switzerland vs Qatar                        67.6%  21.5%  10.8%  89.2%  32.4%  78.5% 1X (89%)        
+  2026-06-25   I   France vs Iraq                              70.6%  20.1%   9.4%  90.6%  29.4%  79.9% 1X (91%)        
+  2026-06-25   I   Senegal vs Norway                           35.3%  30.4%  34.4%  65.6%  64.7%  69.6% 12 (70%)        
+
+  2026-06-26   C   Brazil vs Scotland                          55.2%  26.7%  18.2%  81.8%  44.8%  73.3% 1X (82%)        
+  2026-06-26   C   Morocco vs Haiti                            63.3%  23.5%  13.2%  86.8%  36.7%  76.5% 1X (87%)        
+  2026-06-26   D   United States vs Turkey                     30.1%  30.1%  39.7%  60.3%  69.9%  69.9% 12 (70%)        
+  2026-06-26   D   Paraguay vs Australia                       35.2%  30.4%  34.4%  65.6%  64.8%  69.6% 12 (70%)        
+  2026-06-26   J   Argentina vs Jordan                         70.7%  20.0%   9.3%  90.7%  29.3%  80.0% 1X (91%)        
+  2026-06-26   J   Algeria vs Austria                          38.0%  30.3%  31.7%  68.3%  62.0%  69.7% 12 (70%)        
+
+  2026-06-27   E   Germany vs Ecuador                          38.0%  30.3%  31.7%  68.3%  62.0%  69.7% 12 (70%)        
+  2026-06-27   E   Curaçao vs Ivory Coast                      17.4%  26.3%  56.4%  43.6%  82.6%  73.7% X2 (83%)        
+  2026-06-27   F   Netherlands vs Sweden                       56.1%  26.4%  17.5%  82.5%  43.9%  73.6% 1X (82%)        
+  2026-06-27   F   Japan vs Tunisia                            59.0%  25.3%  15.7%  84.3%  41.0%  74.7% 1X (84%)        
+  2026-06-27   K   Portugal vs DR Congo                        54.5%  26.9%  18.6%  81.4%  45.5%  73.1% 1X (81%)        
+  2026-06-27   K   Uzbekistan vs Colombia                      20.4%  27.7%  51.8%  48.2%  79.6%  72.3% X2 (80%)        
+
+  2026-06-28   G   Belgium vs New Zealand                      59.7%  25.0%  15.3%  84.7%  40.3%  75.0% 1X (85%)        
+  2026-06-28   G   Egypt vs Iran                               33.9%  30.4%  35.8%  64.2%  66.1%  69.6% 12 (70%)        
+  2026-06-28   H   Spain vs Uruguay                            59.2%  25.2%  15.6%  84.4%  40.8%  74.8% 1X (84%)        
+  2026-06-28   H   Cape Verde vs Saudi Arabia                  30.7%  30.2%  39.1%  60.9%  69.3%  69.8% 12 (70%)        
+  2026-06-28   L   England vs Panama                           61.2%  24.4%  14.4%  85.6%  38.8%  75.6% 1X (86%)        
+  2026-06-28   L   Croatia vs Ghana                            57.1%  26.0%  16.9%  83.1%  42.9%  74.0% 1X (83%)        
+
+
+
+==============================================================================================================
+  SECCION 2: TOP 30 APUESTAS INDIVIDUALES MAS SEGURAS
+==============================================================================================================
+
+  #    Fecha        Gr  Partido                                  Tipo      Prob   Cuota  Ganancia/100
+  -----------------------------------------------------------------------------------------------
+  1    2026-06-14   H   Spain vs Cape Verde                      1X      95.4%   1.01         +1.0
+  2    2026-06-21   H   Spain vs Saudi Arabia                    1X      94.6%   1.01         +1.0
+  3    2026-06-23   L   England vs Ghana                         1X      90.7%   1.03         +2.5
+  4    2026-06-26   J   Argentina vs Jordan                      1X      90.7%   1.03         +2.5
+  5    2026-06-25   I   France vs Iraq                           1X      90.6%   1.03         +2.6
+  6    2026-06-13   E   Germany vs Curaçao                       1X      90.1%   1.03         +3.2
+  7    2026-06-25   B   Switzerland vs Qatar                     1X      89.2%   1.04         +4.3
+  8    2026-06-18   B   Canada vs Qatar                          1X      89.1%   1.04         +4.4
+  9    2026-06-20   E   Curaçao vs Ecuador                       X2      88.5%   1.05         +5.0
+  10   2026-06-19   C   Brazil vs Haiti                          1X      87.9%   1.06         +5.9
+  11   2026-06-26   C   Morocco vs Haiti                         1X      86.8%   1.07         +7.1
+  12   2026-06-18   B   Switzerland vs Bosnia and Herzegovina    1X      86.5%   1.08         +7.5
+  13   2026-06-25   B   Canada vs Bosnia and Herzegovina         1X      86.4%   1.08         +7.6
+  14   2026-06-21   H   Cape Verde vs Uruguay                    X2      86.0%   1.08         +8.2
+  15   2026-06-28   L   England vs Panama                        1X      85.6%   1.09         +8.6
+  16   2026-06-28   G   Belgium vs New Zealand                   1X      84.7%   1.10         +9.8
+  17   2026-06-28   H   Spain vs Uruguay                         1X      84.4%   1.10        +10.2
+  18   2026-06-27   F   Japan vs Tunisia                         1X      84.3%   1.10        +10.3
+  19   2026-06-11   A   Mexico vs South Africa                   1X      84.0%   1.11        +10.7
+  20   2026-06-20   F   Netherlands vs Tunisia                   1X      83.9%   1.11        +10.8
+  21   2026-06-14   H   Saudi Arabia vs Uruguay                  X2      83.8%   1.11        +10.9
+  22   2026-06-28   L   Croatia vs Ghana                         1X      83.1%   1.12        +11.9
+  23   2026-06-22   J   Argentina vs Austria                     1X      82.9%   1.12        +12.2
+  24   2026-06-27   E   Curaçao vs Ivory Coast                   X2      82.6%   1.13        +12.5
+  25   2026-06-27   F   Netherlands vs Sweden                    1X      82.5%   1.13        +12.8
+  26   2026-06-20   F   Japan vs Sweden                          1X      82.3%   1.13        +13.0
+  27   2026-06-16   K   Portugal vs Uzbekistan                   1X      81.9%   1.14        +13.6
+  28   2026-06-26   C   Brazil vs Scotland                       1X      81.8%   1.14        +13.6
+  29   2026-06-27   K   Portugal vs DR Congo                     1X      81.4%   1.14        +14.2
+  30   2026-06-22   I   France vs Norway                         1X      80.8%   1.15        +15.1
+
+
+
+==============================================================================================================
+  SECCION 3: APUESTAS DOBLES (2 partidos, ventana 2 dias)
+  Probabilidad minima individual: 80% | Ordenadas por probabilidad combinada
+==============================================================================================================
+
+  #     Prob comb   Cuota  Gan/100  Fechas                    Apuestas
+  --------------------------------------------------------------------------------------------------------------
+  1        86.0%   1.04    +4.2  2026-06-13 | 2026-06-14   Germany vs Curaçao [1X](90%) + Spain vs Cape Verde [1X](95%)
+  2        85.8%   1.04    +3.5  2026-06-21 | 2026-06-23   Spain vs Saudi Arabia [1X](95%) + England vs Ghana [1X](91%)
+  3        83.7%   1.06    +6.1  2026-06-20 | 2026-06-21   Curaçao vs Ecuador [X2](89%) + Spain vs Saudi Arabia [1X](95%)
+  4        83.7%   1.06    +6.1  2026-06-20 | 2026-06-21   Curaçao vs Ecuador [X2](89%) + Spain vs Saudi Arabia [1X](95%)
+  5        83.1%   1.07    +6.9  2026-06-19 | 2026-06-21   Brazil vs Haiti [1X](88%) + Spain vs Saudi Arabia [1X](95%)
+  6        82.2%   1.05    +5.2  2026-06-23 | 2026-06-25   England vs Ghana [1X](91%) + France vs Iraq [1X](91%)
+  7        82.2%   1.05    +5.2  2026-06-25 | 2026-06-26   France vs Iraq [1X](91%) + Argentina vs Jordan [1X](91%)
+  8        81.3%   1.09    +9.3  2026-06-21                Spain vs Saudi Arabia [1X](95%) + Cape Verde vs Uruguay [X2](86%)
+  9        81.3%   1.09    +9.3  2026-06-21                Spain vs Saudi Arabia [1X](95%) + Cape Verde vs Uruguay [X2](86%)
+  10       81.3%   1.09    +9.3  2026-06-21                Spain vs Saudi Arabia [1X](95%) + Cape Verde vs Uruguay [X2](86%)
+  11       80.9%   1.07    +6.9  2026-06-23 | 2026-06-25   England vs Ghana [1X](91%) + Switzerland vs Qatar [1X](89%)
+  12       80.9%   1.07    +6.9  2026-06-25 | 2026-06-26   Switzerland vs Qatar [1X](89%) + Argentina vs Jordan [1X](91%)
+  13       80.8%   1.07    +7.0  2026-06-25                Switzerland vs Qatar [1X](89%) + France vs Iraq [1X](91%)
+  14       80.8%   1.07    +7.0  2026-06-25                Switzerland vs Qatar [1X](89%) + France vs Iraq [1X](91%)
+  15       80.0%   1.12   +12.1  2026-06-14                Spain vs Cape Verde [1X](95%) + Saudi Arabia vs Uruguay [X2](84%)
+  16       80.0%   1.12   +12.1  2026-06-14                Spain vs Cape Verde [1X](95%) + Saudi Arabia vs Uruguay [X2](84%)
+  17       79.4%   1.12   +11.9  2026-06-20 | 2026-06-21   Netherlands vs Tunisia [1X](84%) + Spain vs Saudi Arabia [1X](95%)
+  18       79.4%   1.12   +11.9  2026-06-20 | 2026-06-21   Netherlands vs Tunisia [1X](84%) + Spain vs Saudi Arabia [1X](95%)
+  19       78.9%   1.10    +9.6  2026-06-18 | 2026-06-20   Canada vs Qatar [1X](89%) + Curaçao vs Ecuador [X2](89%)
+  20       78.8%   1.10    +9.8  2026-06-26                Morocco vs Haiti [1X](87%) + Argentina vs Jordan [1X](91%)
+  21       78.8%   1.10    +9.8  2026-06-26                Morocco vs Haiti [1X](87%) + Argentina vs Jordan [1X](91%)
+  22       78.7%   1.10    +9.9  2026-06-25 | 2026-06-26   France vs Iraq [1X](91%) + Morocco vs Haiti [1X](87%)
+  23       78.4%   1.13   +13.3  2026-06-21 | 2026-06-22   Spain vs Saudi Arabia [1X](95%) + Argentina vs Austria [1X](83%)
+  24       78.4%   1.13   +13.3  2026-06-21 | 2026-06-22   Spain vs Saudi Arabia [1X](95%) + Argentina vs Austria [1X](83%)
+  25       78.4%   1.10   +10.4  2026-06-23 | 2026-06-25   England vs Ghana [1X](91%) + Canada vs Bosnia and Herzegovina [1X](86%)
+  26       78.4%   1.10   +10.4  2026-06-25 | 2026-06-26   Canada vs Bosnia and Herzegovina [1X](86%) + Argentina vs Jordan [1X](91%)
+  27       78.3%   1.10   +10.4  2026-06-25                Canada vs Bosnia and Herzegovina [1X](86%) + France vs Iraq [1X](91%)
+  28       78.3%   1.10   +10.4  2026-06-25                Canada vs Bosnia and Herzegovina [1X](86%) + France vs Iraq [1X](91%)
+  29       78.3%   1.10   +10.5  2026-06-18 | 2026-06-19   Canada vs Qatar [1X](89%) + Brazil vs Haiti [1X](88%)
+  30       78.1%   1.15   +14.7  2026-06-14 | 2026-06-16   Spain vs Cape Verde [1X](95%) + Portugal vs Uzbekistan [1X](82%)
+
+
+
+==============================================================================================================
+  SECCION 4: APUESTAS TRIPLES (3 partidos, ventana 2 dias)
+  Probabilidad minima individual: 80% | Ordenadas por probabilidad combinada
+==============================================================================================================
+
+  #     Prob comb   Cuota  Gan/100  Fechas                    Apuestas
+  --------------------------------------------------------------------------------------------------------------
+  1        73.7%   1.12   +12.0  2026-06-21 | 2026-06-23   SpainvsSaudi Arabia[1X](95%) + Cape VerdevsUruguay[X2](86%) + EnglandvsGhana[1X](91%)
+  2        73.6%   1.12   +12.3  2026-06-19 | 2026-06-20 | 2026-06-21 BrazilvsHaiti[1X](88%) + CuraçaovsEcuador[X2](89%) + SpainvsSaudi Arabia[1X](95%)
+  3        73.3%   1.10    +9.7  2026-06-23 | 2026-06-25   EnglandvsGhana[1X](91%) + SwitzerlandvsQatar[1X](89%) + FrancevsIraq[1X](91%)
+  4        73.3%   1.10    +9.7  2026-06-25 | 2026-06-26   SwitzerlandvsQatar[1X](89%) + FrancevsIraq[1X](91%) + ArgentinavsJordan[1X](91%)
+  5        72.1%   1.16   +15.6  2026-06-13 | 2026-06-14   GermanyvsCuraçao[1X](90%) + SpainvsCape Verde[1X](95%) + Saudi ArabiavsUruguay[X2](84%)
+  6        72.0%   1.15   +14.8  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + SpainvsSaudi Arabia[1X](95%) + Cape VerdevsUruguay[X2](86%)
+  7        72.0%   1.15   +14.8  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + SpainvsSaudi Arabia[1X](95%) + Cape VerdevsUruguay[X2](86%)
+  8        71.4%   1.16   +15.7  2026-06-19 | 2026-06-21   BrazilvsHaiti[1X](88%) + SpainvsSaudi Arabia[1X](95%) + Cape VerdevsUruguay[X2](86%)
+  9        71.4%   1.13   +12.6  2026-06-25 | 2026-06-26   FrancevsIraq[1X](91%) + MoroccovsHaiti[1X](87%) + ArgentinavsJordan[1X](91%)
+  10       71.1%   1.16   +16.2  2026-06-21 | 2026-06-22 | 2026-06-23 SpainvsSaudi Arabia[1X](95%) + ArgentinavsAustria[1X](83%) + EnglandvsGhana[1X](91%)
+  11       71.0%   1.13   +13.2  2026-06-23 | 2026-06-25   EnglandvsGhana[1X](91%) + CanadavsBosnia and Herzegovina[1X](86%) + FrancevsIraq[1X](91%)
+  12       71.0%   1.13   +13.2  2026-06-25 | 2026-06-26   CanadavsBosnia and Herzegovina[1X](86%) + FrancevsIraq[1X](91%) + ArgentinavsJordan[1X](91%)
+  13       70.3%   1.18   +17.6  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + NetherlandsvsTunisia[1X](84%) + SpainvsSaudi Arabia[1X](95%)
+  14       70.3%   1.18   +17.6  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + NetherlandsvsTunisia[1X](84%) + SpainvsSaudi Arabia[1X](95%)
+  15       70.2%   1.15   +14.5  2026-06-25 | 2026-06-26   SwitzerlandvsQatar[1X](89%) + MoroccovsHaiti[1X](87%) + ArgentinavsJordan[1X](91%)
+  16       70.2%   1.15   +14.6  2026-06-25 | 2026-06-26   SwitzerlandvsQatar[1X](89%) + FrancevsIraq[1X](91%) + MoroccovsHaiti[1X](87%)
+  17       69.9%   1.15   +15.1  2026-06-23 | 2026-06-25   EnglandvsGhana[1X](91%) + CanadavsBosnia and Herzegovina[1X](86%) + SwitzerlandvsQatar[1X](89%)
+  18       69.9%   1.15   +15.1  2026-06-25 | 2026-06-26   CanadavsBosnia and Herzegovina[1X](86%) + SwitzerlandvsQatar[1X](89%) + ArgentinavsJordan[1X](91%)
+  19       69.8%   1.15   +15.2  2026-06-25                CanadavsBosnia and Herzegovina[1X](86%) + SwitzerlandvsQatar[1X](89%) + FrancevsIraq[1X](91%)
+  20       69.8%   1.15   +15.2  2026-06-25                CanadavsBosnia and Herzegovina[1X](86%) + SwitzerlandvsQatar[1X](89%) + FrancevsIraq[1X](91%)
+  21       69.7%   1.18   +18.5  2026-06-19 | 2026-06-20 | 2026-06-21 BrazilvsHaiti[1X](88%) + NetherlandsvsTunisia[1X](84%) + SpainvsSaudi Arabia[1X](95%)
+  22       69.4%   1.19   +19.0  2026-06-20 | 2026-06-21 | 2026-06-22 CuraçaovsEcuador[X2](89%) + SpainvsSaudi Arabia[1X](95%) + ArgentinavsAustria[1X](83%)
+  23       69.4%   1.20   +20.2  2026-06-13 | 2026-06-14 | 2026-06-15 GermanyvsCuraçao[1X](90%) + SpainvsCape Verde[1X](95%) + ArgentinavsAlgeria[1X](81%)
+  24       69.3%   1.16   +16.1  2026-06-25 | 2026-06-26 | 2026-06-27 FrancevsIraq[1X](91%) + ArgentinavsJordan[1X](91%) + JapanvsTunisia[1X](84%)
+  25       69.3%   1.16   +16.1  2026-06-18 | 2026-06-19 | 2026-06-20 CanadavsQatar[1X](89%) + BrazilvsHaiti[1X](88%) + CuraçaovsEcuador[X2](89%)
+  26       69.3%   1.19   +19.2  2026-06-21 | 2026-06-22 | 2026-06-23 SpainvsSaudi Arabia[1X](95%) + FrancevsNorway[1X](81%) + EnglandvsGhana[1X](91%)
+  27       69.2%   1.20   +20.5  2026-06-13 | 2026-06-14 | 2026-06-15 GermanyvsCuraçao[1X](90%) + SpainvsCape Verde[1X](95%) + FrancevsSenegal[1X](80%)
+  28       68.9%   1.20   +19.9  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + JapanvsSweden[1X](82%) + SpainvsSaudi Arabia[1X](95%)
+  29       68.9%   1.20   +19.9  2026-06-20 | 2026-06-21   CuraçaovsEcuador[X2](89%) + JapanvsSweden[1X](82%) + SpainvsSaudi Arabia[1X](95%)
+  30       68.7%   1.20   +20.3  2026-06-21 | 2026-06-22 | 2026-06-23 SpainvsSaudi Arabia[1X](95%) + SenegalvsIraq[1X](80%) + EnglandvsGhana[1X](91%)
+
+
+
+==============================================================================================================
+  SECCION 5: MEJORES COMBINADAS POR VALOR (prob >50%, max retorno)
+  Incluye apuestas con prob individual >70%
+==============================================================================================================
+
+  #     Tam  Prob comb   Cuota  Gan/100  Apuestas
+  --------------------------------------------------------------------------------------------------------------
+  1       2     51.4%   1.68   +68.2  South AfricavsCzech Republic[X2](71%) + ParaguayvsTurkey[X2](73%)
+  2       2     52.5%   1.65   +64.8  GhanavsPanama[X2](74%) + South AfricavsCzech Republic[X2](71%)
+  3       3     50.2%   1.65   +64.5  ParaguayvsTurkey[X2](73%) + BelgiumvsIran[1X](73%) + SpainvsSaudi Arabia[1X](95%)
+  4       2     52.6%   1.64   +64.4  MexicovsSouth Korea[1X](74%) + South AfricavsCzech Republic[X2](71%)
+  5       2     52.6%   1.64   +64.4  MexicovsSouth Korea[1X](74%) + South AfricavsCzech Republic[X2](71%)
+  6       2     52.8%   1.64   +63.7  South KoreavsCzech Republic[1X](72%) + AustraliavsTurkey[X2](73%)
+  7       2     53.1%   1.63   +62.9  ParaguayvsTurkey[X2](73%) + BelgiumvsIran[1X](73%)
+  8       3     51.3%   1.63   +62.5  AustraliavsTurkey[X2](73%) + BelgiumvsEgypt[1X](74%) + SpainvsCape Verde[1X](95%)
+  9       3     51.5%   1.62   +61.8  HaitivsScotland[X2](74%) + AustraliavsTurkey[X2](73%) + SpainvsCape Verde[1X](95%)
+  10      3     51.6%   1.62   +61.5  AustraliavsTurkey[X2](73%) + Ivory CoastvsEcuador[X2](74%) + SpainvsCape Verde[1X](95%)
+  11      2     53.6%   1.61   +61.3  South KoreavsCzech Republic[1X](72%) + HaitivsScotland[X2](74%)
+  12      2     53.7%   1.61   +61.1  South KoreavsCzech Republic[1X](72%) + Ivory CoastvsEcuador[X2](74%)
+  13      2     53.7%   1.61   +60.9  AustraliavsTurkey[X2](73%) + BelgiumvsEgypt[1X](74%)
+  14      3     50.0%   1.61   +60.7  IranvsNew Zealand[1X](79%) + FrancevsSenegal[1X](80%) + ColombiavsDR Congo[1X](79%)
+  15      3     50.0%   1.61   +60.7  ParaguayvsTurkey[X2](73%) + CuraçaovsEcuador[X2](89%) + EgyptvsNew Zealand[1X](78%)
+  16      3     50.0%   1.61   +60.7  Saudi ArabiavsUruguay[X2](84%) + ArgentinavsAlgeria[1X](81%) + GhanavsPanama[X2](74%)
+  17      3     50.1%   1.61   +60.7  BrazilvsHaiti[1X](88%) + BelgiumvsIran[1X](73%) + EgyptvsNew Zealand[1X](78%)
+  18      3     50.1%   1.61   +60.6  PortugalvsUzbekistan[1X](82%) + ColombiavsDR Congo[1X](79%) + EnglandvsCroatia[1X](77%)
+  19      3     50.1%   1.61   +60.6  PortugalvsUzbekistan[1X](82%) + ColombiavsDR Congo[1X](79%) + EnglandvsCroatia[1X](77%)
+  20      3     50.1%   1.61   +60.6  PortugalvsUzbekistan[1X](82%) + ColombiavsDR Congo[1X](79%) + EnglandvsCroatia[1X](77%)
+  21      2     53.9%   1.61   +60.6  MexicovsSouth Korea[1X](74%) + ParaguayvsTurkey[X2](73%)
+  22      3     50.1%   1.61   +60.5  ParaguayvsTurkey[X2](73%) + NetherlandsvsTunisia[1X](84%) + JapanvsSweden[1X](82%)
+  23      3     50.1%   1.61   +60.5  ParaguayvsTurkey[X2](73%) + NetherlandsvsTunisia[1X](84%) + JapanvsSweden[1X](82%)
+  24      3     50.1%   1.61   +60.5  MexicovsSouth Korea[1X](74%) + BrazilvsHaiti[1X](88%) + GermanyvsIvory Coast[1X](77%)
+  25      3     50.1%   1.60   +60.5  Ivory CoastvsEcuador[X2](74%) + Saudi ArabiavsUruguay[X2](84%) + ArgentinavsAlgeria[1X](81%)
+  26      3     50.2%   1.60   +60.4  South AfricavsCzech Republic[X2](71%) + BrazilvsHaiti[1X](88%) + MoroccovsScotland[1X](81%)
+  27      3     50.2%   1.60   +60.3  IranvsNew Zealand[1X](79%) + ArgentinavsAlgeria[1X](81%) + ColombiavsDR Congo[1X](79%)
+  28      3     50.2%   1.60   +60.3  FrancevsSenegal[1X](80%) + ArgentinavsAlgeria[1X](81%) + EnglandvsCroatia[1X](77%)
+  29      3     50.2%   1.60   +60.3  FrancevsSenegal[1X](80%) + ArgentinavsAlgeria[1X](81%) + EnglandvsCroatia[1X](77%)
+  30      3     50.2%   1.60   +60.3  AustriavsJordan[1X](77%) + PortugalvsUzbekistan[1X](82%) + ColombiavsDR Congo[1X](79%)
+
+
+
+==============================================================================================================
+  SECCION 6: CALENDARIO DE APUESTAS DIA A DIA
+  Para cada dia, la mejor combinada disponible
+==============================================================================================================
+
+  ============================== 2026-06-11 ==============================
+    Mexico vs South Africa                     -> 1X    84.0% (cuota 1.11)
+    South Korea vs Czech Republic              -> 1X    72.4% (cuota 1.28)
+    Canada vs Switzerland                      -> 12    69.6% (cuota 1.34)
+    Qatar vs Bosnia and Herzegovina            -> 12    69.9% (cuota 1.33)
+
+    >> DOBLE DEL DIA: Mexico vs South Africa [1X]
+                   + South Korea vs Czech Republic [1X]
+       Prob combinada: 60.9% | Cuota: 1.42 | Ganancia/100: +42.1
+
+  ============================== 2026-06-12 ==============================
+    Brazil vs Morocco                          -> 12    69.7% (cuota 1.34)
+    Haiti vs Scotland                          -> X2    74.0% (cuota 1.26)
+    United States vs Paraguay                  -> 12    69.8% (cuota 1.33)
+    Australia vs Turkey                        -> X2    72.9% (cuota 1.28)
+
+    >> DOBLE DEL DIA: Haiti vs Scotland [X2]
+                   + Australia vs Turkey [X2]
+       Prob combinada: 54.0% | Cuota: 1.60 | Ganancia/100: +60.2
+
+  ============================== 2026-06-13 ==============================
+    Germany vs Curaçao                         -> 1X    90.1% (cuota 1.03)
+    Ivory Coast vs Ecuador                     -> X2    74.1% (cuota 1.25)
+    Netherlands vs Japan                       -> 12    69.6% (cuota 1.34)
+    Tunisia vs Sweden                          -> 12    69.7% (cuota 1.33)
+
+    >> DOBLE DEL DIA: Germany vs Curaçao [1X]
+                   + Ivory Coast vs Ecuador [X2]
+       Prob combinada: 66.8% | Cuota: 1.29 | Ganancia/100: +29.4
+
+  ============================== 2026-06-14 ==============================
+    Belgium vs Egypt                           -> 1X    73.7% (cuota 1.26)
+    Iran vs New Zealand                        -> 1X    78.7% (cuota 1.18)
+    Spain vs Cape Verde                        -> 1X    95.4% (cuota 1.01)
+    Saudi Arabia vs Uruguay                    -> X2    83.8% (cuota 1.11)
+
+    >> DOBLE DEL DIA: Spain vs Cape Verde [1X]
+                   + Saudi Arabia vs Uruguay [X2]
+       Prob combinada: 80.0% | Cuota: 1.12 | Ganancia/100: +12.1
+
+  ============================== 2026-06-15 ==============================
+    France vs Senegal                          -> 1X    80.4% (cuota 1.16)
+    Norway vs Iraq                             -> 1X    79.7% (cuota 1.17)
+    Argentina vs Algeria                       -> 1X    80.7% (cuota 1.15)
+    Austria vs Jordan                          -> 1X    77.5% (cuota 1.20)
+
+    >> DOBLE DEL DIA: Argentina vs Algeria [1X]
+                   + France vs Senegal [1X]
+       Prob combinada: 64.9% | Cuota: 1.33 | Ganancia/100: +33.3
+
+  ============================== 2026-06-16 ==============================
+    Portugal vs Uzbekistan                     -> 1X    81.9% (cuota 1.14)
+    Colombia vs DR Congo                       -> 1X    79.1% (cuota 1.18)
+    England vs Croatia                         -> 1X    77.3% (cuota 1.20)
+    Ghana vs Panama                            -> X2    74.0% (cuota 1.26)
+
+    >> DOBLE DEL DIA: Portugal vs Uzbekistan [1X]
+                   + Colombia vs DR Congo [1X]
+       Prob combinada: 64.8% | Cuota: 1.34 | Ganancia/100: +33.5
+
+  ============================== 2026-06-18 ==============================
+    Mexico vs South Korea                      -> 1X    74.2% (cuota 1.25)
+    South Africa vs Czech Republic             -> X2    70.9% (cuota 1.31)
+    Canada vs Qatar                            -> 1X    89.1% (cuota 1.04)
+    Switzerland vs Bosnia and Herzegovina      -> 1X    86.5% (cuota 1.08)
+
+    >> DOBLE DEL DIA: Canada vs Qatar [1X]
+                   + Switzerland vs Bosnia and Herzegovina [1X]
+       Prob combinada: 77.1% | Cuota: 1.12 | Ganancia/100: +12.2
+
+  ============================== 2026-06-19 ==============================
+    Brazil vs Haiti                            -> 1X    87.9% (cuota 1.06)
+    Morocco vs Scotland                        -> 1X    80.6% (cuota 1.15)
+    United States vs Australia                 -> 12    69.8% (cuota 1.33)
+    Paraguay vs Turkey                         -> X2    72.6% (cuota 1.28)
+
+    >> DOBLE DEL DIA: Brazil vs Haiti [1X]
+                   + Morocco vs Scotland [1X]
+       Prob combinada: 70.8% | Cuota: 1.22 | Ganancia/100: +22.2
+
+  ============================== 2026-06-20 ==============================
+    Germany vs Ivory Coast                     -> 1X    76.8% (cuota 1.21)
+    Curaçao vs Ecuador                         -> X2    88.5% (cuota 1.05)
+    Netherlands vs Tunisia                     -> 1X    83.9% (cuota 1.11)
+    Japan vs Sweden                            -> 1X    82.3% (cuota 1.13)
+
+    >> DOBLE DEL DIA: Curaçao vs Ecuador [X2]
+                   + Netherlands vs Tunisia [1X]
+       Prob combinada: 74.3% | Cuota: 1.16 | Ganancia/100: +16.4
+
+  ============================== 2026-06-21 ==============================
+    Belgium vs Iran                            -> 1X    73.2% (cuota 1.27)
+    Egypt vs New Zealand                       -> 1X    77.9% (cuota 1.19)
+    Spain vs Saudi Arabia                      -> 1X    94.6% (cuota 1.01)
+    Cape Verde vs Uruguay                      -> X2    86.0% (cuota 1.08)
+
+    >> DOBLE DEL DIA: Spain vs Saudi Arabia [1X]
+                   + Cape Verde vs Uruguay [X2]
+       Prob combinada: 81.3% | Cuota: 1.09 | Ganancia/100: +9.3
+
+  ============================== 2026-06-22 ==============================
+    France vs Norway                           -> 1X    80.8% (cuota 1.15)
+    Senegal vs Iraq                            -> 1X    80.1% (cuota 1.16)
+    Argentina vs Austria                       -> 1X    82.9% (cuota 1.12)
+    Algeria vs Jordan                          -> 1X    79.9% (cuota 1.16)
+
+    >> DOBLE DEL DIA: Argentina vs Austria [1X]
+                   + France vs Norway [1X]
+       Prob combinada: 67.0% | Cuota: 1.29 | Ganancia/100: +29.2
+
+  ============================== 2026-06-23 ==============================
+    Portugal vs Colombia                       -> 12    69.7% (cuota 1.33)
+    Uzbekistan vs DR Congo                     -> 12    69.6% (cuota 1.34)
+    England vs Ghana                           -> 1X    90.7% (cuota 1.03)
+    Croatia vs Panama                          -> 1X    75.9% (cuota 1.22)
+
+    >> DOBLE DEL DIA: England vs Ghana [1X]
+                   + Croatia vs Panama [1X]
+       Prob combinada: 68.9% | Cuota: 1.26 | Ganancia/100: +25.6
+
+  ============================== 2026-06-25 ==============================
+    Mexico vs Czech Republic                   -> 1X    79.8% (cuota 1.17)
+    South Africa vs South Korea                -> X2    77.5% (cuota 1.20)
+    Canada vs Bosnia and Herzegovina           -> 1X    86.4% (cuota 1.08)
+    Switzerland vs Qatar                       -> 1X    89.2% (cuota 1.04)
+    France vs Iraq                             -> 1X    90.6% (cuota 1.03)
+    Senegal vs Norway                          -> 12    69.6% (cuota 1.34)
+
+    >> DOBLE DEL DIA: France vs Iraq [1X]
+                   + Switzerland vs Qatar [1X]
+       Prob combinada: 80.8% | Cuota: 1.07 | Ganancia/100: +7.0
+
+  ============================== 2026-06-26 ==============================
+    Brazil vs Scotland                         -> 1X    81.8% (cuota 1.14)
+    Morocco vs Haiti                           -> 1X    86.8% (cuota 1.07)
+    United States vs Turkey                    -> 12    69.9% (cuota 1.33)
+    Paraguay vs Australia                      -> 12    69.6% (cuota 1.34)
+    Argentina vs Jordan                        -> 1X    90.7% (cuota 1.03)
+    Algeria vs Austria                         -> 12    69.7% (cuota 1.33)
+
+    >> DOBLE DEL DIA: Argentina vs Jordan [1X]
+                   + Morocco vs Haiti [1X]
+       Prob combinada: 78.8% | Cuota: 1.10 | Ganancia/100: +9.8
+
+  ============================== 2026-06-27 ==============================
+    Germany vs Ecuador                         -> 12    69.7% (cuota 1.33)
+    Curaçao vs Ivory Coast                     -> X2    82.6% (cuota 1.13)
+    Netherlands vs Sweden                      -> 1X    82.5% (cuota 1.13)
+    Japan vs Tunisia                           -> 1X    84.3% (cuota 1.10)
+    Portugal vs DR Congo                       -> 1X    81.4% (cuota 1.14)
+    Uzbekistan vs Colombia                     -> X2    79.6% (cuota 1.17)
+
+    >> DOBLE DEL DIA: Japan vs Tunisia [1X]
+                   + Curaçao vs Ivory Coast [X2]
+       Prob combinada: 69.7% | Cuota: 1.24 | Ganancia/100: +24.2
+
+  ============================== 2026-06-28 ==============================
+    Belgium vs New Zealand                     -> 1X    84.7% (cuota 1.10)
+    Egypt vs Iran                              -> 12    69.6% (cuota 1.34)
+    Spain vs Uruguay                           -> 1X    84.4% (cuota 1.10)
+    Cape Verde vs Saudi Arabia                 -> 12    69.8% (cuota 1.33)
+    England vs Panama                          -> 1X    85.6% (cuota 1.09)
+    Croatia vs Ghana                           -> 1X    83.1% (cuota 1.12)
+
+    >> DOBLE DEL DIA: England vs Panama [1X]
+                   + Belgium vs New Zealand [1X]
+       Prob combinada: 72.5% | Cuota: 1.19 | Ganancia/100: +19.3
+
+
+
+==============================================================================================================
+  SECCION 7: RESUMEN ESTRATEGICO
+==============================================================================================================
+
+  Partidos totales fase de grupos: 72
+  Apuestas individuales >80%: 38
+  Apuestas individuales >85%: 17
+  Apuestas individuales >90%: 6
+
+  --- ESTRATEGIA RECOMENDADA ---
+  1. CONSERVADORA (prob >80%): Dobles con apuestas 1X/X2 de favoritos claros
+     Retorno esperado: +10-20% por combinada
+     Tasa de acierto estimada: ~70%
+
+  2. MODERADA (prob >70%): Triples mezclando 1X y resultados directos
+     Retorno esperado: +30-60% por combinada
+     Tasa de acierto estimada: ~50%
+
+  3. AGRESIVA (prob >60%): Triples con resultados directos de favoritos
+     Retorno esperado: +80-150% por combinada
+     Tasa de acierto estimada: ~30%
+
+  --- PARTIDOS TRAMPA (evitar en combinadas) ---
+    2026-06-11 Gr.B Canada vs Switzerland: 1=35% X=30% 2=35% (max 35%)
+    2026-06-26 Gr.D Paraguay vs Australia: 1=35% X=30% 2=34% (max 35%)
+    2026-06-25 Gr.I Senegal vs Norway: 1=35% X=30% 2=34% (max 35%)
+    2026-06-23 Gr.K Uzbekistan vs DR Congo: 1=34% X=30% 2=35% (max 35%)
+    2026-06-13 Gr.F Netherlands vs Japan: 1=36% X=30% 2=34% (max 36%)
+    2026-06-28 Gr.G Egypt vs Iran: 1=34% X=30% 2=36% (max 36%)
+    2026-06-12 Gr.C Brazil vs Morocco: 1=37% X=30% 2=33% (max 37%)
+    2026-06-13 Gr.F Tunisia vs Sweden: 1=32% X=30% 2=37% (max 37%)
+    2026-06-23 Gr.K Portugal vs Colombia: 1=38% X=30% 2=32% (max 38%)
+    2026-06-26 Gr.J Algeria vs Austria: 1=38% X=30% 2=32% (max 38%)
