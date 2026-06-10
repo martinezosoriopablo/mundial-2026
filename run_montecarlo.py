@@ -11,7 +11,7 @@ import pandas as pd
 from src.data_loader import load_results
 from src.strength_elo import train_elo_model
 from src.strength_hybrid import train_hybrid_model
-from src.wc2026 import GROUPS_2026
+from src.wc2026 import GROUPS_2026, build_r32
 from run_wc2026 import (
     predict_lambdas_elo,
     predict_lambdas_hybrid,
@@ -76,16 +76,7 @@ def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0):
     runners = {g: standings[g]["ranked"][1] for g in standings}
 
     tl = best_thirds
-    r32 = [
-        (winners["A"], tl[0]), (runners["C"], runners["D"]),
-        (winners["B"], tl[1]), (runners["E"], runners["F"]),
-        (winners["G"], tl[2]), (runners["I"], runners["J"]),
-        (winners["H"], tl[3]), (runners["K"], runners["L"]),
-        (winners["C"], tl[4]), (runners["A"], runners["B"]),
-        (winners["D"], tl[5]), (runners["G"], runners["H"]),
-        (winners["I"], tl[6]), (winners["F"], runners["I"]),
-        (winners["J"], tl[7]), (winners["L"], runners["K"]),
-    ]
+    r32 = build_r32(winners, runners, tl)
 
     r32w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in r32]
     r16 = [(r32w[i], r32w[i + 1]) for i in range(0, 16, 2)]
