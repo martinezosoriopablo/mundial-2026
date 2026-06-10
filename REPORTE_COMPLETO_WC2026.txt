@@ -1,6 +1,7 @@
 ==============================================================================================================
   REPORTE COMPLETO - PREDICCION MUNDIAL FIFA 2026
-  Modelo: Hybrid (Elo + Value + League + Defense) + Dixon-Coles
+  Modelo: Hybrid L1(Elo+Value+League+Defense) + L2(Age+Coach+Host+Pop+Diversity+Composition+SOS)
+  Match: Dixon-Coles + H2H | Scale=3.50 | Rho=-0.15 | Knockout upset sigma=0.15
   Simulaciones: 10,000 | Fecha: 2026-06-10
 ==============================================================================================================
 
@@ -12,122 +13,122 @@
   ========================= GRUPO A =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Mexico vs South Africa                        2.5 - 0.7 2- 0  78.7%  14.4%   6.9%
-  2    Mexico vs South Korea                         1.7 - 1.0 1- 0  53.3%  24.2%  22.5%
-  3    Mexico vs Czech Republic                      2.2 - 0.8 2- 0  69.9%  18.1%  12.0%
-  4    South Africa vs South Korea                   0.8 - 2.0 0- 2  15.2%  20.6%  64.2%
-  5    South Africa vs Czech Republic                1.1 - 1.5 1- 1  27.6%  25.4%  47.0%
-  6    South Korea vs Czech Republic                 1.6 - 1.0 1- 0  53.2%  24.3%  22.5%
+  1    Mexico vs South Africa                        1.9 - 0.9 1- 0  59.9%  22.3%  17.8%
+  2    Mexico vs South Korea                         1.5 - 1.1 1- 1  46.1%  26.2%  27.8%
+  3    Mexico vs Czech Republic                      1.7 - 1.0 1- 0  53.3%  24.2%  22.4%
+  4    South Africa vs South Korea                   1.0 - 1.6 0- 1  24.8%  24.2%  51.0%
+  5    South Africa vs Czech Republic                1.2 - 1.4 1- 1  31.2%  26.4%  42.3%
+  6    South Korea vs Czech Republic                 1.5 - 1.1 1- 1  45.1%  25.7%  29.2%
 
   ========================= GRUPO B =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Canada vs Switzerland                         1.3 - 1.3 1- 1  37.6%  27.4%  35.0%
-  2    Canada vs Qatar                               3.9 - 0.4 3- 0  94.1%   4.6%   1.3%
-  3    Canada vs Bosnia and Herzegovina              3.2 - 0.5 3- 0  88.9%   8.0%   3.1%
-  4    Switzerland vs Qatar                          3.9 - 0.4 3- 0  93.7%   4.9%   1.4%
-  5    Switzerland vs Bosnia and Herzegovina         3.2 - 0.5 3- 0  87.6%   8.8%   3.5%
-  6    Qatar vs Bosnia and Herzegovina               1.1 - 1.6 1- 1  26.0%  25.0%  49.0%
+  1    Canada vs Switzerland                         1.3 - 1.3 1- 1  36.9%  26.7%  36.4%
+  2    Canada vs Qatar                               2.1 - 0.8 2- 0  68.6%  19.3%  12.1%
+  3    Canada vs Bosnia and Herzegovina              2.0 - 0.8 2- 0  64.4%  20.6%  15.0%
+  4    Switzerland vs Qatar                          2.1 - 0.8 2- 0  68.8%  19.0%  12.2%
+  5    Switzerland vs Bosnia and Herzegovina         2.0 - 0.8 2- 0  64.3%  20.6%  15.1%
+  6    Qatar vs Bosnia and Herzegovina               1.2 - 1.4 1- 1  31.7%  26.2%  42.1%
 
   ========================= GRUPO C =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Brazil vs Morocco                             1.2 - 1.4 1- 1  31.4%  26.2%  42.4%
-  2    Brazil vs Haiti                               2.8 - 0.6 2- 0  83.4%  11.4%   5.2%
-  3    Brazil vs Scotland                            2.6 - 0.6 2- 0  78.8%  14.1%   7.2%
-  4    Morocco vs Haiti                              3.1 - 0.5 3- 0  87.1%   9.2%   3.6%
-  5    Morocco vs Scotland                           2.8 - 0.6 3- 0  83.3%  11.6%   5.1%
-  6    Haiti vs Scotland                             1.2 - 1.4 1- 1  30.4%  25.9%  43.7%
+  1    Brazil vs Morocco                             1.3 - 1.2 1- 1  38.4%  27.1%  34.6%
+  2    Brazil vs Haiti                               2.1 - 0.8 2- 0  66.0%  20.3%  13.6%
+  3    Brazil vs Scotland                            1.8 - 0.9 1- 0  57.4%  23.1%  19.6%
+  4    Morocco vs Haiti                              2.0 - 0.8 2- 0  65.5%  20.8%  13.7%
+  5    Morocco vs Scotland                           1.7 - 1.0 1- 0  54.9%  23.6%  21.4%
+  6    Haiti vs Scotland                             1.1 - 1.5 1- 1  27.8%  26.6%  45.6%
 
   ========================= GRUPO D =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    United States vs Paraguay                     1.5 - 1.1 1- 1  48.7%  24.8%  26.6%
-  2    United States vs Australia                    1.3 - 1.2 1- 1  39.9%  26.6%  33.5%
-  3    United States vs Turkey                       1.0 - 1.6 1- 1  24.3%  24.4%  51.3%
-  4    Paraguay vs Australia                         1.1 - 1.5 1- 1  29.1%  25.7%  45.2%
-  5    Paraguay vs Turkey                            0.9 - 1.9 0- 2  16.0%  22.1%  61.9%
-  6    Australia vs Turkey                           1.0 - 1.6 0- 1  22.7%  24.5%  52.8%
+  1    United States vs Paraguay                     1.4 - 1.2 1- 1  40.0%  26.8%  33.1%
+  2    United States vs Australia                    1.3 - 1.2 1- 1  39.7%  26.7%  33.6%
+  3    United States vs Turkey                       1.2 - 1.4 1- 1  32.1%  26.7%  41.1%
+  4    Paraguay vs Australia                         1.3 - 1.3 1- 1  36.8%  26.0%  37.2%
+  5    Paraguay vs Turkey                            1.1 - 1.4 1- 1  29.0%  26.5%  44.5%
+  6    Australia vs Turkey                           1.1 - 1.5 1- 1  28.6%  26.4%  45.0%
 
   ========================= GRUPO E =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Germany vs Curaçao                            3.7 - 0.4 3- 0  92.6%   5.8%   1.6%
-  2    Germany vs Ivory Coast                        1.7 - 1.0 1- 0  53.6%  24.0%  22.4%
-  3    Germany vs Ecuador                            1.5 - 1.1 1- 1  47.8%  25.1%  27.1%
-  4    Curaçao vs Ivory Coast                        0.6 - 2.9 0- 2   4.6%  11.2%  84.2%
-  5    Curaçao vs Ecuador                            0.5 - 3.1 0- 3   3.4%   9.1%  87.5%
-  6    Ivory Coast vs Ecuador                        1.2 - 1.4 1- 1  31.6%  27.6%  40.8%
+  1    Germany vs Curaçao                            2.2 - 0.7 2- 0  70.4%  18.5%  11.1%
+  2    Germany vs Ivory Coast                        1.6 - 1.0 1- 1  50.3%  25.3%  24.3%
+  3    Germany vs Ecuador                            1.3 - 1.2 1- 1  39.3%  26.8%  33.9%
+  4    Curaçao vs Ivory Coast                        0.9 - 1.8 0- 1  18.8%  22.9%  58.2%
+  5    Curaçao vs Ecuador                            0.8 - 2.1 0- 1  13.0%  19.2%  67.9%
+  6    Ivory Coast vs Ecuador                        1.1 - 1.5 1- 1  27.9%  25.7%  46.4%
 
   ========================= GRUPO F =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Netherlands vs Japan                          1.2 - 1.4 1- 1  33.2%  26.5%  40.3%
-  2    Netherlands vs Tunisia                        2.6 - 0.6 2- 0  79.7%  13.7%   6.7%
-  3    Netherlands vs Sweden                         2.6 - 0.6 2- 0  79.0%  13.8%   7.2%
-  4    Japan vs Tunisia                              2.8 - 0.6 2- 0  83.0%  11.4%   5.6%
-  5    Japan vs Sweden                               2.8 - 0.6 2- 0  82.2%  11.8%   6.0%
-  6    Tunisia vs Sweden                             1.3 - 1.3 1- 1  35.6%  26.4%  38.0%
+  1    Netherlands vs Japan                          1.3 - 1.3 1- 1  37.7%  26.4%  36.0%
+  2    Netherlands vs Tunisia                        1.8 - 0.9 1- 0  59.8%  22.8%  17.3%
+  3    Netherlands vs Sweden                         1.8 - 0.9 1- 0  58.0%  22.9%  19.2%
+  4    Japan vs Tunisia                              1.9 - 0.9 1- 0  60.7%  21.8%  17.5%
+  5    Japan vs Sweden                               1.8 - 0.9 1- 0  57.4%  23.3%  19.3%
+  6    Tunisia vs Sweden                             1.2 - 1.3 1- 1  34.8%  25.3%  39.9%
 
   ========================= GRUPO G =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Belgium vs Egypt                              1.7 - 1.0 1- 0  53.7%  23.7%  22.6%
-  2    Belgium vs Iran                               1.8 - 0.9 1- 0  57.3%  24.0%  18.7%
-  3    Belgium vs New Zealand                        2.9 - 0.6 3- 0  84.5%  11.1%   4.3%
-  4    Egypt vs Iran                                 1.4 - 1.2 1- 1  40.2%  27.0%  32.8%
-  5    Egypt vs New Zealand                          2.2 - 0.7 2- 0  71.0%  18.2%  10.8%
-  6    Iran vs New Zealand                           2.1 - 0.8 1- 0  68.4%  19.2%  12.4%
+  1    Belgium vs Egypt                              1.5 - 1.1 1- 1  45.4%  26.2%  28.3%
+  2    Belgium vs Iran                               1.5 - 1.1 1- 1  45.4%  25.7%  29.0%
+  3    Belgium vs New Zealand                        1.9 - 0.9 1- 0  61.7%  21.9%  16.4%
+  4    Egypt vs Iran                                 1.3 - 1.3 1- 1  36.4%  26.3%  37.3%
+  5    Egypt vs New Zealand                          1.6 - 1.0 1- 0  52.4%  24.6%  23.1%
+  6    Iran vs New Zealand                           1.7 - 1.0 1- 1  52.6%  24.4%  23.0%
 
   ========================= GRUPO H =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Spain vs Cape Verde                           5.9 - 0.3 6- 0  99.2%   0.7%   0.2%
-  2    Spain vs Saudi Arabia                         5.9 - 0.3 5- 0  99.2%   0.8%   0.1%
-  3    Spain vs Uruguay                              2.9 - 0.6 2- 0  84.8%  10.5%   4.7%
-  4    Cape Verde vs Saudi Arabia                    1.3 - 1.3 1- 1  35.7%  26.1%  38.2%
-  5    Cape Verde vs Uruguay                         0.6 - 2.6 0- 2   6.6%  13.6%  79.8%
-  6    Saudi Arabia vs Uruguay                       0.6 - 2.6 0- 2   6.8%  13.9%  79.3%
+  1    Spain vs Cape Verde                           2.8 - 0.6 2- 0  82.1%  12.4%   5.5%
+  2    Spain vs Saudi Arabia                         2.7 - 0.6 2- 0  80.3%  13.3%   6.4%
+  3    Spain vs Uruguay                              1.9 - 0.9 1- 0  59.9%  22.8%  17.3%
+  4    Cape Verde vs Saudi Arabia                    1.2 - 1.4 1- 1  32.9%  26.7%  40.4%
+  5    Cape Verde vs Uruguay                         0.8 - 2.0 0- 1  15.5%  20.8%  63.7%
+  6    Saudi Arabia vs Uruguay                       0.9 - 1.8 0- 1  18.1%  22.1%  59.8%
 
   ========================= GRUPO I =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    France vs Senegal                             1.9 - 0.9 1- 0  60.5%  22.0%  17.5%
-  2    France vs Norway                              2.2 - 0.8 2- 0  69.8%  18.5%  11.7%
-  3    France vs Iraq                                4.0 - 0.4 4- 0  94.5%   4.3%   1.2%
-  4    Senegal vs Norway                             1.5 - 1.1 1- 1  45.3%  26.1%  28.6%
-  5    Senegal vs Iraq                               2.7 - 0.6 2- 0  82.2%  12.2%   5.6%
-  6    Norway vs Iraq                                2.4 - 0.7 2- 0  76.6%  15.3%   8.1%
+  1    France vs Senegal                             1.7 - 1.0 1- 0  54.3%  24.4%  21.4%
+  2    France vs Norway                              1.7 - 1.0 1- 1  54.8%  24.8%  20.4%
+  3    France vs Iraq                                2.3 - 0.7 2- 0  71.5%  17.8%  10.7%
+  4    Senegal vs Norway                             1.3 - 1.3 1- 1  37.5%  26.2%  36.3%
+  5    Senegal vs Iraq                               1.7 - 1.0 1- 0  54.9%  23.8%  21.3%
+  6    Norway vs Iraq                                1.7 - 1.0 1- 0  53.8%  23.6%  22.5%
 
   ========================= GRUPO J =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Argentina vs Algeria                          2.0 - 0.8 2- 0  65.4%  20.1%  14.5%
-  2    Argentina vs Austria                          2.4 - 0.7 2- 0  76.3%  15.6%   8.2%
-  3    Argentina vs Jordan                           4.1 - 0.4 4- 0  95.6%   3.5%   0.9%
-  4    Algeria vs Austria                            1.5 - 1.1 1- 1  48.3%  25.6%  26.2%
-  5    Algeria vs Jordan                             2.6 - 0.6 2- 0  81.0%  12.8%   6.2%
-  6    Austria vs Jordan                             2.2 - 0.8 2- 0  69.7%  18.5%  11.8%
+  1    Argentina vs Algeria                          1.7 - 1.0 1- 0  56.0%  23.6%  20.4%
+  2    Argentina vs Austria                          1.8 - 0.9 1- 0  59.5%  21.8%  18.7%
+  3    Argentina vs Jordan                           2.2 - 0.7 2- 0  71.0%  18.1%  10.9%
+  4    Algeria vs Austria                            1.4 - 1.2 1- 1  40.3%  26.3%  33.3%
+  5    Algeria vs Jordan                             1.7 - 1.0 1- 0  55.0%  23.5%  21.5%
+  6    Austria vs Jordan                             1.6 - 1.0 1- 1  50.0%  24.9%  25.1%
 
   ========================= GRUPO K =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    Portugal vs Uzbekistan                        2.5 - 0.7 2- 0  77.6%  14.2%   8.2%
-  2    Portugal vs Colombia                          1.6 - 1.0 1- 1  49.7%  25.2%  25.1%
-  3    Portugal vs DR Congo                          2.2 - 0.8 2- 0  70.3%  18.4%  11.2%
-  4    Uzbekistan vs Colombia                        0.8 - 2.0 0- 2  14.4%  20.1%  65.5%
-  5    Uzbekistan vs DR Congo                        1.1 - 1.5 1- 1  29.0%  25.8%  45.2%
-  6    Colombia vs DR Congo                          1.8 - 0.9 1- 0  58.9%  22.7%  18.4%
+  1    Portugal vs Uzbekistan                        1.8 - 0.9 1- 0  57.4%  23.2%  19.4%
+  2    Portugal vs Colombia                          1.3 - 1.2 1- 1  39.6%  26.0%  34.3%
+  3    Portugal vs DR Congo                          1.7 - 0.9 1- 1  56.0%  23.8%  20.2%
+  4    Uzbekistan vs Colombia                        1.0 - 1.7 0- 1  22.2%  24.0%  53.8%
+  5    Uzbekistan vs DR Congo                        1.2 - 1.3 1- 1  34.9%  26.5%  38.5%
+  6    Colombia vs DR Congo                          1.6 - 1.0 1- 1  52.4%  24.9%  22.7%
 
   ========================= GRUPO L =========================
   #    Partido                                              Pron    Moda      1      X      2
   ------------------------------------------------------------------------------------------
-  1    England vs Croatia                            2.2 - 0.7 2- 0  69.9%  18.9%  11.2%
-  2    England vs Ghana                              4.1 - 0.4 4- 0  95.4%   3.7%   0.9%
-  3    England vs Panama                             3.4 - 0.5 3- 0  90.5%   7.3%   2.2%
-  4    Croatia vs Ghana                              2.4 - 0.7 2- 0  75.8%  15.2%   9.0%
-  5    Croatia vs Panama                             2.0 - 0.8 2- 0  66.7%  19.9%  13.4%
-  6    Ghana vs Panama                               1.1 - 1.5 1- 1  26.8%  25.9%  47.3%
+  1    England vs Croatia                            1.6 - 1.0 1- 1  50.4%  25.0%  24.6%
+  2    England vs Ghana                              2.3 - 0.7 2- 0  71.7%  17.6%  10.7%
+  3    England vs Panama                             1.9 - 0.9 1- 0  62.4%  21.3%  16.3%
+  4    Croatia vs Ghana                              1.8 - 0.9 1- 0  59.2%  22.2%  18.6%
+  5    Croatia vs Panama                             1.6 - 1.0 1- 1  49.1%  25.9%  25.0%
+  6    Ghana vs Panama                               1.1 - 1.5 1- 1  28.0%  26.1%  45.9%
 
 
 
@@ -138,98 +139,98 @@
   ========================= GRUPO A =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Mexico                      6.6    6.3    2.4   +3.9   64.2%   25.1%    8.4%    2.3%    89.3% << 1ro
-  2     South Korea                 4.9    4.6    3.5   +1.1   25.6%   42.1%   22.2%   10.0%    67.8% << 2do
-  3     Czech Republic              3.1    3.2    4.9   -1.7    7.4%   21.4%   39.7%   31.5%    28.8% (3ro)
-  4     South Africa                2.1    2.6    6.0   -3.4    2.8%   11.3%   29.7%   56.3%    14.1%
+  1     Mexico                      5.5    5.0    3.0   +2.1   47.5%   27.2%   16.3%    9.0%    74.7% << 1ro
+  2     South Korea                 4.5    4.1    3.6   +0.5   26.8%   30.9%   23.9%   18.4%    57.7% << 2do
+  3     Czech Republic              3.6    3.5    4.3   -0.8   15.6%   23.9%   31.0%   29.5%    39.5% (3ro)
+  4     South Africa                2.9    3.1    4.8   -1.8   10.1%   18.0%   28.8%   43.0%    28.1%
 
   ========================= GRUPO B =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Canada                      7.0    8.5    2.2   +6.3   51.6%   45.7%    2.5%    0.1%    97.4% << 1ro
-  2     Switzerland                 6.9    8.3    2.3   +6.0   47.9%   49.2%    2.6%    0.3%    97.1% << 2do
-  3     Bosnia and Herzegovina      2.1    2.6    7.5   -4.9    0.4%    3.9%   61.6%   34.2%     4.3% (3ro)
-  4     Qatar                       1.2    1.9    9.3   -7.4    0.1%    1.2%   33.3%   65.4%     1.3%
+  1     Switzerland                 5.7    5.4    2.9   +2.5   43.5%   36.3%   14.9%    5.3%    79.8% << 1ro
+  2     Canada                      5.8    5.4    2.9   +2.5   45.1%   34.5%   15.0%    5.4%    79.6% << 2do
+  3     Bosnia and Herzegovina      2.8    3.1    5.1   -2.1    6.5%   17.2%   37.5%   38.8%    23.7% (3ro)
+  4     Qatar                       2.3    2.7    5.7   -2.9    4.8%   12.1%   32.6%   50.5%    16.9%
 
   ========================= GRUPO C =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Morocco                     6.9    7.4    2.3   +5.1   56.8%   37.6%    5.0%    0.6%    94.4% << 1ro
-  2     Brazil                      6.3    6.6    2.6   +3.9   41.0%   50.0%    7.7%    1.3%    91.0% << 2do
-  3     Scotland                    2.2    2.7    6.6   -3.9    1.4%    7.7%   51.0%   40.0%     9.0% (3ro)
-  4     Haiti                       1.6    2.3    7.4   -5.1    0.8%    4.7%   36.3%   58.1%     5.6%
+  1     Brazil                      5.6    5.1    3.0   +2.2   44.0%   32.0%   17.0%    7.0%    76.0% << 1ro
+  2     Morocco                     5.4    5.0    3.1   +1.9   39.8%   33.4%   18.8%    8.0%    73.2% << 2do
+  3     Scotland                    3.3    3.4    4.6   -1.2   11.6%   21.8%   35.8%   30.8%    33.4% (3ro)
+  4     Haiti                       2.3    2.7    5.6   -2.8    4.7%   12.7%   28.4%   54.2%    17.4%
 
   ========================= GRUPO D =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Turkey                      5.7    5.2    2.9   +2.3   50.6%   26.3%   15.1%    7.9%    76.9% << 1ro
-  2     United States               4.1    3.9    3.9   +0.0   22.2%   28.8%   26.9%   22.1%    51.0% << 2do
-  3     Australia                   3.8    3.7    4.1   -0.4   18.3%   26.4%   29.1%   26.2%    44.7% (3ro)
-  4     Paraguay                    2.9    3.0    4.9   -1.9    9.0%   18.4%   28.9%   43.7%    27.4%
+  1     Turkey                      4.7    4.3    3.4   +0.9   34.6%   26.6%   21.7%   17.0%    61.3% << 1ro
+  2     United States               4.2    3.9    3.8   +0.1   25.1%   26.1%   25.4%   23.4%    51.2% << 2do
+  3     Paraguay                    3.8    3.6    4.1   -0.5   20.3%   23.6%   26.2%   29.9%    43.9% (3ro)
+  4     Australia                   3.8    3.6    4.1   -0.5   20.0%   23.7%   26.7%   29.7%    43.7%
 
   ========================= GRUPO E =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Germany                     6.4    6.9    2.5   +4.4   52.7%   29.9%   16.8%    0.6%    82.6% << 1ro
-  2     Ecuador                     5.3    5.6    3.2   +2.4   27.5%   36.5%   33.7%    2.2%    64.1% << 2do
-  3     Ivory Coast                 4.8    5.0    3.6   +1.4   19.8%   32.8%   43.4%    4.0%    52.6% (3ro)
-  4     Curaçao                     0.5    1.5    9.7   -8.2    0.0%    0.7%    6.1%   93.2%     0.8%
+  1     Germany                     5.5    5.1    3.0   +2.1   42.7%   31.1%   19.1%    7.1%    73.8% << 1ro
+  2     Ecuador                     5.2    4.9    3.2   +1.6   35.3%   32.9%   23.0%    8.8%    68.2% << 2do
+  3     Ivory Coast                 4.1    3.9    4.0   -0.1   18.9%   27.0%   34.7%   19.4%    45.9% (3ro)
+  4     Curaçao                     1.9    2.4    6.1   -3.7    3.1%    8.9%   23.2%   64.8%    12.1%
 
   ========================= GRUPO F =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Japan                       6.7    6.9    2.4   +4.5   53.8%   38.9%    6.3%    1.0%    92.7% << 1ro
-  2     Netherlands                 6.3    6.5    2.6   +3.8   43.5%   46.9%    8.0%    1.5%    90.5% << 2do
-  3     Sweden                      2.1    2.6    6.6   -4.1    1.4%    7.4%   43.8%   47.4%     8.8% (3ro)
-  4     Tunisia                     2.0    2.5    6.7   -4.2    1.2%    6.8%   41.9%   50.1%     8.0%
+  1     Netherlands                 5.4    4.9    3.0   +1.9   40.7%   32.9%   17.8%    8.5%    73.6% << 1ro
+  2     Japan                       5.3    4.9    3.1   +1.8   40.9%   31.8%   18.1%    9.2%    72.8% << 2do
+  3     Sweden                      3.1    3.2    4.8   -1.6   10.2%   18.7%   33.2%   37.9%    28.8% (3ro)
+  4     Tunisia                     2.8    3.0    5.1   -2.1    8.2%   16.6%   30.9%   44.3%    24.8%
 
   ========================= GRUPO G =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Belgium                     6.5    6.4    2.5   +3.9   59.7%   26.4%   11.8%    2.1%    86.1% << 1ro
-  2     Egypt                       4.7    4.6    3.6   +0.9   22.7%   35.9%   32.6%    8.9%    58.5% << 2do
-  3     Iran                        4.3    4.3    3.9   +0.3   16.7%   32.9%   38.6%   11.8%    49.6% (3ro)
-  4     New Zealand                 1.3    2.1    7.2   -5.2    1.0%    4.8%   17.0%   77.2%     5.8%
+  1     Belgium                     5.3    4.8    3.1   +1.8   42.3%   29.0%   19.2%    9.5%    71.3% << 1ro
+  2     Iran                        4.3    4.1    3.8   +0.3   25.6%   27.9%   27.3%   19.2%    53.5% << 2do
+  3     Egypt                       4.3    4.0    3.8   +0.2   24.7%   28.2%   27.8%   19.3%    52.9% (3ro)
+  4     New Zealand                 2.6    2.9    5.2   -2.3    7.4%   14.9%   25.7%   52.0%    22.3%
 
   ========================= GRUPO H =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Spain                       8.6   14.7    1.1  +13.6   95.4%    4.6%    0.0%    0.0%   100.0% << 1ro
-  2     Uruguay                     5.3    5.8    4.2   +1.6    4.6%   83.9%    9.8%    1.7%    88.5% << 2do
-  3     Saudi Arabia                1.8    2.2    9.7   -7.5    0.0%    5.9%   46.3%   47.7%     5.9% (3ro)
-  4     Cape Verde                  1.7    2.2    9.9   -7.7    0.0%    5.6%   43.9%   50.5%     5.6%
+  1     Spain                       7.2    7.3    2.1   +5.2   74.0%   20.7%    4.4%    0.9%    94.8% << 1ro
+  2     Uruguay                     4.9    4.7    3.6   +1.1   20.5%   49.3%   21.4%    8.8%    69.7% << 2do
+  3     Saudi Arabia                2.6    2.9    5.7   -2.9    3.4%   16.6%   39.0%   41.0%    20.0% (3ro)
+  4     Cape Verde                  2.2    2.7    6.1   -3.4    2.1%   13.4%   35.2%   49.3%    15.5%
 
   ========================= GRUPO I =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     France                      7.2    8.1    2.1   +6.0   72.1%   21.0%    6.7%    0.3%    93.1% << 1ro
-  2     Senegal                     5.0    5.1    3.6   +1.5   18.0%   45.8%   32.4%    3.8%    63.8% << 2do
-  3     Norway                      4.1    4.3    4.3   +0.0    9.8%   31.5%   50.8%    7.9%    41.3% (3ro)
-  4     Iraq                        0.8    1.7    9.2   -7.6    0.1%    1.7%   10.1%   88.0%     1.8%
+  1     France                      6.1    5.7    2.6   +3.0   56.8%   25.6%   13.0%    4.6%    82.4% << 1ro
+  2     Senegal                     4.2    4.0    3.9   +0.0   19.2%   31.5%   30.1%   19.1%    50.8% << 2do
+  3     Norway                      4.1    3.9    4.0   -0.1   18.9%   29.7%   31.1%   20.2%    48.6% (3ro)
+  4     Iraq                        2.3    2.7    5.6   -3.0    5.0%   13.1%   25.8%   56.1%    18.2%
 
   ========================= GRUPO J =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Argentina                   7.5    8.6    1.9   +6.7   78.6%   17.6%    3.6%    0.2%    96.2% << 1ro
-  2     Algeria                     4.9    5.0    3.7   +1.3   15.3%   50.1%   30.3%    4.3%    65.4% << 2do
-  3     Austria                     3.7    3.9    4.7   -0.9    6.0%   29.3%   52.5%   12.3%    35.3% (3ro)
-  4     Jordan                      0.9    1.8    8.9   -7.2    0.1%    3.0%   13.7%   83.2%     3.1%
+  1     Argentina                   6.2    5.8    2.6   +3.2   59.5%   24.6%   11.6%    4.2%    84.2% << 1ro
+  2     Algeria                     4.2    4.0    3.9   +0.1   20.2%   32.8%   28.5%   18.5%    53.0% << 2do
+  3     Austria                     3.8    3.7    4.2   -0.5   15.3%   28.0%   32.2%   24.5%    43.3% (3ro)
+  4     Jordan                      2.4    2.7    5.5   -2.8    5.0%   14.6%   27.7%   52.7%    19.6%
 
   ========================= GRUPO K =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     Portugal                    6.5    6.2    2.5   +3.8   61.2%   27.1%    9.4%    2.3%    88.2% << 1ro
-  2     Colombia                    5.2    4.9    3.3   +1.6   29.3%   43.1%   20.0%    7.7%    72.4% << 2do
-  3     DR Congo                    2.9    3.1    5.1   -2.0    6.3%   18.4%   40.2%   35.2%    24.7% (3ro)
-  4     Uzbekistan                  2.1    2.6    5.9   -3.3    3.3%   11.4%   30.4%   54.9%    14.7%
+  1     Portugal                    5.3    4.9    3.1   +1.8   42.0%   29.8%   18.4%    9.8%    71.8% << 1ro
+  2     Colombia                    5.0    4.5    3.3   +1.2   35.3%   30.8%   20.8%   13.0%    66.2% << 2do
+  3     DR Congo                    3.2    3.2    4.6   -1.4   11.8%   20.7%   30.6%   36.9%    32.5% (3ro)
+  4     Uzbekistan                  3.0    3.2    4.8   -1.6   10.9%   18.7%   30.1%   40.3%    29.5%
 
   ========================= GRUPO L =========================
   Pos   Equipo                       Pts     GF     GC      GD     1ro     2do     3ro     4to   Clasif
   ----------------------------------------------------------------------------------------------------
-  1     England                     8.0    9.7    1.6   +8.1   86.3%   12.8%    0.8%    0.1%    99.1% << 1ro
-  2     Croatia                     5.2    5.2    3.7   +1.6   12.6%   66.7%   16.7%    4.0%    79.3% << 2do
-  3     Panama                      2.4    2.8    6.5   -3.7    0.8%   13.8%   51.4%   34.0%    14.6% (3ro)
-  4     Ghana                       1.5    2.1    8.0   -5.9    0.2%    6.8%   31.1%   61.9%     7.1%
+  1     England                     6.2    5.8    2.6   +3.1   57.5%   26.6%   11.4%    4.5%    84.1% << 1ro
+  2     Croatia                     4.7    4.4    3.5   +0.9   26.3%   36.5%   24.3%   12.9%    62.8% << 2do
+  3     Panama                      3.3    3.4    4.6   -1.2   10.9%   22.9%   36.6%   29.6%    33.7% (3ro)
+  4     Ghana                       2.4    2.7    5.6   -2.8    5.4%   14.0%   27.7%   52.9%    19.4%
 
 
 
@@ -239,18 +240,18 @@
 
   Grupo   1ro                        Prob 1ro 2do                        Prob 2do 3ro                      
   ---------------------------------------------------------------------------------------------------------
-  A       Mexico                        64.2% South Korea                   42.1% Czech Republic           
-  B       Canada                        51.6% Switzerland                   49.2% Bosnia and Herzegovina   
-  C       Morocco                       56.8% Brazil                        50.0% Scotland                 
-  D       Turkey                        50.6% United States                 28.8% Australia                
-  E       Germany                       52.7% Ecuador                       36.5% Ivory Coast              
-  F       Japan                         53.8% Netherlands                   46.9% Sweden                   
-  G       Belgium                       59.7% Egypt                         35.9% Iran                     
-  H       Spain                         95.4% Uruguay                       83.9% Saudi Arabia             
-  I       France                        72.1% Senegal                       45.8% Norway                   
-  J       Argentina                     78.6% Algeria                       50.1% Austria                  
-  K       Portugal                      61.2% Colombia                      43.1% DR Congo                 
-  L       England                       86.3% Croatia                       66.7% Panama                   
+  A       Mexico                        47.5% South Korea                   30.9% Czech Republic           
+  B       Switzerland                   43.5% Canada                        34.5% Bosnia and Herzegovina   
+  C       Brazil                        44.0% Morocco                       33.4% Scotland                 
+  D       Turkey                        34.6% United States                 26.1% Paraguay                 
+  E       Germany                       42.7% Ecuador                       32.9% Ivory Coast              
+  F       Netherlands                   40.7% Japan                         31.8% Sweden                   
+  G       Belgium                       42.3% Iran                          27.9% Egypt                    
+  H       Spain                         74.0% Uruguay                       49.3% Saudi Arabia             
+  I       France                        56.8% Senegal                       31.5% Norway                   
+  J       Argentina                     59.5% Algeria                       32.8% Austria                  
+  K       Portugal                      42.0% Colombia                      30.8% DR Congo                 
+  L       England                       57.5% Croatia                       36.5% Panama                   
 
 
 
@@ -260,18 +261,18 @@
 
   #    Grupo   Equipo                     Pts prom   GD prom   GF prom  Prob 3ro  Clasifica
   -------------------------------------------------------------------------------------
-  1    E       Ivory Coast                    4.8     +1.4      5.0     43.4%      >> SI
-  2    G       Iran                           4.3     +0.3      4.3     38.6%      >> SI
-  3    I       Norway                         4.1     +0.0      4.3     50.8%      >> SI
-  4    D       Australia                      3.8     -0.4      3.7     29.1%      >> SI
-  5    J       Austria                        3.7     -0.9      3.9     52.5%      >> SI
-  6    A       Czech Republic                 3.1     -1.7      3.2     39.7%      >> SI
-  7    K       DR Congo                       2.9     -2.0      3.1     40.2%      >> SI
-  8    L       Panama                         2.4     -3.7      2.8     51.4%      >> SI
-  9    C       Scotland                       2.2     -3.9      2.7     51.0%      >> NO
-  10   B       Bosnia and Herzegovina         2.1     -4.9      2.6     61.6%      >> NO
-  11   F       Sweden                         2.1     -4.1      2.6     43.8%      >> NO
-  12   H       Saudi Arabia                   1.8     -7.5      2.2     46.3%      >> NO
+  1    G       Egypt                          4.3     +0.2      4.0     27.8%      >> SI
+  2    I       Norway                         4.1     -0.1      3.9     31.1%      >> SI
+  3    E       Ivory Coast                    4.1     -0.1      3.9     34.7%      >> SI
+  4    J       Austria                        3.8     -0.5      3.7     32.2%      >> SI
+  5    D       Paraguay                       3.8     -0.5      3.6     26.2%      >> SI
+  6    A       Czech Republic                 3.6     -0.8      3.5     31.0%      >> SI
+  7    L       Panama                         3.3     -1.2      3.4     36.6%      >> SI
+  8    C       Scotland                       3.3     -1.2      3.4     35.8%      >> SI
+  9    K       DR Congo                       3.2     -1.4      3.2     30.6%      >> NO
+  10   F       Sweden                         3.1     -1.6      3.2     33.2%      >> NO
+  11   B       Bosnia and Herzegovina         2.8     -2.1      3.1     37.5%      >> NO
+  12   H       Saudi Arabia                   2.6     -2.9      2.9     39.0%      >> NO
 
 
 
@@ -282,55 +283,55 @@
   --- RONDA DE 32 (16 partidos) ---
   #    Partido                                            Avanza                    Prob  Lambda H  Lambda A
   ---------------------------------------------------------------------------------------------------------
-  1    Mexico vs Ivory Coast                              Mexico                   58.7%     1.45     1.14
-  2    Ecuador vs Netherlands                             Netherlands              59.4%     1.13     1.46
-  3    Canada vs Iran                                     Canada                   67.5%     1.64     1.00
-  4    Germany vs Croatia                                 Germany                  72.2%     1.77     0.93
-  5    Belgium vs Norway                                  Norway                   50.7%     1.27     1.30
-  6    Senegal vs Algeria                                 Senegal                  61.0%     1.49     1.10
-  7    Spain vs Australia                                 Spain                    96.5%     3.47     0.48
-  8    Japan vs Colombia                                  Japan                    59.8%     1.47     1.12
-  9    Morocco vs Austria                                 Morocco                  83.3%     2.16     0.76
-  10   South Korea vs Switzerland                         Switzerland              61.5%     1.10     1.50
-  11   Turkey vs Czech Republic                           Turkey                   80.9%     2.06     0.80
-  12   Egypt vs Uruguay                                   Uruguay                  61.0%     1.10     1.49
-  13   France vs DR Congo                                 France                   94.0%     2.97     0.55
-  14   Portugal vs United States                          Portugal                 80.9%     2.06     0.80
-  15   Argentina vs Panama                                Argentina                97.2%     3.72     0.44
-  16   England vs Brazil                                  England                  60.1%     1.47     1.12
+  1    Mexico vs Egypt                                    Mexico                   63.7%     1.55     1.06
+  2    Ecuador vs Japan                                   Japan                    51.3%     1.26     1.31
+  3    Switzerland vs Norway                              Switzerland              51.0%     1.30     1.27
+  4    Germany vs Croatia                                 Germany                  61.3%     1.50     1.10
+  5    Belgium vs Ivory Coast                             Belgium                  58.9%     1.45     1.14
+  6    Senegal vs Algeria                                 Senegal                  52.5%     1.33     1.24
+  7    Spain vs Austria                                   Spain                    79.7%     2.01     0.82
+  8    Netherlands vs Colombia                            Colombia                 51.5%     1.26     1.31
+  9    Brazil vs Paraguay                                 Brazil                   70.9%     1.73     0.95
+  10   South Korea vs Canada                              Canada                   57.6%     1.16     1.43
+  11   Turkey vs Czech Republic                           Turkey                   67.1%     1.63     1.01
+  12   Iran vs Uruguay                                    Uruguay                  59.6%     1.13     1.46
+  13   France vs Panama                                   France                   84.1%     2.20     0.75
+  14   Portugal vs United States                          Portugal                 64.7%     1.57     1.05
+  15   Argentina vs Scotland                              Argentina                77.1%     1.92     0.86
+  16   England vs Morocco                                 England                  51.7%     1.31     1.25
 
   --- OCTAVOS DE FINAL (8 partidos) ---
   #    Partido                                            Avanza                    Prob  Lambda H  Lambda A
   ---------------------------------------------------------------------------------------------------------
-  1    Mexico vs Netherlands                              Netherlands              56.8%     1.17     1.41
-  2    Canada vs Germany                                  Germany                  66.1%     1.03     1.61
-  3    Norway vs Senegal                                  Senegal                  59.7%     1.12     1.47
-  4    Spain vs Japan                                     Spain                    84.3%     2.21     0.75
-  5    Morocco vs Switzerland                             Morocco                  77.8%     1.94     0.85
-  6    Turkey vs Uruguay                                  Turkey                   55.6%     1.39     1.19
-  7    France vs Portugal                                 France                   71.6%     1.75     0.94
-  8    Argentina vs England                               Argentina                55.8%     1.39     1.19
+  1    Mexico vs Japan                                    Japan                    50.2%     1.28     1.29
+  2    Switzerland vs Germany                             Germany                  57.2%     1.16     1.42
+  3    Belgium vs Senegal                                 Belgium                  50.3%     1.29     1.28
+  4    Spain vs Colombia                                  Spain                    69.3%     1.69     0.98
+  5    Brazil vs Canada                                   Brazil                   61.8%     1.51     1.09
+  6    Turkey vs Uruguay                                  Turkey                   50.1%     1.29     1.28
+  7    France vs Portugal                                 France                   62.3%     1.52     1.08
+  8    Argentina vs England                               Argentina                56.7%     1.41     1.17
 
   --- CUARTOS DE FINAL (4 partidos) ---
   #    Partido                                            Avanza                    Prob  Lambda H  Lambda A
   ---------------------------------------------------------------------------------------------------------
-  1    Netherlands vs Germany                             Germany                  53.6%     1.22     1.35
-  2    Senegal vs Spain                                   Spain                    84.8%     0.74     2.24
-  3    Morocco vs Turkey                                  Morocco                  75.0%     1.85     0.89
-  4    France vs Argentina                                France                   56.5%     1.40     1.17
+  1    Japan vs Germany                                   Germany                  51.4%     1.26     1.31
+  2    Belgium vs Spain                                   Spain                    75.4%     0.89     1.86
+  3    Brazil vs Turkey                                   Brazil                   63.0%     1.54     1.07
+  4    France vs Argentina                                France                   53.4%     1.34     1.23
 
   --- SEMIFINALES (2 partidos) ---
   #    Partido                                            Avanza                    Prob  Lambda H  Lambda A
   ---------------------------------------------------------------------------------------------------------
-  1    Germany vs Spain                                   Spain                    84.3%     0.75     2.21
-  2    Morocco vs France                                  France                   64.7%     1.05     1.57
+  1    Germany vs Spain                                   Spain                    69.1%     0.98     1.68
+  2    Brazil vs France                                   France                   59.7%     1.12     1.47
 
   --- FINAL ---
   ---------------------------------------------------------------------------------------------------------
   Spain vs France
-  Lambda Spain: 1.52  |  Lambda France: 1.09
+  Lambda Spain: 1.38  |  Lambda France: 1.19
 
-  *** CAMPEON: Spain (62.2%) ***
+  *** CAMPEON: Spain (55.4%) ***
   Subcampeon: France
 
 
@@ -342,40 +343,40 @@
   RONDA 32              OCTAVOS              CUARTOS         SEMIS          FINAL
 
   Mexico               ---+
-  Ivory Coast             |--- Mexico           ---+
+  Egypt                   |--- Mexico           ---+
   Ecuador              ---+                       |
-  Netherlands                                     |--- Netherlands    ---+
-  Canada               ---+                       |                       |
-  Iran                    |--- Canada           ---+                       |
+  Japan                                           |--- Japan          ---+
+  Switzerland          ---+                       |                       |
+  Norway                  |--- Switzerland      ---+                       |
   Germany              ---+                                               |
   Croatia                                                                 |--- Germany      ---+
   Belgium              ---+                                               |                       |
-  Norway                  |--- Norway           ---+                       |                       |
+  Ivory Coast             |--- Belgium          ---+                       |                       |
   Senegal              ---+                       |                       |                       |
-  Algeria                                         |--- Senegal        ---+                       |
+  Algeria                                         |--- Belgium        ---+                       |
   Spain                ---+                       |                                               |
-  Australia               |--- Spain            ---+                                               |
-  Japan                ---+                                                                       |
+  Austria                 |--- Spain            ---+                                               |
+  Netherlands          ---+                                                                       |
   Colombia                                                                                        |
                                                                                               |
                                                                              CAMPEON: Spain
                                                                                               |
-  Morocco              ---+                                                                       |
-  Austria                 |--- Morocco          ---+                                               |
+  Brazil               ---+                                                                       |
+  Paraguay                |--- Brazil           ---+                                               |
   South Korea          ---+                       |                                               |
-  Switzerland                                     |--- Morocco        ---+                       |
+  Canada                                          |--- Brazil         ---+                       |
   Turkey               ---+                       |                       |                       |
   Czech Republic          |--- Turkey           ---+                       |                       |
-  Egypt                ---+                                               |--- Morocco      ---+
+  Iran                 ---+                                               |--- Brazil       ---+
   Uruguay                                                                 |
   France               ---+                                               |
-  DR Congo                |--- France           ---+                       |
+  Panama                  |--- France           ---+                       |
   Portugal             ---+                       |                       |
   United States                                   |--- France         ---+
   Argentina            ---+                       |
-  Panama                  |--- Argentina        ---+
+  Scotland                |--- Argentina        ---+
   England              ---+
-  Brazil              
+  Morocco             
 
 
 
@@ -386,93 +387,93 @@
   --- Goles por grupo (promedios de 10,000 simulaciones) ---
   Grupo    Goles totales  Goles/partido Goleador del grupo         GF prom
   ---------------------------------------------------------------------------
-  A                16.8           2.8 Mexico                        6.3
-  B                21.3           3.5 Canada                        8.5
-  C                18.9           3.1 Morocco                       7.4
-  D                15.8           2.6 Turkey                        5.2
-  E                19.1           3.2 Germany                       6.9
-  F                18.4           3.1 Japan                         6.9
-  G                17.3           2.9 Belgium                       6.4
-  H                24.9           4.2 Spain                        14.7
-  I                19.2           3.2 France                        8.1
-  J                19.2           3.2 Argentina                     8.6
-  K                16.8           2.8 Portugal                      6.2
-  L                19.9           3.3 England                       9.7
+  A                15.8           2.6 Mexico                        5.0
+  B                16.6           2.8 Canada                        5.4
+  C                16.3           2.7 Brazil                        5.1
+  D                15.4           2.6 Turkey                        4.3
+  E                16.4           2.7 Germany                       5.1
+  F                16.0           2.7 Japan                         4.9
+  G                15.8           2.6 Belgium                       4.8
+  H                17.5           2.9 Spain                         7.3
+  I                16.2           2.7 France                        5.7
+  J                16.2           2.7 Argentina                     5.8
+  K                15.8           2.6 Portugal                      4.9
+  L                16.3           2.7 England                       5.8
 
-  Total goles fase de grupos: 228
-  Promedio goles/partido (grupos): 3.16
-  Grupo con mas goles: H (24.9)
-  Grupo con menos goles: D (15.8)
+  Total goles fase de grupos: 194
+  Promedio goles/partido (grupos): 2.70
+  Grupo con mas goles: H (17.5)
+  Grupo con menos goles: D (15.4)
 
   --- Top 10 partidos mas desequilibrados ---
   #    Partido                                       Prob favorito         Pron
   ------------------------------------------------------------------------------
-  1    Spain vs Saudi Arabia (Gr.H)                          99.2% 5.9 - 0.3
-  2    Spain vs Cape Verde (Gr.H)                            99.2% 5.9 - 0.3
-  3    Argentina vs Jordan (Gr.J)                            95.6% 4.1 - 0.4
-  4    England vs Ghana (Gr.L)                               95.4% 4.1 - 0.4
-  5    France vs Iraq (Gr.I)                                 94.5% 4.0 - 0.4
-  6    Canada vs Qatar (Gr.B)                                94.1% 3.9 - 0.4
-  7    Switzerland vs Qatar (Gr.B)                           93.7% 3.9 - 0.4
-  8    Germany vs Curaçao (Gr.E)                             92.6% 3.7 - 0.4
-  9    England vs Panama (Gr.L)                              90.5% 3.4 - 0.5
-  10   Canada vs Bosnia and Herzegovina (Gr.B)               88.9% 3.2 - 0.5
+  1    Spain vs Cape Verde (Gr.H)                            82.1% 2.8 - 0.6
+  2    Spain vs Saudi Arabia (Gr.H)                          80.3% 2.7 - 0.6
+  3    England vs Ghana (Gr.L)                               71.7% 2.3 - 0.7
+  4    France vs Iraq (Gr.I)                                 71.5% 2.3 - 0.7
+  5    Argentina vs Jordan (Gr.J)                            71.0% 2.2 - 0.7
+  6    Germany vs Curaçao (Gr.E)                             70.4% 2.2 - 0.7
+  7    Switzerland vs Qatar (Gr.B)                           68.8% 2.1 - 0.8
+  8    Canada vs Qatar (Gr.B)                                68.6% 2.1 - 0.8
+  9    Curaçao vs Ecuador (Gr.E)                             67.9% 0.8 - 2.1
+  10   Brazil vs Haiti (Gr.C)                                66.0% 2.1 - 0.8
 
   --- Top 10 partidos mas parejos ---
   #    Partido                                            1      X      2
   ------------------------------------------------------------------------
-  1    Tunisia vs Sweden (Gr.F)                       35.6%  26.4%  38.0%
-  2    Cape Verde vs Saudi Arabia (Gr.H)              35.7%  26.1%  38.2%
-  3    Canada vs Switzerland (Gr.B)                   37.6%  27.4%  35.0%
-  4    United States vs Australia (Gr.D)              39.9%  26.6%  33.5%
-  5    Netherlands vs Japan (Gr.F)                    33.2%  26.5%  40.3%
-  6    Egypt vs Iran (Gr.G)                           40.2%  27.0%  32.8%
-  7    Ivory Coast vs Ecuador (Gr.E)                  31.6%  27.6%  40.8%
-  8    Brazil vs Morocco (Gr.C)                       31.4%  26.2%  42.4%
-  9    Haiti vs Scotland (Gr.C)                       30.4%  25.9%  43.7%
-  10   Paraguay vs Australia (Gr.D)                   29.1%  25.7%  45.2%
+  1    Paraguay vs Australia (Gr.D)                   36.8%  26.0%  37.2%
+  2    Canada vs Switzerland (Gr.B)                   36.9%  26.7%  36.4%
+  3    Egypt vs Iran (Gr.G)                           36.4%  26.3%  37.3%
+  4    Senegal vs Norway (Gr.I)                       37.5%  26.2%  36.3%
+  5    Netherlands vs Japan (Gr.F)                    37.7%  26.4%  36.0%
+  6    Uzbekistan vs DR Congo (Gr.K)                  34.9%  26.5%  38.5%
+  7    Brazil vs Morocco (Gr.C)                       38.4%  27.1%  34.6%
+  8    Tunisia vs Sweden (Gr.F)                       34.8%  25.3%  39.9%
+  9    Portugal vs Colombia (Gr.K)                    39.6%  26.0%  34.3%
+  10   Germany vs Ecuador (Gr.E)                      39.3%  26.8%  33.9%
 
   --- Top 10 partidos con mayor probabilidad de empate ---
   #    Partido                                         Empate         Pron
   ------------------------------------------------------------------------
-  1    Ivory Coast vs Ecuador (Gr.E)                    27.6% 1.2 - 1.4
-  2    Canada vs Switzerland (Gr.B)                     27.4% 1.3 - 1.3
-  3    Egypt vs Iran (Gr.G)                             27.0% 1.4 - 1.2
-  4    United States vs Australia (Gr.D)                26.6% 1.3 - 1.2
-  5    Netherlands vs Japan (Gr.F)                      26.5% 1.2 - 1.4
-  6    Tunisia vs Sweden (Gr.F)                         26.4% 1.3 - 1.3
-  7    Brazil vs Morocco (Gr.C)                         26.2% 1.2 - 1.4
-  8    Cape Verde vs Saudi Arabia (Gr.H)                26.1% 1.3 - 1.3
-  9    Senegal vs Norway (Gr.I)                         26.1% 1.5 - 1.1
-  10   Haiti vs Scotland (Gr.C)                         25.9% 1.2 - 1.4
+  1    Brazil vs Morocco (Gr.C)                         27.1% 1.3 - 1.2
+  2    United States vs Paraguay (Gr.D)                 26.8% 1.4 - 1.2
+  3    Germany vs Ecuador (Gr.E)                        26.8% 1.3 - 1.2
+  4    United States vs Turkey (Gr.D)                   26.7% 1.2 - 1.4
+  5    United States vs Australia (Gr.D)                26.7% 1.3 - 1.2
+  6    Cape Verde vs Saudi Arabia (Gr.H)                26.7% 1.2 - 1.4
+  7    Canada vs Switzerland (Gr.B)                     26.7% 1.3 - 1.3
+  8    Haiti vs Scotland (Gr.C)                         26.6% 1.1 - 1.5
+  9    Uzbekistan vs DR Congo (Gr.K)                    26.5% 1.2 - 1.3
+  10   Paraguay vs Turkey (Gr.D)                        26.5% 1.1 - 1.4
 
   --- Top 10 partidos con mas goles esperados ---
   #    Partido                                        Goles esp         Pron
   ---------------------------------------------------------------------------
-  1    Spain vs Cape Verde (Gr.H)                          6.2 5.9 - 0.3
-  2    Spain vs Saudi Arabia (Gr.H)                        6.2 5.9 - 0.3
-  3    Argentina vs Jordan (Gr.J)                          4.5 4.1 - 0.4
-  4    England vs Ghana (Gr.L)                             4.5 4.1 - 0.4
-  5    France vs Iraq (Gr.I)                               4.4 4.0 - 0.4
-  6    Canada vs Qatar (Gr.B)                              4.3 3.9 - 0.4
-  7    Switzerland vs Qatar (Gr.B)                         4.3 3.9 - 0.4
-  8    Germany vs Curaçao (Gr.E)                           4.1 3.7 - 0.4
-  9    England vs Panama (Gr.L)                            3.9 3.4 - 0.5
-  10   Canada vs Bosnia and Herzegovina (Gr.B)             3.8 3.2 - 0.5
+  1    Spain vs Cape Verde (Gr.H)                          3.4 2.8 - 0.6
+  2    Spain vs Saudi Arabia (Gr.H)                        3.3 2.7 - 0.6
+  3    England vs Ghana (Gr.L)                             3.0 2.3 - 0.7
+  4    France vs Iraq (Gr.I)                               3.0 2.3 - 0.7
+  5    Argentina vs Jordan (Gr.J)                          3.0 2.2 - 0.7
+  6    Germany vs Curaçao (Gr.E)                           2.9 2.2 - 0.7
+  7    Canada vs Qatar (Gr.B)                              2.9 2.1 - 0.8
+  8    Switzerland vs Qatar (Gr.B)                         2.9 2.1 - 0.8
+  9    Curaçao vs Ecuador (Gr.E)                           2.9 0.8 - 2.1
+  10   Brazil vs Haiti (Gr.C)                              2.9 2.1 - 0.8
 
   --- Top 10 partidos con menos goles esperados ---
   #    Partido                                        Goles esp         Pron
   ---------------------------------------------------------------------------
-  1    Ghana vs Panama (Gr.L)                              2.6 1.1 - 1.5
-  2    Ivory Coast vs Ecuador (Gr.E)                       2.6 1.2 - 1.4
-  3    Egypt vs Iran (Gr.G)                                2.6 1.4 - 1.2
-  4    United States vs Australia (Gr.D)                   2.6 1.3 - 1.2
-  5    Tunisia vs Sweden (Gr.F)                            2.6 1.3 - 1.3
-  6    Paraguay vs Australia (Gr.D)                        2.6 1.1 - 1.5
-  7    Cape Verde vs Saudi Arabia (Gr.H)                   2.6 1.3 - 1.3
-  8    Canada vs Switzerland (Gr.B)                        2.6 1.3 - 1.3
-  9    Brazil vs Morocco (Gr.C)                            2.6 1.2 - 1.4
-  10   Netherlands vs Japan (Gr.F)                         2.6 1.2 - 1.4
+  1    Netherlands vs Japan (Gr.F)                         2.5 1.3 - 1.3
+  2    Paraguay vs Turkey (Gr.D)                           2.6 1.1 - 1.4
+  3    Paraguay vs Australia (Gr.D)                        2.6 1.3 - 1.3
+  4    Senegal vs Norway (Gr.I)                            2.6 1.3 - 1.3
+  5    United States vs Australia (Gr.D)                   2.6 1.3 - 1.2
+  6    Uzbekistan vs DR Congo (Gr.K)                       2.6 1.2 - 1.3
+  7    Qatar vs Bosnia and Herzegovina (Gr.B)              2.6 1.2 - 1.4
+  8    Brazil vs Morocco (Gr.C)                            2.6 1.3 - 1.2
+  9    Algeria vs Austria (Gr.J)                           2.6 1.4 - 1.2
+  10   Tunisia vs Sweden (Gr.F)                            2.6 1.2 - 1.3
 
 
 
@@ -482,96 +483,155 @@
 
   #    Equipo                      Fuerza   Grupo
   ------------------------------------------------
-  1    Spain                       2.938       H
-  2    France                      2.645       I
-  3    Argentina                   2.489       J
-  4    England                     2.350       L
-  5    Morocco                     2.288       C
-  6    Brazil                      2.108       C
-  7    Portugal                    2.103       K
-  8    Japan                       1.989       F
-  9    Germany                     1.986       E
-  10   Senegal                     1.968       I
-  11   Netherlands                 1.900       F
-  12   Colombia                    1.754       K
-  13   Mexico                      1.738       A
-  14   Norway                      1.736       I
-  15   Belgium                     1.720       G
-  16   Algeria                     1.703       J
-  17   Ecuador                     1.676       E
-  18   Turkey                      1.650       D
-  19   Canada                      1.593       B
-  20   Switzerland                 1.564       B
-  21   Ivory Coast                 1.531       E
-  22   Uruguay                     1.516       H
-  23   Croatia                     1.429       L
-  24   Austria                     1.377       J
-  25   South Korea                 1.287       A
-  26   United States               1.278       D
-  27   Egypt                       1.252       G
-  28   Australia                   1.201       D
-  29   DR Congo                    1.174       K
-  30   Iran                        1.163       G
-  31   Uzbekistan                  0.956       K
-  32   Paraguay                    0.938       D
-  33   Scotland                    0.910       C
-  34   Czech Republic              0.825       A
-  35   Haiti                       0.723       C
-  36   Sweden                      0.671       F
-  37   Tunisia                     0.635       F
-  38   Panama                      0.625       L
-  39   Iraq                        0.621       I
-  40   South Africa                0.540       A
-  41   Jordan                      0.447       J
-  42   Ghana                       0.323       L
-  43   New Zealand                 0.281       G
-  44   Saudi Arabia                0.277       H
-  45   Cape Verde                  0.247       H
-  46   Curaçao                     0.124       E
-  47   Bosnia and Herzegovina     -0.026       B
-  48   Qatar                      -0.363       B
+  1    Spain                       2.795       H
+  2    France                      2.559       I
+  3    Argentina                   2.419       J
+  4    Brazil                      2.122       C
+  5    England                     2.102       L
+  6    Morocco                     2.020       C
+  7    Portugal                    1.999       K
+  8    Germany                     1.885       E
+  9    Colombia                    1.819       K
+  10   Japan                       1.755       F
+  11   Netherlands                 1.746       F
+  12   Ecuador                     1.704       E
+  13   Mexico                      1.698       A
+  14   Belgium                     1.578       G
+  15   Senegal                     1.562       I
+  16   Switzerland                 1.562       B
+  17   Turkey                      1.556       D
+  18   Uruguay                     1.553       H
+  19   Canada                      1.552       B
+  20   Norway                      1.537       I
+  21   Algeria                     1.407       J
+  22   Croatia                     1.343       L
+  23   United States               1.291       D
+  24   Austria                     1.226       J
+  25   South Korea                 1.187       A
+  26   Ivory Coast                 1.153       E
+  27   Paraguay                    1.109       D
+  28   Iran                        1.092       G
+  29   Australia                   1.084       D
+  30   Egypt                       1.037       G
+  31   Scotland                    1.015       C
+  32   DR Congo                    0.924       K
+  33   Uzbekistan                  0.888       K
+  34   Czech Republic              0.749       A
+  35   Panama                      0.673       L
+  36   Sweden                      0.614       F
+  37   Iraq                        0.595       I
+  38   Haiti                       0.472       C
+  39   Tunisia                     0.467       F
+  40   Jordan                      0.449       J
+  41   South Africa                0.408       A
+  42   Saudi Arabia                0.332       H
+  43   New Zealand                 0.229       G
+  44   Ghana                       0.130       L
+  45   Cape Verde                  0.091       H
+  46   Bosnia and Herzegovina      0.048       B
+  47   Curaçao                    -0.018       E
+  48   Qatar                      -0.230       B
 
 
 
 ==============================================================================================================
-  SECCION 9: CAMINO DEL CAMPEON (Spain)
+  SECCION 9: PROBABILIDADES DE CAMPEON (Monte Carlo 10,000 sims, Poisson + upset factor)
 ==============================================================================================================
 
-  Fase de grupos: Grupo H - 1ro (95.4%)
-  Pts promedio: 8.6 | GF: 14.7 | GC: 1.1 | GD: +13.6
+  #    Equipo                   Campeon     Final      Semi        QF   Mercado     Diff
+  ---------------------------------------------------------------------------
+  1    Spain                      18.4%     27.6%     40.5%     40.5%     18.2%   +0.2pp
+  2    France                     11.9%     19.2%     29.8%     29.8%     17.5%   -5.6pp
+  3    Argentina                   9.2%     16.1%     25.3%     25.3%      9.5%   -0.3pp
+  4    Brazil                      6.1%     11.7%     21.0%     21.0%     10.5%   -4.4pp
+  5    England                     5.4%     10.2%     18.1%     18.1%     13.3%   -7.9pp
+  6    Morocco                     5.1%      9.4%     18.3%     18.3%      1.8%   +3.3pp
+  7    Germany                     4.1%      8.5%     18.1%     18.1%      6.7%   -2.6pp
+  8    Portugal                    4.0%      8.5%     14.8%     14.8%     10.0%   -6.0pp
+  9    Mexico                      3.0%      6.5%     13.8%     13.8%      1.8%   +1.2pp
+  10   Japan                       2.7%      5.8%     12.1%     12.1%      2.8%   -0.1pp
+  11   Colombia                    2.7%      5.7%     11.1%     11.1%      2.4%   +0.3pp
+  12   Ecuador                     2.7%      5.9%     14.0%     14.0%      0.0%         
+  13   Netherlands                 2.5%      5.9%     12.1%     12.1%      5.6%   -3.1pp
+  14   Uruguay                     2.2%      5.4%     12.3%     12.3%      1.8%   +0.4pp
+  15   Belgium                     2.2%      4.9%     11.2%     11.2%      4.3%   -2.1pp
+  16   Canada                      2.1%      4.9%     12.5%     12.5%      0.0%         
+  17   Switzerland                 2.0%      5.1%     12.2%     12.2%      0.0%         
+  18   Turkey                      1.7%      3.9%      9.4%      9.4%      0.0%         
+  19   Senegal                     1.5%      4.0%      8.5%      8.5%      0.0%         
+  20   Norway                      1.5%      3.5%      7.3%      7.3%      2.9%   -1.4pp
+  21   Croatia                     1.3%      2.8%      7.0%      7.0%      0.0%         
+  22   Algeria                     1.0%      3.1%      6.8%      6.8%      0.0%         
+  23   United States               0.8%      2.4%      6.1%      6.1%      2.0%   -1.2pp
+  24   Ivory Coast                 0.7%      1.9%      5.8%      5.8%      0.0%         
+  25   South Korea                 0.7%      2.2%      6.8%      6.8%      0.0%         
+  26   Austria                     0.7%      1.7%      4.5%      4.5%      0.0%         
+  27   Iran                        0.5%      1.8%      4.9%      4.9%      0.0%         
+  28   Paraguay                    0.5%      1.5%      4.4%      4.4%      0.0%         
+  29   Australia                   0.5%      1.6%      3.9%      3.9%      0.0%         
+  30   Egypt                       0.5%      1.7%      4.7%      4.7%      0.0%         
+
+  Top 6 concentracion: 56.1%
+  Equipos distintos campeon: 46
+  RMSE vs mercado (FanDuel): 3.41pp
+
+
+
+==============================================================================================================
+  SECCION 10: CAMINO DEL CAMPEON (Spain)
+==============================================================================================================
+
+  Fase de grupos: Grupo H - 1ro (74.0%)
+  Pts promedio: 7.2 | GF: 7.3 | GC: 2.1 | GD: +5.2
 
   Ronda           Rival                     Prob avanzar
   -------------------------------------------------------
-  Ronda de 32     Australia                        96.5%
-  Octavos         Japan                            84.3%
-  Cuartos         Senegal                          84.8%
-  Semifinal       Germany                          84.3%
-  Final           France                           62.2%
+  Ronda de 32     Austria                          79.7%
+  Octavos         Colombia                         69.3%
+  Cuartos         Belgium                          75.4%
+  Semifinal       Germany                          69.1%
+  Final           France                           55.4%
 
 
 
 ==============================================================================================================
-  SECCION 10: INFORMACION DEL MODELO
+  SECCION 11: INFORMACION DEL MODELO
 ==============================================================================================================
 
-  Tipo: Hybrid Multi-Feature + Dixon-Coles
-  RPS out-of-sample: 0.199229 (14 torneos, 610 partidos)
-  Scale: 1.75
+  Tipo: Hybrid Multi-Feature + Dixon-Coles + H2H + Knockout Upset Factor
+  RPS calibracion: 0.1586
+  Scale: 3.50 (floor=3.50, calibrado vs mercado)
   Home advantage: 0.30
   Dixon-Coles rho: -0.15
+  H2H weight: 0.08 (6130 pares)
+  Knockout upset sigma: 0.15
 
-  Features L1 (backtestable): Elo, Value, League, Defense
-  Features L2 (tournament):   Age, Coach, Host, Population, Diversity
-  L1 weights: elo=0%, value=0%, league=0%, defense=0%
+  Features L1 (backtestable, Ridge regression):
+    - elo          66%
+    - value        14%
+    - league       5%
+    - defense      14%
 
-  Removed features (all worsened OOS RPS):
+  Features L2 (tournament-specific, informed priors):
+    - model          73%
+    - age            3%
+    - coach          3%
+    - host           2%
+    - population     2%
+    - diversity      3%
+    - composition    4%
+    - sos            10%
+
+  Elo system: quality_exponent=0.5, decay=0.94/year, K: WC=60, Cont=50, Qual=30
+
+  Removed features (worsened OOS RPS):
     - Market odds (circular benchmark)
-    - Defending champion
-    - Momentum
-    - Frontrunner curse
-    - Composition threshold
-    - Head-to-head
+    - Defending champion (n=1 per tournament)
+    - Momentum (correlated with Elo)
+    - Frontrunner curse (n=7 sample)
 
   Backtesting: Walk-forward (train before tournament, predict during)
   Tournaments validated: WC 2010/14/18/22, Euro 2012/16/20/24,
                          Copa America 2011/15/16/19/21/24
+
+  Calibracion torneo: scale + upset_sigma grid-searched vs FanDuel odds Jun 2026

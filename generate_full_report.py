@@ -7,6 +7,8 @@ from collections import Counter
 from src.data_loader import load_results
 from src.strength_hybrid import train_hybrid_model
 from src.wc2026 import GROUPS_2026, build_r32
+from run_wc2026 import predict_lambdas_hybrid
+from run_montecarlo import run_montecarlo
 
 
 def ko_prob(lh, la, max_goals=10):
@@ -30,10 +32,7 @@ def main():
     model = train_hybrid_model(df, cutoff)
 
     def plam(h, a):
-        sh = model.strength.get(h, 0.0)
-        sa = model.strength.get(a, 0.0)
-        d = sh - sa
-        return math.exp(0.25 + d / model.scale), math.exp(0.25 - d / model.scale)
+        return predict_lambdas_hybrid(model, h, a, neutral=True)
 
     # --- Simulate groups ---
     rng = np.random.default_rng(42)
@@ -107,7 +106,8 @@ def main():
 
     out("=" * 110)
     out("  REPORTE COMPLETO - PREDICCION MUNDIAL FIFA 2026")
-    out("  Modelo: Hybrid (Elo + Value + League + Defense) + Dixon-Coles")
+    out("  Modelo: Hybrid L1(Elo+Value+League+Defense) + L2(Age+Coach+Host+Pop+Diversity+Composition+SOS)")
+    out("  Match: Dixon-Coles + H2H | Scale={:.2f} | Rho={:.2f} | Knockout upset sigma=0.15".format(model.scale, model.rho))
     out(f"  Simulaciones: {N:,} | Fecha: 2026-06-10")
     out("=" * 110)
 
@@ -448,11 +448,55 @@ def main():
         out(f"  {i:<4} {t:<25} {s:>7.3f} {team_to_group[t]:>7}")
 
     # =====================================================================
-    # SECTION 9: CHAMPION PATH
+    # SECTION 9: MONTE CARLO CHAMPION PROBABILITIES
     # =====================================================================
     out("\n\n")
     out("=" * 110)
-    out("  SECCION 9: CAMINO DEL CAMPEON ({})".format(champ))
+    out("  SECCION 9: PROBABILIDADES DE CAMPEON (Monte Carlo {:,} sims, Poisson + upset factor)".format(N))
+    out("=" * 110)
+
+    champ_count, final_count, semi_count, qf_count, n_mc = run_montecarlo(
+        model, predict_lambdas_hybrid, "Full Report",
+        n_sims=N, seed=42, method="poisson"
+    )
+
+    # Market odds for comparison
+    market_odds = {
+        "Spain": 18.2, "France": 17.5, "England": 13.3, "Brazil": 10.5,
+        "Portugal": 10.0, "Argentina": 9.5, "Germany": 6.7, "Netherlands": 5.6,
+        "Belgium": 4.3, "Norway": 2.9, "Japan": 2.8, "Colombia": 2.4,
+        "United States": 2.0, "Morocco": 1.8, "Mexico": 1.8, "Uruguay": 1.8,
+    }
+
+    out(f"\n  {'#':<4} {'Equipo':<22} {'Campeon':>9} {'Final':>9} {'Semi':>9} {'QF':>9} {'Mercado':>9} {'Diff':>8}")
+    out(f"  {'-'*75}")
+    sorted_champs = sorted(champ_count.keys(), key=lambda t: -champ_count[t])
+    for i, team in enumerate(sorted_champs[:30], 1):
+        p_champ = champ_count.get(team, 0) / n_mc * 100
+        p_final = final_count.get(team, 0) / n_mc * 100
+        p_semi = semi_count.get(team, 0) / n_mc * 100
+        p_qf = qf_count.get(team, 0) / n_mc * 100
+        mkt = market_odds.get(team, 0)
+        diff_str = f"{p_champ - mkt:+.1f}pp" if mkt > 0 else ""
+        out(f"  {i:<4} {team:<22} {p_champ:>8.1f}% {p_final:>8.1f}% {p_semi:>8.1f}% {p_qf:>8.1f}% {mkt:>8.1f}% {diff_str:>8}")
+
+    # Summary stats
+    top6 = sorted(champ_count.values(), reverse=True)[:6]
+    top6_conc = sum(top6) / n_mc * 100
+    unique_champs = sum(1 for v in champ_count.values() if v > 0)
+    total_se = sum((champ_count.get(t, 0)/n_mc*100 - market_odds[t])**2 for t in market_odds)
+    rmse = math.sqrt(total_se / len(market_odds))
+
+    out(f"\n  Top 6 concentracion: {top6_conc:.1f}%")
+    out(f"  Equipos distintos campeon: {unique_champs}")
+    out(f"  RMSE vs mercado (FanDuel): {rmse:.2f}pp")
+
+    # =====================================================================
+    # SECTION 10: CHAMPION PATH
+    # =====================================================================
+    out("\n\n")
+    out("=" * 110)
+    out("  SECCION 10: CAMINO DEL CAMPEON ({})".format(champ))
     out("=" * 110)
 
     for gn, ranked in modal.items():
@@ -510,33 +554,43 @@ def main():
         out(f"  {ronda:<15} {opp:<25} {prob:>11.1f}%")
 
     # =====================================================================
-    # SECTION 10: MODEL INFO
+    # SECTION 11: MODEL INFO
     # =====================================================================
     out("\n\n")
     out("=" * 110)
-    out("  SECCION 10: INFORMACION DEL MODELO")
+    out("  SECCION 11: INFORMACION DEL MODELO")
     out("=" * 110)
-    out(f"\n  Tipo: Hybrid Multi-Feature + Dixon-Coles")
-    out(f"  RPS out-of-sample: 0.199229 (14 torneos, 610 partidos)")
-    out(f"  Scale: {model.scale:.2f}")
-    out(f"  Home advantage: 0.30")
+    out(f"\n  Tipo: Hybrid Multi-Feature + Dixon-Coles + H2H + Knockout Upset Factor")
+    out(f"  RPS calibracion: {0.1586:.4f}")
+    out(f"  Scale: {model.scale:.2f} (floor=3.50, calibrado vs mercado)")
+    out(f"  Home advantage: {model.home_adv:.2f}")
     out(f"  Dixon-Coles rho: {model.rho:.2f}")
+    out(f"  H2H weight: {model.h2h_weight} ({len(model.h2h)} pares)")
+    out(f"  Knockout upset sigma: 0.15")
     out(f"")
-    out(f"  Features L1 (backtestable): Elo, Value, League, Defense")
-    out(f"  Features L2 (tournament):   Age, Coach, Host, Population, Diversity")
-    out(f"  L1 weights: elo={model.weights.get('elo', 0):.0%}, value={model.weights.get('value', 0):.0%}, league={model.weights.get('league', 0):.0%}, defense={model.weights.get('defense', 0):.0%}")
+    out(f"  Features L1 (backtestable, Ridge regression):")
+    l1w = {k.replace('L1_', ''): v for k, v in model.weights.items() if k.startswith('L1_')}
+    for k, v in l1w.items():
+        out(f"    - {k:<12} {v:.0%}")
     out(f"")
-    out(f"  Removed features (all worsened OOS RPS):")
+    out(f"  Features L2 (tournament-specific, informed priors):")
+    l2w = {k: v for k, v in model.weights.items() if not k.startswith('L1_')}
+    for k, v in l2w.items():
+        out(f"    - {k:<14} {v:.0%}")
+    out(f"")
+    out(f"  Elo system: quality_exponent=0.5, decay=0.94/year, K: WC=60, Cont=50, Qual=30")
+    out(f"")
+    out(f"  Removed features (worsened OOS RPS):")
     out(f"    - Market odds (circular benchmark)")
-    out(f"    - Defending champion")
-    out(f"    - Momentum")
-    out(f"    - Frontrunner curse")
-    out(f"    - Composition threshold")
-    out(f"    - Head-to-head")
+    out(f"    - Defending champion (n=1 per tournament)")
+    out(f"    - Momentum (correlated with Elo)")
+    out(f"    - Frontrunner curse (n=7 sample)")
     out(f"")
     out(f"  Backtesting: Walk-forward (train before tournament, predict during)")
     out(f"  Tournaments validated: WC 2010/14/18/22, Euro 2012/16/20/24,")
     out(f"                         Copa America 2011/15/16/19/21/24")
+    out(f"")
+    out(f"  Calibracion torneo: scale + upset_sigma grid-searched vs FanDuel odds Jun 2026")
 
     # Write file
     txt = "\n".join(lines)
