@@ -38,8 +38,7 @@ def main():
     def plam(h, a):
         sh = model.strength.get(h, 0.0)
         sa = model.strength.get(a, 0.0)
-        h2h_adj = model.get_h2h_adj(h, a)
-        d = sh - sa + h2h_adj
+        d = sh - sa
         return math.exp(0.25 + d / model.scale), math.exp(0.25 - d / model.scale)
 
     # --- Simular grupos para obtener posiciones modales ---

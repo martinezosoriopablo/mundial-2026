@@ -1,31 +1,47 @@
-from src.backtest import backtest
+"""Tests for backtest harness: no leakage, valid output."""
+import pytest
+import pandas as pd
+from src.backtest import backtest, TOURNAMENT_PANEL
 
 
-def test_no_leakage():
-    """Verify that for every prediction, train data ends before test data starts."""
-    results = backtest(["WC2018"])
-    assert len(results) > 0
-    for _, row in results.iterrows():
-        assert row["train_cutoff"] <= row["match_date"], (
-            f"LEAK: train_cutoff {row['train_cutoff']} > match_date {row['match_date']}"
+@pytest.fixture(scope="module")
+def bt_wc2018():
+    """Run backtest once for WC2018, reuse across tests."""
+    return backtest(["WC2018"], verbose=False)
+
+
+def test_no_leakage(bt_wc2018):
+    """Train data must end strictly before tournament start for every match."""
+    cutoff = pd.Timestamp(TOURNAMENT_PANEL["WC2018"][1])
+    assert len(bt_wc2018) > 0
+    for _, row in bt_wc2018.iterrows():
+        assert row["date"] >= cutoff, (
+            f"LEAK: match date {row['date']} before cutoff {cutoff}"
         )
 
 
-def test_backtest_has_required_columns():
-    results = backtest(["WC2018"])
-    required = [
-        "match_date", "home_team", "away_team", "home_score", "away_score",
-        "outcome", "p_home", "p_draw", "p_away", "train_cutoff", "tournament_id",
-    ]
+def test_backtest_has_required_columns(bt_wc2018):
+    required = ["tournament", "date", "home", "away", "home_score", "away_score",
+                 "outcome", "p_home", "p_draw", "p_away", "rps", "logloss", "brier"]
     for col in required:
-        assert col in results.columns, f"Missing column: {col}"
+        assert col in bt_wc2018.columns, f"Missing column: {col}"
 
 
-def test_backtest_probabilities_valid():
-    results = backtest(["WC2018"])
-    for _, row in results.iterrows():
+def test_backtest_probabilities_valid(bt_wc2018):
+    for _, row in bt_wc2018.iterrows():
         total = row["p_home"] + row["p_draw"] + row["p_away"]
         assert abs(total - 1.0) < 1e-4, f"Probs don't sum to 1: {total}"
         assert row["p_home"] >= 0
         assert row["p_draw"] >= 0
         assert row["p_away"] >= 0
+
+
+def test_rps_in_valid_range(bt_wc2018):
+    """RPS must be in [0, 1] for every match."""
+    for _, row in bt_wc2018.iterrows():
+        assert 0 <= row["rps"] <= 1.0, f"RPS out of range: {row['rps']}"
+
+
+def test_match_count_wc2018(bt_wc2018):
+    """WC2018 should have 64 matches."""
+    assert len(bt_wc2018) == 64, f"Expected 64 matches, got {len(bt_wc2018)}"

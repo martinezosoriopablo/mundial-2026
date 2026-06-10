@@ -1,0 +1,19 @@
+RPS_baseline=0.199229
+n_matches=610
+n_tournaments=14
+logloss=1.005207
+brier=0.594209
+ece=0.055890
+
+# Audit trail (Tasks 1-7)
+# Task 1: Walk-forward harness established.        RPS=0.200183
+# Task 2: Market odds removed (circular benchmark). RPS=0.200183
+# Task 3: Champion removed (ablation: hurts RPS).   RPS=0.199883
+# Task 4: Momentum removed (ablation: hurts RPS).   RPS=0.199619
+# Task 5: Dixon-Coles added (rho ~ -0.12).          RPS=0.199229
+# Task 6: H2H validated & removed (all configs worse). RPS=0.199229
+# Task 7: Doc cleanup, defense_l2 double-count fixed.  RPS=0.199229
+#
+# Model: 4 L1 features (elo, value, league, defense) + Dixon-Coles
+# L2: 5 tournament-specific (age, coach, host, population, diversity)
+# No market, no h2h, no narrative features.
