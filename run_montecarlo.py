@@ -61,14 +61,29 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
     return standings, best_thirds
 
 
-def sim_knockout_match(model, get_lambdas, home, away, rng, method="poisson", r=8.0):
-    """Simulate a knockout match, return winner."""
+def sim_knockout_match(model, get_lambdas, home, away, rng, method="poisson", r=8.0,
+                       upset_sigma=0.15):
+    """Simulate a knockout match with tournament upset factor.
+
+    upset_sigma: std dev of noise added to log-lambda ratio.
+    Represents unmodeled variance in knockout matches (tactics, red cards,
+    penalties, fatigue). Preserves total expected goals while shifting
+    the balance between teams, making upsets more likely.
+    """
     lh, la = get_lambdas(model, home, away, neutral=True)
+    # Tournament upset noise: shift lambda ratio without changing total goals
+    if upset_sigma > 0:
+        import math
+        noise = rng.normal(0, upset_sigma)
+        lh_new = lh * math.exp(noise)
+        la_new = la * math.exp(-noise)
+        lh, la = lh_new, la_new
     gh, ga, _, _ = sample_knockout_scoreline(rng, lh, la, method, r)
     return home if gh > ga else away
 
 
-def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0):
+def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0,
+                   upset_sigma=0.15):
     """Simulate full tournament, return (champion, finalist, semifinalists)."""
     standings, best_thirds = sim_group_stage_fast(model, get_lambdas, groups, rng, method, r)
 
@@ -78,14 +93,14 @@ def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0):
     tl = best_thirds
     r32 = build_r32(winners, runners, tl)
 
-    r32w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in r32]
+    r32w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r, upset_sigma) for h, a in r32]
     r16 = [(r32w[i], r32w[i + 1]) for i in range(0, 16, 2)]
-    r16w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in r16]
+    r16w = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r, upset_sigma) for h, a in r16]
     qf = [(r16w[i], r16w[i + 1]) for i in range(0, 8, 2)]
-    qfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in qf]
+    qfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r, upset_sigma) for h, a in qf]
     sf = [(qfw[0], qfw[1]), (qfw[2], qfw[3])]
-    sfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r) for h, a in sf]
-    champion = sim_knockout_match(model, get_lambdas, sfw[0], sfw[1], rng, method, r)
+    sfw = [sim_knockout_match(model, get_lambdas, h, a, rng, method, r, upset_sigma) for h, a in sf]
+    champion = sim_knockout_match(model, get_lambdas, sfw[0], sfw[1], rng, method, r, upset_sigma)
     finalist = sfw[1] if champion == sfw[0] else sfw[0]
 
     sf_losers = []
@@ -96,7 +111,7 @@ def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0):
 
 
 def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42,
-                   method="poisson", r=8.0):
+                   method="poisson", r=8.0, upset_sigma=0.15):
     """Run Monte Carlo tournament simulation."""
     rng = np.random.default_rng(seed)
 
@@ -112,7 +127,7 @@ def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42,
             print(f"    {i + 1:,}/{n_sims:,}...", flush=True)
 
         champ, final, sf_losers, qf_winners = sim_tournament(
-            model, get_lambdas, GROUPS_2026, rng, method, r
+            model, get_lambdas, GROUPS_2026, rng, method, r, upset_sigma
         )
 
         champion_count[champ] = champion_count.get(champ, 0) + 1

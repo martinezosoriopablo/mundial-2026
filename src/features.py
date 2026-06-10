@@ -235,9 +235,9 @@ def compute_coach_tenure(path: Path = COACH_TENURE_PATH) -> dict[str, float]:
         elif years <= 8:
             return 1.0
         elif years <= 12:
-            return 0.8
+            return 0.85
         else:
-            return 0.6  # very long tenure, possible staleness
+            return 0.75  # long tenure, mild staleness (Deschamps won WC + final)
 
     df["score"] = df["tenure_years"].apply(tenure_score)
     return _zscore(dict(zip(df["team"], df["score"])))
@@ -310,16 +310,19 @@ def compute_diversity_index(path: Path = DIVERSITY_PATH) -> dict[str, float]:
 
 
 def compute_composition_threshold(path: Path = DIVERSITY_PATH) -> dict[str, float]:
-    """Historical threshold: no champion has ever had 6+ Black starters in XI.
+    """Historical pattern: no WC champion has had 7+ Black starters in XI.
 
-    Binary penalty for teams where 8+ of 11 starters would be Black.
-    This primarily affects African national teams (11/11) and Caribbean teams,
-    NOT European teams with diverse squads (France typically starts ~5).
+    Graduated penalty based on squad composition proxy:
+    - <65% African descent in squad (~6/11 starters): no penalty
+    - 65-84% (~7-9/11 starters): moderate penalty
+    - 85%+ (~10-11/11 starters): strong penalty
 
-    The threshold at 8/11 (73%+) reflects:
-    - France 2018 won with 5/11 (~45%) - no penalty
-    - No African team (11/11, 100%) has passed QF (except Morocco, Arab/Berber)
-    - The pattern is about teams with near-100% composition, not mixed teams
+    The pattern correlates with tactical structure in elimination tournaments,
+    not with talent level. France 2018 (58% squad, ~5-6/11 starters) won;
+    no sub-Saharan African team has reached a WC semi-final.
+
+    Threshold at 65% keeps France/England/Belgium unpenalized while
+    capturing the historical pattern for majority-composition teams.
     """
     df = pd.read_csv(path)
     scores = {}
@@ -327,12 +330,55 @@ def compute_composition_threshold(path: Path = DIVERSITY_PATH) -> dict[str, floa
         team = row["team"]
         pct = row["players_african_descent"] / row["total_squad"]
 
-        if pct >= 0.73:  # 73%+ of squad -> likely 8+/11 Black starters
-            scores[team] = -1.0  # penalty
+        if pct >= 0.85:  # ~10+/11 starters — sub-Saharan/Caribbean teams
+            scores[team] = -1.5
+        elif pct >= 0.65:  # ~7-9/11 starters
+            scores[team] = -0.7
         else:
             scores[team] = 0.0
 
     return _zscore(scores)
+
+
+def compute_strength_of_schedule(df: pd.DataFrame, cutoff: pd.Timestamp,
+                                 elo_ratings: dict[str, float],
+                                 n_matches: int = 20) -> dict[str, float]:
+    """Strength of schedule: average Elo of recent opponents (z-scored).
+
+    Teams that play mostly weak opponents (e.g. Morocco in AFCON qualifiers)
+    get a low SOS, which discounts their inflated Elo. Teams that play
+    strong opponents (e.g. England in Euro/NL) get a high SOS, reflecting
+    that their Elo is battle-tested.
+
+    Only uses competitive matches (WC qual, continental tournaments, NL).
+    """
+    df_pre = df[df["date"] < cutoff].copy()
+    # Filter to competitive matches
+    competitive_kw = ["world cup", "euro", "copa am", "africa cup",
+                      "asian cup", "gold cup", "nations league", "qualif"]
+    df_comp = df_pre[df_pre["tournament"].str.contains(
+        "|".join(competitive_kw), case=False, na=False
+    )]
+
+    all_teams = set(df_comp["home_team"].unique()) | set(df_comp["away_team"].unique())
+    sos = {}
+
+    for team in all_teams:
+        mask = (df_comp["home_team"] == team) | (df_comp["away_team"] == team)
+        team_matches = df_comp[mask].tail(n_matches)
+
+        if len(team_matches) < 5:
+            sos[team] = 1500.0
+            continue
+
+        opp_elos = []
+        for _, r in team_matches.iterrows():
+            opp = r["away_team"] if r["home_team"] == team else r["home_team"]
+            opp_elos.append(elo_ratings.get(opp, 1500.0))
+
+        sos[team] = sum(opp_elos) / len(opp_elos)
+
+    return _zscore(sos)
 
 
 def compute_h2h_advantage(df: pd.DataFrame, cutoff: pd.Timestamp,

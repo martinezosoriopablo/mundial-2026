@@ -121,7 +121,7 @@ def compute_elo_ratings(
     initial_rating: float = 1500.0,
     home_adv_elo: float = 100.0,
     decay_per_year: float = 0.94,
-    quality_exponent: float = 0.3,
+    quality_exponent: float = 0.5,
 ) -> dict[str, float]:
     """Compute Elo ratings with time decay and opponent quality adjustment.
 
@@ -130,8 +130,8 @@ def compute_elo_ratings(
        at rate decay_per_year. Half-life ~11 years at 0.94.
        This prevents Chile's 2015 Copa America from inflating their 2026 rating.
     2. Opponent quality: K is multiplied by (opponent_elo / 1500)^exponent.
-       Beating Germany (1800) gives K*1.06, beating Bolivia (1200) gives K*0.95.
-       This compounds with the expected result adjustment already in Elo.
+       At exponent=0.5: beating Germany (1800) gives K*1.10, beating a 1200
+       team gives K*0.89. Stronger discount for weak opponents than 0.3.
     """
     train = df[df["date"] < cutoff].sort_values("date")
     train = train.dropna(subset=["home_score", "away_score"])

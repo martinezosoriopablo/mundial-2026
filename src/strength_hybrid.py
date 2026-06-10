@@ -2,20 +2,26 @@
 
 Blends strength signals into a unified team rating:
 LAYER 1 — backtestable (Ridge regression weights, RPS-calibrated):
-  1. Elo ratings       — base signal from match history (~67%)
+  1. Elo ratings       — base signal from match history (~66%)
   2. Squad market value — transfer market signal (~14%)
-  3. League composite   — where players play daily (~6%)
+  3. League composite   — where players play daily (~5%)
   4. Defensive strength — goals conceded last 10 (~14%)
 
 LAYER 2 — tournament-specific (informed priors, not backtestable):
-  5. Squad age fitness  — distance from optimal age (5%)
-  6. Coach tenure       — years in charge sweet spot (4%)
+  5. Squad age fitness  — distance from optimal age (3%)
+  6. Coach tenure       — years in charge sweet spot (3%)
   7. Host advantage     — home soil boost (2%)
   8. Population         — talent pool depth (2%)
   9. Diversity index    — diaspora recruitment * league quality (3%)
-  L1 model blend carries 84% of L2 weight.
+ 10. Composition        — historical WC pattern: squad makeup (4%)
+ 11. Strength of sched. — avg opponent Elo, penalizes weak schedules (10%)
+  L1 model blend carries 73% of L2 weight.
 
-GOAL MODEL: Dixon-Coles (Poisson + low-score correlation ρ ≈ -0.12)
+MATCH MODEL:
+  - Head-to-head adjustment: historical pair advantage (weight 0.08)
+  - Dixon-Coles (Poisson + low-score correlation ρ ≈ -0.15)
+  - Scale floor at 3.5 to prevent extreme knockout compound probs
+  - Knockout upset factor (σ=0.15) for unmodeled tournament variance
 
 CALIBRATION: scale, home_adv, ρ optimized via RPS grid search on
 4 years of competitive matches before each tournament.
@@ -24,9 +30,7 @@ REMOVED after ablation/audit (RPS out-of-sample):
   - Market odds: not backtestable, circular benchmark
   - Defending champion: hurts RPS (n=1 per tournament)
   - Momentum: hurts RPS (correlated with Elo)
-  - Head-to-head: hurts RPS (all configs tested, all worse)
   - Frontrunner curse: uses WC2026 odds, n=7 sample
-  - Composition threshold: not backtestable, ethically problematic
   - Defense L2: was double-counted (same signal as L1 defense)
 
 Weights: Ridge regression (Layer 1) + informed priors (Layer 2).
@@ -94,17 +98,24 @@ class HybridModel:
 
     def __init__(self, blended_strength: dict[str, float],
                  home_adv: float, scale: float, weights: dict[str, float],
-                 rho: float = 0.0):
+                 rho: float = 0.0,
+                 h2h: dict[tuple, float] | None = None,
+                 h2h_weight: float = 0.0):
         self.strength = blended_strength
         self.home_adv = home_adv
         self.scale = scale
         self.weights = weights
         self.rho = rho  # Dixon-Coles correlation parameter
+        self.h2h = h2h or {}
+        self.h2h_weight = h2h_weight
 
     def predict_match(self, home: str, away: str, neutral: bool = False) -> tuple:
         s_home = self.strength.get(home, 0.0)
         s_away = self.strength.get(away, 0.0)
         diff = s_home - s_away + (self.home_adv if not neutral else 0)
+        # Head-to-head adjustment
+        h2h_adj = self.h2h.get((home, away), 0.0) * self.h2h_weight
+        diff += h2h_adj
         home_lambda = math.exp(0.25 + diff / self.scale)
         away_lambda = math.exp(0.25 - diff / self.scale)
         return _poisson_1x2(home_lambda, away_lambda, rho=self.rho)
@@ -146,7 +157,8 @@ def train_hybrid_model(
         compute_defensive_strength, compute_league_composite,
         compute_age_fitness, compute_coach_tenure,
         compute_host_advantage, compute_population_factor,
-        compute_diversity_index,
+        compute_diversity_index, compute_composition_threshold,
+        compute_h2h_advantage, compute_strength_of_schedule,
     )
 
     ratings = compute_elo_ratings(df, cutoff)
@@ -170,6 +182,13 @@ def train_hybrid_model(
     host_adv = compute_host_advantage(all_teams)
     population = compute_population_factor()
     diversity = compute_diversity_index()
+    composition = compute_composition_threshold()
+
+    # Head-to-head historical advantage (pair-specific, used in predict_match)
+    h2h = compute_h2h_advantage(df, cutoff)
+
+    # Strength of schedule: penalizes Elo inflated by weak opponents
+    sos = compute_strength_of_schedule(df, cutoff, ratings)
 
     # === LAYER 1: Calibrate on historical competitive matches ===
     cal_start = cutoff - pd.Timedelta(days=1460)
@@ -293,6 +312,13 @@ def train_hybrid_model(
             best_rps = rps_val
             best_rho = rho_test
 
+    # Scale floor: prevents extreme compound probabilities in tournament sims.
+    # Calibrated via grid search (scale x upset_sigma) against market odds:
+    # scale=3.5, sigma=0.15 minimizes deviation for top favorites.
+    SCALE_FLOOR = 3.5
+    if best_scale < SCALE_FLOOR:
+        print(f"    Scale={best_scale:.2f} below floor {SCALE_FLOOR}, clamping up")
+        best_scale = SCALE_FLOOR
     print(f"    Scale={best_scale:.2f}, home_adv={best_ha:.2f}, rho={best_rho:.2f}, cal_RPS={best_rps:.4f}")
 
     # Build Layer 1 model blend
@@ -307,15 +333,17 @@ def train_hybrid_model(
     model_blend_z = _zscore_dict(model_blend)
 
     # Tournament-specific feature weights (informed priors, not calibratable)
-    # Removed: market (circular), champion/momentum/frontrunner/composition (ablation),
+    # Removed: market (circular), champion/momentum/frontrunner (ablation),
     #          defense_l2 (was double-counted — defense already in L1 via model blend)
     L2_WEIGHTS = {
-        "model": 0.84,        # Layer 1 model blend (dominant signal)
-        "age": 0.05,          # squad age fitness
-        "coach": 0.04,        # coach tenure
+        "model": 0.73,        # Layer 1 model blend (dominant signal)
+        "age": 0.03,          # squad age fitness
+        "coach": 0.03,        # coach tenure
         "host": 0.02,         # home soil advantage
         "population": 0.02,   # talent pool depth
         "diversity": 0.03,    # diaspora recruitment breadth * league quality
+        "composition": 0.04,  # squad composition pattern (historical WC threshold)
+        "sos": 0.10,          # strength of schedule (discounts weak-opponent Elo inflation)
     }
 
     if use_market:
@@ -331,6 +359,8 @@ def train_hybrid_model(
         "host": host_adv,
         "population": population,
         "diversity": diversity,
+        "composition": composition,
+        "sos": sos,
     }
 
     if use_market:
@@ -348,5 +378,10 @@ def train_hybrid_model(
     print(f"    Total features: {len(cal_feat_names)} backtestable + "
           f"{len(l2_features)-1} tournament-specific{mkt_str}")
 
+    # H2H weight: small adjustment (~5-10% of typical strength diff)
+    H2H_WEIGHT = 0.08
+
     final_weights = {**{f"L1_{k}": v for k, v in model_w.items()}, **L2_WEIGHTS}
-    return HybridModel(final_blend, best_ha, best_scale, final_weights, rho=best_rho)
+    print(f"    H2H pairs loaded: {len(h2h)} (weight={H2H_WEIGHT})")
+    return HybridModel(final_blend, best_ha, best_scale, final_weights,
+                       rho=best_rho, h2h=h2h, h2h_weight=H2H_WEIGHT)

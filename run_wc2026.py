@@ -27,6 +27,9 @@ def predict_lambdas_hybrid(model, home, away, neutral=True):
     s_home = model.strength.get(home, 0.0)
     s_away = model.strength.get(away, 0.0)
     diff = s_home - s_away + (model.home_adv if not neutral else 0)
+    # Head-to-head adjustment
+    h2h_adj = model.h2h.get((home, away), 0.0) * model.h2h_weight
+    diff += h2h_adj
     home_lambda = math.exp(0.25 + diff / model.scale)
     away_lambda = math.exp(0.25 - diff / model.scale)
     return max(0.2, min(home_lambda, 6.0)), max(0.2, min(away_lambda, 6.0))
