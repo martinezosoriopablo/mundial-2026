@@ -6,206 +6,206 @@
   ==================== GRUPO A ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Mexico                      6.6   6.3   2.4  +3.9  64.2%  25.1%   8.4%   2.3%   89.3% <--
-  2    South Korea                 4.9   4.6   3.5  +1.1  25.6%  42.1%  22.2%  10.0%   67.8% <--
-  3    Czech Republic              3.1   3.2   4.9  -1.7   7.4%  21.4%  39.7%  31.5%   28.8% (3)
-  4    South Africa                2.1   2.6   6.0  -3.4   2.8%  11.3%  29.7%  56.3%   14.1%
+  1    Mexico                      5.5   5.0   3.0  +2.1  47.8%  26.8%  16.6%   8.8%   74.6% <--
+  2    South Korea                 4.5   4.1   3.6  +0.5  26.6%  30.8%  24.5%  18.1%   57.4% <--
+  3    Czech Republic              3.6   3.5   4.3  -0.8  15.7%  24.2%  30.4%  29.7%   39.9% (3)
+  4    South Africa                2.9   3.1   4.9  -1.8   9.8%  18.3%  28.4%  43.4%   28.1%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Mexico vs South Africa                   2.5 - 0.7 2- 0   79%   14%    7%
-  Mexico vs South Korea                    1.7 - 1.0 1- 0   53%   24%   22%
-  Mexico vs Czech Republic                 2.2 - 0.8 2- 0   70%   18%   12%
-  South Africa vs South Korea              0.8 - 2.0 0- 2   15%   21%   64%
-  South Africa vs Czech Republic           1.1 - 1.5 1- 1   28%   25%   47%
-  South Korea vs Czech Republic            1.6 - 1.0 1- 0   53%   24%   22%
+  Mexico vs South Africa                   1.9 - 0.9 1- 0   60%   22%   17%
+  Mexico vs South Korea                    1.5 - 1.1 1- 1   46%   26%   28%
+  Mexico vs Czech Republic                 1.7 - 1.0 1- 0   54%   23%   23%
+  South Africa vs South Korea              1.0 - 1.6 0- 1   25%   24%   51%
+  South Africa vs Czech Republic           1.2 - 1.4 1- 1   31%   27%   42%
+  South Korea vs Czech Republic            1.4 - 1.1 1- 1   44%   26%   30%
 
   ==================== GRUPO B ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Canada                      7.0   8.5   2.2  +6.3  51.6%  45.7%   2.5%   0.1%   97.4% <--
-  2    Switzerland                 6.9   8.3   2.3  +6.0  47.9%  49.2%   2.6%   0.3%   97.1% <--
-  3    Bosnia and Herzegovina      2.1   2.6   7.5  -4.9   0.4%   3.9%  61.6%  34.2%    4.3% (3)
-  4    Qatar                       1.2   1.9   9.3  -7.4   0.1%   1.2%  33.3%  65.4%    1.3%
+  1    Canada                      5.8   5.4   2.9  +2.5  44.8%  35.0%  15.1%   5.2%   79.7% <--
+  2    Switzerland                 5.7   5.4   2.9  +2.5  43.7%  35.8%  15.3%   5.2%   79.5% <--
+  3    Bosnia and Herzegovina      2.9   3.0   5.1  -2.1   6.8%  17.5%  37.1%  38.6%   24.3% (3)
+  4    Qatar                       2.3   2.7   5.6  -2.9   4.8%  11.7%  32.5%  51.0%   16.5%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Canada vs Switzerland                    1.3 - 1.3 1- 1   38%   27%   35%
-  Canada vs Qatar                          3.9 - 0.4 3- 0   94%    5%    1%
-  Canada vs Bosnia and Herzegovina         3.2 - 0.5 3- 0   89%    8%    3%
-  Switzerland vs Qatar                     3.9 - 0.4 3- 0   94%    5%    1%
-  Switzerland vs Bosnia and Herzegovina    3.2 - 0.5 3- 0   88%    9%    4%
-  Qatar vs Bosnia and Herzegovina          1.1 - 1.6 1- 1   26%   25%   49%
+  Canada vs Switzerland                    1.3 - 1.3 1- 1   37%   26%   37%
+  Canada vs Qatar                          2.1 - 0.8 2- 0   69%   19%   12%
+  Canada vs Bosnia and Herzegovina         2.0 - 0.8 1- 0   64%   21%   16%
+  Switzerland vs Qatar                     2.1 - 0.8 2- 0   69%   19%   12%
+  Switzerland vs Bosnia and Herzegovina    2.0 - 0.8 1- 0   64%   21%   15%
+  Qatar vs Bosnia and Herzegovina          1.2 - 1.4 1- 1   31%   27%   42%
 
   ==================== GRUPO C ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Morocco                     6.9   7.4   2.3  +5.1  56.8%  37.6%   5.0%   0.6%   94.4% <--
-  2    Brazil                      6.3   6.6   2.6  +3.9  41.0%  50.0%   7.7%   1.3%   91.0% <--
-  3    Scotland                    2.2   2.7   6.6  -3.9   1.4%   7.7%  51.0%  40.0%    9.0% (3)
-  4    Haiti                       1.6   2.3   7.4  -5.1   0.8%   4.7%  36.3%  58.1%    5.6%
+  1    Brazil                      5.6   5.1   3.0  +2.2  44.2%  32.3%  16.6%   6.9%   76.5% <--
+  2    Morocco                     5.4   5.0   3.1  +1.9  39.6%  33.0%  19.1%   8.2%   72.6% <--
+  3    Scotland                    3.3   3.4   4.6  -1.2  11.2%  21.5%  35.6%  31.7%   32.7% (3)
+  4    Haiti                       2.4   2.7   5.5  -2.8   5.1%  13.1%  28.7%  53.1%   18.2%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Brazil vs Morocco                        1.2 - 1.4 1- 1   31%   26%   42%
-  Brazil vs Haiti                          2.8 - 0.6 2- 0   83%   11%    5%
-  Brazil vs Scotland                       2.6 - 0.6 2- 0   79%   14%    7%
-  Morocco vs Haiti                         3.1 - 0.5 3- 0   87%    9%    4%
-  Morocco vs Scotland                      2.8 - 0.6 3- 0   83%   12%    5%
-  Haiti vs Scotland                        1.2 - 1.4 1- 1   30%   26%   44%
+  Brazil vs Morocco                        1.3 - 1.2 1- 1   38%   27%   34%
+  Brazil vs Haiti                          2.0 - 0.8 1- 0   66%   20%   14%
+  Brazil vs Scotland                       1.8 - 0.9 1- 0   58%   23%   19%
+  Morocco vs Haiti                         2.0 - 0.8 2- 0   65%   21%   14%
+  Morocco vs Scotland                      1.7 - 1.0 1- 0   55%   23%   21%
+  Haiti vs Scotland                        1.1 - 1.5 1- 1   29%   26%   45%
 
   ==================== GRUPO D ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Turkey                      5.7   5.2   2.9  +2.3  50.6%  26.3%  15.1%   7.9%   76.9% <--
-  2    United States               4.1   3.9   3.9  +0.0  22.2%  28.8%  26.9%  22.1%   51.0% <--
-  3    Australia                   3.8   3.7   4.1  -0.4  18.3%  26.4%  29.1%  26.2%   44.7% (3)
-  4    Paraguay                    2.9   3.0   4.9  -1.9   9.0%  18.4%  28.9%  43.7%   27.4%
+  1    Turkey                      4.7   4.3   3.4  +0.9  35.0%  26.3%  21.4%  17.3%   61.3% <--
+  2    United States               4.2   3.9   3.8  +0.1  24.7%  26.3%  25.3%  23.6%   51.0% <--
+  3    Paraguay                    3.8   3.6   4.1  -0.5  20.4%  23.8%  26.5%  29.3%   44.2% (3)
+  4    Australia                   3.8   3.6   4.1  -0.5  19.9%  23.6%  26.7%  29.8%   43.5%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  United States vs Paraguay                1.5 - 1.1 1- 1   49%   25%   27%
-  United States vs Australia               1.3 - 1.2 1- 1   40%   27%   34%
-  United States vs Turkey                  1.0 - 1.6 1- 1   24%   24%   51%
-  Paraguay vs Australia                    1.1 - 1.5 1- 1   29%   26%   45%
-  Paraguay vs Turkey                       0.9 - 1.9 0- 2   16%   22%   62%
-  Australia vs Turkey                      1.0 - 1.6 0- 1   23%   24%   53%
+  United States vs Paraguay                1.4 - 1.2 1- 1   40%   26%   34%
+  United States vs Australia               1.3 - 1.2 1- 1   40%   26%   34%
+  United States vs Turkey                  1.2 - 1.4 1- 1   32%   26%   41%
+  Paraguay vs Australia                    1.3 - 1.3 1- 1   37%   26%   37%
+  Paraguay vs Turkey                       1.1 - 1.5 1- 1   29%   26%   45%
+  Australia vs Turkey                      1.1 - 1.4 1- 1   29%   26%   45%
 
   ==================== GRUPO E ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Germany                     6.4   6.9   2.5  +4.4  52.7%  29.9%  16.8%   0.6%   82.6% <--
-  2    Ecuador                     5.3   5.6   3.2  +2.4  27.5%  36.5%  33.7%   2.2%   64.1% <--
-  3    Ivory Coast                 4.8   5.0   3.6  +1.4  19.8%  32.8%  43.4%   4.0%   52.6% (3)
-  4    Curaçao                     0.5   1.5   9.7  -8.2   0.0%   0.7%   6.1%  93.2%    0.8%
+  1    Germany                     5.5   5.1   3.0  +2.1  42.8%  31.2%  19.0%   6.9%   74.0% <--
+  2    Ecuador                     5.2   4.9   3.2  +1.6  35.6%  32.9%  22.6%   8.9%   68.5% <--
+  3    Ivory Coast                 4.1   3.9   4.0  -0.1  18.2%  27.1%  35.9%  18.8%   45.4% (3)
+  4    Curaçao                     1.9   2.4   6.1  -3.7   3.3%   8.8%  22.5%  65.4%   12.1%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Germany vs Curaçao                       3.7 - 0.4 3- 0   93%    6%    2%
-  Germany vs Ivory Coast                   1.7 - 1.0 1- 0   54%   24%   22%
-  Germany vs Ecuador                       1.5 - 1.1 1- 1   48%   25%   27%
-  Curaçao vs Ivory Coast                   0.6 - 2.9 0- 2    5%   11%   84%
-  Curaçao vs Ecuador                       0.5 - 3.1 0- 3    3%    9%   88%
-  Ivory Coast vs Ecuador                   1.2 - 1.4 1- 1   32%   28%   41%
+  Germany vs Curaçao                       2.2 - 0.7 2- 0   71%   18%   11%
+  Germany vs Ivory Coast                   1.6 - 1.0 1- 0   51%   25%   24%
+  Germany vs Ecuador                       1.4 - 1.2 1- 1   40%   27%   33%
+  Curaçao vs Ivory Coast                   0.9 - 1.8 0- 1   19%   23%   59%
+  Curaçao vs Ecuador                       0.8 - 2.1 0- 2   13%   19%   68%
+  Ivory Coast vs Ecuador                   1.1 - 1.5 1- 1   27%   26%   47%
 
   ==================== GRUPO F ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Japan                       6.7   6.9   2.4  +4.5  53.8%  38.9%   6.3%   1.0%   92.7% <--
-  2    Netherlands                 6.3   6.5   2.6  +3.8  43.5%  46.9%   8.0%   1.5%   90.5% <--
-  3    Sweden                      2.1   2.6   6.6  -4.1   1.4%   7.4%  43.8%  47.4%    8.8% (3)
-  4    Tunisia                     2.0   2.5   6.7  -4.2   1.2%   6.8%  41.9%  50.1%    8.0%
+  1    Japan                       5.4   4.9   3.1  +1.8  41.3%  31.6%  18.0%   9.1%   72.9% <--
+  2    Netherlands                 5.3   4.9   3.1  +1.8  40.7%  32.0%  18.4%   8.9%   72.7% <--
+  3    Sweden                      3.1   3.2   4.8  -1.6  10.2%  19.2%  32.3%  38.3%   29.4% (3)
+  4    Tunisia                     2.8   3.0   5.0  -2.0   7.8%  17.2%  31.3%  43.7%   25.0%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Netherlands vs Japan                     1.2 - 1.4 1- 1   33%   26%   40%
-  Netherlands vs Tunisia                   2.6 - 0.6 2- 0   80%   14%    7%
-  Netherlands vs Sweden                    2.6 - 0.6 2- 0   79%   14%    7%
-  Japan vs Tunisia                         2.8 - 0.6 2- 0   83%   11%    6%
-  Japan vs Sweden                          2.8 - 0.6 2- 0   82%   12%    6%
-  Tunisia vs Sweden                        1.3 - 1.3 1- 1   36%   26%   38%
+  Netherlands vs Japan                     1.3 - 1.3 1- 1   37%   26%   37%
+  Netherlands vs Tunisia                   1.9 - 0.9 1- 0   60%   23%   17%
+  Netherlands vs Sweden                    1.8 - 0.9 1- 0   57%   23%   19%
+  Japan vs Tunisia                         1.9 - 0.9 1- 0   60%   22%   18%
+  Japan vs Sweden                          1.8 - 0.9 1- 0   58%   23%   19%
+  Tunisia vs Sweden                        1.2 - 1.3 1- 1   35%   26%   39%
 
   ==================== GRUPO G ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Belgium                     6.5   6.4   2.5  +3.9  59.7%  26.4%  11.8%   2.1%   86.1% <--
-  2    Egypt                       4.7   4.6   3.6  +0.9  22.7%  35.9%  32.6%   8.9%   58.5% <--
-  3    Iran                        4.3   4.3   3.9  +0.3  16.7%  32.9%  38.6%  11.8%   49.6% (3)
-  4    New Zealand                 1.3   2.1   7.2  -5.2   1.0%   4.8%  17.0%  77.2%    5.8%
+  1    Belgium                     5.3   4.9   3.1  +1.8  42.9%  28.8%  18.6%   9.8%   71.7% <--
+  2    Iran                        4.3   4.1   3.8  +0.3  25.5%  27.7%  27.4%  19.4%   53.2% <--
+  3    Egypt                       4.3   4.0   3.8  +0.2  24.1%  28.4%  28.1%  19.4%   52.5% (3)
+  4    New Zealand                 2.6   2.9   5.2  -2.3   7.5%  15.1%  25.9%  51.4%   22.6%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Belgium vs Egypt                         1.7 - 1.0 1- 0   54%   24%   23%
-  Belgium vs Iran                          1.8 - 0.9 1- 0   57%   24%   19%
-  Belgium vs New Zealand                   2.9 - 0.6 3- 0   85%   11%    4%
-  Egypt vs Iran                            1.4 - 1.2 1- 1   40%   27%   33%
-  Egypt vs New Zealand                     2.2 - 0.7 2- 0   71%   18%   11%
-  Iran vs New Zealand                      2.1 - 0.8 1- 0   68%   19%   12%
+  Belgium vs Egypt                         1.5 - 1.1 1- 1   46%   26%   28%
+  Belgium vs Iran                          1.5 - 1.1 1- 1   45%   26%   29%
+  Belgium vs New Zealand                   1.9 - 0.9 1- 0   62%   22%   16%
+  Egypt vs Iran                            1.3 - 1.3 1- 1   37%   26%   38%
+  Egypt vs New Zealand                     1.6 - 1.0 1- 0   52%   25%   23%
+  Iran vs New Zealand                      1.7 - 1.0 1- 1   52%   25%   23%
 
   ==================== GRUPO H ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Spain                       8.6  14.7   1.1 +13.6  95.4%   4.6%   0.0%   0.0%  100.0% <--
-  2    Uruguay                     5.3   5.8   4.2  +1.6   4.6%  83.9%   9.8%   1.7%   88.5% <--
-  3    Saudi Arabia                1.8   2.2   9.7  -7.5   0.0%   5.9%  46.3%  47.7%    5.9% (3)
-  4    Cape Verde                  1.7   2.2   9.9  -7.7   0.0%   5.6%  43.9%  50.5%    5.6%
+  1    Spain                       7.1   7.2   2.1  +5.0  73.4%  21.0%   4.6%   1.0%   94.4% <--
+  2    Uruguay                     4.9   4.7   3.6  +1.1  20.6%  48.5%  21.5%   9.3%   69.1% <--
+  3    Saudi Arabia                2.6   2.9   5.6  -2.7   3.7%  17.0%  39.3%  40.0%   20.7% (3)
+  4    Cape Verde                  2.2   2.7   6.1  -3.4   2.3%  13.5%  34.5%  49.6%   15.8%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Spain vs Cape Verde                      5.9 - 0.3 6- 0   99%    1%    0%
-  Spain vs Saudi Arabia                    5.9 - 0.3 5- 0   99%    1%    0%
-  Spain vs Uruguay                         2.9 - 0.6 2- 0   85%   11%    5%
-  Cape Verde vs Saudi Arabia               1.3 - 1.3 1- 1   36%   26%   38%
-  Cape Verde vs Uruguay                    0.6 - 2.6 0- 2    7%   14%   80%
-  Saudi Arabia vs Uruguay                  0.6 - 2.6 0- 2    7%   14%   79%
+  Spain vs Cape Verde                      2.8 - 0.6 2- 0   82%   12%    6%
+  Spain vs Saudi Arabia                    2.6 - 0.6 2- 0   79%   14%    7%
+  Spain vs Uruguay                         1.8 - 0.9 1- 0   59%   23%   18%
+  Cape Verde vs Saudi Arabia               1.2 - 1.4 1- 1   33%   27%   40%
+  Cape Verde vs Uruguay                    0.8 - 2.0 0- 2   16%   21%   63%
+  Saudi Arabia vs Uruguay                  0.9 - 1.8 0- 1   18%   22%   59%
 
   ==================== GRUPO I ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    France                      7.2   8.1   2.1  +6.0  72.1%  21.0%   6.7%   0.3%   93.1% <--
-  2    Senegal                     5.0   5.1   3.6  +1.5  18.0%  45.8%  32.4%   3.8%   63.8% <--
-  3    Norway                      4.1   4.3   4.3  +0.0   9.8%  31.5%  50.8%   7.9%   41.3% (3)
-  4    Iraq                        0.8   1.7   9.2  -7.6   0.1%   1.7%  10.1%  88.0%    1.8%
+  1    France                      6.1   5.7   2.7  +3.0  56.0%  25.9%  13.7%   4.5%   81.8% <--
+  2    Senegal                     4.2   4.0   3.9  +0.0  19.3%  31.5%  29.9%  19.2%   50.9% <--
+  3    Norway                      4.1   3.9   4.0  -0.1  19.4%  29.6%  30.8%  20.1%   49.1% (3)
+  4    Iraq                        2.3   2.7   5.7  -3.0   5.3%  12.9%  25.6%  56.2%   18.2%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  France vs Senegal                        1.9 - 0.9 1- 0   60%   22%   18%
-  France vs Norway                         2.2 - 0.8 2- 0   70%   19%   12%
-  France vs Iraq                           4.0 - 0.4 4- 0   94%    4%    1%
-  Senegal vs Norway                        1.5 - 1.1 1- 1   45%   26%   29%
-  Senegal vs Iraq                          2.7 - 0.6 2- 0   82%   12%    6%
-  Norway vs Iraq                           2.4 - 0.7 2- 0   77%   15%    8%
+  France vs Senegal                        1.7 - 1.0 1- 1   54%   24%   22%
+  France vs Norway                         1.7 - 1.0 1- 1   54%   24%   21%
+  France vs Iraq                           2.3 - 0.7 2- 0   72%   18%   11%
+  Senegal vs Norway                        1.3 - 1.3 1- 1   37%   27%   36%
+  Senegal vs Iraq                          1.7 - 1.0 1- 0   55%   23%   22%
+  Norway vs Iraq                           1.7 - 1.0 1- 1   54%   24%   22%
 
   ==================== GRUPO J ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Argentina                   7.5   8.6   1.9  +6.7  78.6%  17.6%   3.6%   0.2%   96.2% <--
-  2    Algeria                     4.9   5.0   3.7  +1.3  15.3%  50.1%  30.3%   4.3%   65.4% <--
-  3    Austria                     3.7   3.9   4.7  -0.9   6.0%  29.3%  52.5%  12.3%   35.3% (3)
-  4    Jordan                      0.9   1.8   8.9  -7.2   0.1%   3.0%  13.7%  83.2%    3.1%
+  1    Argentina                   6.2   5.8   2.6  +3.2  59.7%  24.4%  11.5%   4.3%   84.2% <--
+  2    Algeria                     4.2   4.0   3.9  +0.1  19.7%  33.1%  29.1%  18.1%   52.8% <--
+  3    Austria                     3.8   3.7   4.2  -0.5  15.2%  28.0%  32.5%  24.3%   43.2% (3)
+  4    Jordan                      2.4   2.7   5.5  -2.8   5.3%  14.5%  26.9%  53.3%   19.8%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Argentina vs Algeria                     2.0 - 0.8 2- 0   65%   20%   15%
-  Argentina vs Austria                     2.4 - 0.7 2- 0   76%   16%    8%
-  Argentina vs Jordan                      4.1 - 0.4 4- 0   96%    4%    1%
-  Algeria vs Austria                       1.5 - 1.1 1- 1   48%   26%   26%
-  Algeria vs Jordan                        2.6 - 0.6 2- 0   81%   13%    6%
-  Austria vs Jordan                        2.2 - 0.8 2- 0   70%   18%   12%
+  Argentina vs Algeria                     1.7 - 1.0 1- 1   56%   24%   21%
+  Argentina vs Austria                     1.8 - 0.9 1- 0   59%   23%   19%
+  Argentina vs Jordan                      2.2 - 0.7 2- 0   71%   18%   10%
+  Algeria vs Austria                       1.4 - 1.2 1- 1   41%   26%   34%
+  Algeria vs Jordan                        1.7 - 1.0 1- 0   55%   24%   21%
+  Austria vs Jordan                        1.6 - 1.0 1- 1   50%   25%   25%
 
   ==================== GRUPO K ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    Portugal                    6.5   6.2   2.5  +3.8  61.2%  27.1%   9.4%   2.3%   88.2% <--
-  2    Colombia                    5.2   4.9   3.3  +1.6  29.3%  43.1%  20.0%   7.7%   72.4% <--
-  3    DR Congo                    2.9   3.1   5.1  -2.0   6.3%  18.4%  40.2%  35.2%   24.7% (3)
-  4    Uzbekistan                  2.1   2.6   5.9  -3.3   3.3%  11.4%  30.4%  54.9%   14.7%
+  1    Portugal                    5.4   4.9   3.1  +1.8  42.9%  29.4%  17.7%   9.9%   72.4% <--
+  2    Colombia                    4.9   4.5   3.4  +1.2  34.4%  31.4%  21.2%  13.0%   65.8% <--
+  3    DR Congo                    3.2   3.2   4.7  -1.4  11.8%  20.2%  30.9%  37.1%   31.9% (3)
+  4    Uzbekistan                  3.1   3.2   4.8  -1.6  11.0%  19.0%  30.1%  39.9%   29.9%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  Portugal vs Uzbekistan                   2.5 - 0.7 2- 0   78%   14%    8%
-  Portugal vs Colombia                     1.6 - 1.0 1- 1   50%   25%   25%
-  Portugal vs DR Congo                     2.2 - 0.8 2- 0   70%   18%   11%
-  Uzbekistan vs Colombia                   0.8 - 2.0 0- 2   14%   20%   66%
-  Uzbekistan vs DR Congo                   1.1 - 1.5 1- 1   29%   26%   45%
-  Colombia vs DR Congo                     1.8 - 0.9 1- 0   59%   23%   18%
+  Portugal vs Uzbekistan                   1.8 - 0.9 1- 0   57%   24%   19%
+  Portugal vs Colombia                     1.4 - 1.2 1- 1   41%   26%   33%
+  Portugal vs DR Congo                     1.7 - 0.9 1- 1   56%   24%   20%
+  Uzbekistan vs Colombia                   1.0 - 1.7 0- 1   23%   24%   54%
+  Uzbekistan vs DR Congo                   1.3 - 1.3 1- 1   36%   26%   38%
+  Colombia vs DR Congo                     1.7 - 1.0 1- 1   52%   25%   23%
 
   ==================== GRUPO L ====================
   Pos  Equipo                      Pts    GF    GC     GD    1ro    2do    3ro    4to  Clasif
   ------------------------------------------------------------------------------------------
-  1    England                     8.0   9.7   1.6  +8.1  86.3%  12.8%   0.8%   0.1%   99.1% <--
-  2    Croatia                     5.2   5.2   3.7  +1.6  12.6%  66.7%  16.7%   4.0%   79.3% <--
-  3    Panama                      2.4   2.8   6.5  -3.7   0.8%  13.8%  51.4%  34.0%   14.6% (3)
-  4    Ghana                       1.5   2.1   8.0  -5.9   0.2%   6.8%  31.1%  61.9%    7.1%
+  1    England                     6.2   5.8   2.6  +3.2  58.3%  26.5%  11.1%   4.1%   84.8% <--
+  2    Croatia                     4.7   4.4   3.6  +0.8  25.6%  37.2%  24.4%  12.9%   62.7% <--
+  3    Panama                      3.3   3.4   4.6  -1.2  10.9%  22.3%  36.8%  30.0%   33.2% (3)
+  4    Ghana                       2.4   2.8   5.6  -2.8   5.3%  14.1%  27.7%  53.0%   19.3%
 
   Partido                                   Pronostico   Moda     1     X     2
   ---------------------------------------------------------------------------
-  England vs Croatia                       2.2 - 0.7 2- 0   70%   19%   11%
-  England vs Ghana                         4.1 - 0.4 4- 0   95%    4%    1%
-  England vs Panama                        3.4 - 0.5 3- 0   91%    7%    2%
-  Croatia vs Ghana                         2.4 - 0.7 2- 0   76%   15%    9%
-  Croatia vs Panama                        2.0 - 0.8 2- 0   67%   20%   13%
-  Ghana vs Panama                          1.1 - 1.5 1- 1   27%   26%   47%
+  England vs Croatia                       1.6 - 1.0 1- 1   51%   25%   24%
+  England vs Ghana                         2.3 - 0.7 2- 0   72%   17%   11%
+  England vs Panama                        1.9 - 0.8 1- 0   63%   21%   16%
+  Croatia vs Ghana                         1.8 - 0.9 1- 0   59%   22%   18%
+  Croatia vs Panama                        1.6 - 1.1 1- 1   49%   26%   25%
+  Ghana vs Panama                          1.1 - 1.5 1- 1   29%   26%   46%
 
 
 ====================================================================================================
@@ -218,11 +218,11 @@
   ---------------------------------------------------------------------------
   A      Mexico                 South Korea            Czech Republic        
   B      Canada                 Switzerland            Bosnia and Herzegovina
-  C      Morocco                Brazil                 Scotland              
-  D      Turkey                 United States          Australia             
+  C      Brazil                 Morocco                Scotland              
+  D      Turkey                 United States          Paraguay              
   E      Germany                Ecuador                Ivory Coast           
   F      Japan                  Netherlands            Sweden                
-  G      Belgium                Egypt                  Iran                  
+  G      Belgium                Iran                   Egypt                 
   H      Spain                  Uruguay                Saudi Arabia          
   I      France                 Senegal                Norway                
   J      Argentina              Algeria                Austria               
@@ -232,59 +232,59 @@
   RONDA DE 32 (16 partidos)
   #    Partido                                       Avanza                   Prob
   --------------------------------------------------------------------------------
-  1    Mexico vs Czech Republic                      Mexico                  83.3%
-  2    Ecuador vs Netherlands                        Netherlands             59.4%
-  3    Canada vs Bosnia and Herzegovina              Canada                  95.6%
-  4    Germany vs Croatia                            Germany                 72.2%
-  5    Belgium vs Scotland                           Belgium                 80.4%
-  6    Senegal vs Algeria                            Senegal                 61.0%
-  7    Spain vs Australia                            Spain                   96.5%
-  8    Japan vs Colombia                             Japan                   59.8%
-  9    Morocco vs Ivory Coast                        Morocco                 78.9%
-  10   South Korea vs Switzerland                    Switzerland             61.5%
-  11   Turkey vs Sweden                              Turkey                  85.0%
-  12   Egypt vs Uruguay                              Uruguay                 61.0%
-  13   France vs Iran                                France                  94.1%
-  14   Portugal vs United States                     Portugal                80.9%
-  15   Argentina vs Saudi Arabia                     Argentina               97.3%
-  16   England vs Brazil                             England                 60.1%
+  1    South Korea vs Switzerland                    Switzerland             57.8%
+  2    France vs Czech Republic                      France                  83.1%
+  3    Germany vs Bosnia and Herzegovina             Germany                 83.4%
+  4    Brazil vs Netherlands                         Brazil                  57.9%
+  5    Japan vs Morocco                              Morocco                 55.6%
+  6    Ecuador vs Senegal                            Ecuador                 53.0%
+  7    Mexico vs Scotland                            Mexico                  64.1%
+  8    Turkey vs Paraguay                            Turkey                  59.3%
+  9    Belgium vs Ivory Coast                        Belgium                 58.9%
+  10   England vs Sweden                             England                 78.4%
+  11   Canada vs Egypt                               Canada                  60.7%
+  12   Portugal vs Saudi Arabia                      Portugal                81.1%
+  13   Spain vs Algeria                              Spain                   76.9%
+  14   Argentina vs Uruguay                          Argentina               67.7%
+  15   United States vs Iran                         United States           54.2%
+  16   Colombia vs Croatia                           Colombia                59.9%
 
   OCTAVOS DE FINAL (8 partidos)
   #    Partido                                       Avanza                   Prob
   --------------------------------------------------------------------------------
-  1    Mexico vs Netherlands                         Netherlands             56.8%
-  2    Canada vs Germany                             Germany                 66.1%
-  3    Belgium vs Senegal                            Senegal                 60.3%
-  4    Spain vs Japan                                Spain                   84.3%
-  5    Morocco vs Switzerland                        Morocco                 77.8%
-  6    Turkey vs Uruguay                             Turkey                  55.6%
-  7    France vs Portugal                            France                  71.6%
-  8    Argentina vs England                          Argentina               55.8%
+  1    Switzerland vs France                         France                  70.1%
+  2    Germany vs Brazil                             Brazil                  55.0%
+  3    Morocco vs Ecuador                            Morocco                 56.6%
+  4    Mexico vs Turkey                              Mexico                  53.0%
+  5    Belgium vs England                            England                 60.9%
+  6    Canada vs Portugal                            Portugal                59.3%
+  7    Spain vs Argentina                            Spain                   57.9%
+  8    United States vs Colombia                     Colombia                61.0%
 
   CUARTOS DE FINAL (4 partidos)
   #    Partido                                       Avanza                   Prob
   --------------------------------------------------------------------------------
-  1    Netherlands vs Germany                        Germany                 53.6%
-  2    Senegal vs Spain                              Spain                   84.8%
-  3    Morocco vs Turkey                             Morocco                 75.0%
-  4    France vs Argentina                           France                  56.5%
+  1    France vs Brazil                              France                  59.1%
+  2    Morocco vs Mexico                             Morocco                 56.8%
+  3    England vs Portugal                           England                 52.2%
+  4    Spain vs Colombia                             Spain                   69.7%
 
   SEMIFINALES (2 partidos)
   #    Partido                                       Avanza                   Prob
   --------------------------------------------------------------------------------
-  1    Germany vs Spain                              Spain                   84.3%
-  2    Morocco vs France                             France                  64.7%
+  1    France vs Morocco                             France                  61.2%
+  2    England vs Spain                              Spain                   64.3%
 
   FINAL
   --------------------------------------------------------------------------------
-  Spain vs France
-  CAMPEON: Spain (62.2%)
+  France vs Spain
+  CAMPEON: Spain (55.0%)
   Subcampeon: France
 
 
   CAMINO DEL CAMPEON (Spain):
   ------------------------------------------------------------
-  Grupo H: 1ro (95.4%)
+  Grupo H: 1ro (73.4%)
 
   RESPUESTA A POR QUE MEXICO Y SUIZA TAN BIEN:
   ------------------------------------------------------------
