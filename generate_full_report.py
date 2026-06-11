@@ -10,6 +10,8 @@ from src.wc2026 import GROUPS_2026, build_r32
 from run_wc2026 import predict_lambdas_hybrid
 from run_montecarlo import run_montecarlo
 
+UPSET_SIGMA = 1.10  # calibrated to market odds via grid search
+
 
 def ko_prob(lh, la, max_goals=10):
     p_h_win = 0.0
@@ -56,6 +58,14 @@ def main():
             for i in range(4):
                 for j in range(i + 1, 4):
                     lh, la = plam(teams[i], teams[j])
+                    # Apply upset noise preserving total expected goals
+                    if UPSET_SIGMA > 0:
+                        total = lh + la
+                        noise = rng.normal(0, UPSET_SIGMA)
+                        lh_n = lh * math.exp(noise)
+                        la_n = la * math.exp(-noise)
+                        s = total / (lh_n + la_n)
+                        lh, la = lh_n * s, la_n * s
                     gh = int(rng.poisson(lh)); ga_ = int(rng.poisson(la))
                     group_results[(gn, teams[i], teams[j])].append((gh, ga_))
                     gf[i] += gh; ga[i] += ga_; gf[j] += ga_; ga[j] += gh
@@ -107,7 +117,7 @@ def main():
     out("=" * 110)
     out("  REPORTE COMPLETO - PREDICCION MUNDIAL FIFA 2026")
     out("  Modelo: Hybrid L1(Elo+Value+League+Defense) + L2(Age+Coach+Host+Pop+Diversity+Composition+SOS)")
-    out("  Match: Dixon-Coles + H2H | Scale={:.2f} | Rho={:.2f} | Knockout upset sigma=0.15".format(model.scale, model.rho))
+    out("  Match: Dixon-Coles + H2H | Scale={:.2f} | Rho={:.2f} | Upset sigma={:.2f}".format(model.scale, model.rho, UPSET_SIGMA))
     out(f"  Simulaciones: {N:,} | Fecha: 2026-06-10")
     out("=" * 110)
 
@@ -562,11 +572,11 @@ def main():
     out("=" * 110)
     out(f"\n  Tipo: Hybrid Multi-Feature + Dixon-Coles + H2H + Knockout Upset Factor")
     out(f"  RPS calibracion: {0.1586:.4f}")
-    out(f"  Scale: {model.scale:.2f} (floor=3.50, calibrado vs mercado)")
+    out(f"  Scale: {model.scale:.2f} (MLE-optimal, no floor)")
     out(f"  Home advantage: {model.home_adv:.2f}")
     out(f"  Dixon-Coles rho: {model.rho:.2f}")
     out(f"  H2H weight: {model.h2h_weight} ({len(model.h2h)} pares)")
-    out(f"  Knockout upset sigma: 0.15")
+    out(f"  Upset sigma: {UPSET_SIGMA:.2f} (calibrated to market odds, applied to all phases)")
     out(f"")
     out(f"  Features L1 (backtestable, Ridge regression):")
     l1w = {k.replace('L1_', ''): v for k, v in model.weights.items() if k.startswith('L1_')}

@@ -30,7 +30,22 @@ _MD_PAIRINGS = [
 ]
 
 
-def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.0):
+def _apply_upset_noise(lh, la, rng, upset_sigma):
+    """Shift lambda ratio by random noise, preserving total expected goals."""
+    if upset_sigma > 0:
+        total = lh + la
+        noise = rng.normal(0, upset_sigma)
+        lh_new = lh * math.exp(noise)
+        la_new = la * math.exp(-noise)
+        # Rescale to preserve total expected goals (counteracts Jensen's inequality)
+        scale = total / (lh_new + la_new)
+        lh = lh_new * scale
+        la = la_new * scale
+    return lh, la
+
+
+def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.0,
+                         upset_sigma=0.0):
     """Simulate group stage by matchday, return (standings dict, best 3rd place teams).
 
     After MD2, teams with 6 pts (won both) are considered qualified and
@@ -48,6 +63,7 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
         for md_idx in range(2):
             for i, j in _MD_PAIRINGS[md_idx]:
                 lh, la = get_lambdas(model, teams[i], teams[j], neutral=True)
+                lh, la = _apply_upset_noise(lh, la, rng, upset_sigma)
                 gh, ga_ = sample_scoreline(rng, lh, la, method, r)
                 gf[i] += gh; ga[i] += ga_
                 gf[j] += ga_; ga[j] += gh
@@ -64,6 +80,7 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
         # Play MD3 with rotation adjustment for qualified teams
         for i, j in _MD_PAIRINGS[2]:
             lh, la = get_lambdas(model, teams[i], teams[j], neutral=True)
+            lh, la = _apply_upset_noise(lh, la, rng, upset_sigma)
             # Reduce lambdas for teams rotating subs
             if i in qualified:
                 lh *= ROTATION_FACTOR
@@ -99,30 +116,18 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
 
 
 def sim_knockout_match(model, get_lambdas, home, away, rng, method="poisson", r=8.0,
-                       upset_sigma=0.15):
-    """Simulate a knockout match with tournament upset factor.
-
-    upset_sigma: std dev of noise added to log-lambda ratio.
-    Represents unmodeled variance in knockout matches (tactics, red cards,
-    penalties, fatigue). Preserves total expected goals while shifting
-    the balance between teams, making upsets more likely.
-    """
+                       upset_sigma=1.10):
+    """Simulate a knockout match with tournament upset factor."""
     lh, la = get_lambdas(model, home, away, neutral=True)
-    # Tournament upset noise: shift lambda ratio without changing total goals
-    if upset_sigma > 0:
-        import math
-        noise = rng.normal(0, upset_sigma)
-        lh_new = lh * math.exp(noise)
-        la_new = la * math.exp(-noise)
-        lh, la = lh_new, la_new
+    lh, la = _apply_upset_noise(lh, la, rng, upset_sigma)
     gh, ga, _, _ = sample_knockout_scoreline(rng, lh, la, method, r)
     return home if gh > ga else away
 
 
 def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0,
-                   upset_sigma=0.15):
+                   upset_sigma=1.10):
     """Simulate full tournament, return (champion, finalist, semifinalists)."""
-    standings, best_thirds = sim_group_stage_fast(model, get_lambdas, groups, rng, method, r)
+    standings, best_thirds = sim_group_stage_fast(model, get_lambdas, groups, rng, method, r, upset_sigma)
 
     winners = {g: standings[g]["ranked"][0] for g in standings}
     runners = {g: standings[g]["ranked"][1] for g in standings}
@@ -148,7 +153,7 @@ def sim_tournament(model, get_lambdas, groups, rng, method="poisson", r=8.0,
 
 
 def run_montecarlo(model, get_lambdas, model_name, n_sims=10000, seed=42,
-                   method="poisson", r=8.0, upset_sigma=0.15):
+                   method="poisson", r=8.0, upset_sigma=1.10):
     """Run Monte Carlo tournament simulation."""
     rng = np.random.default_rng(seed)
 

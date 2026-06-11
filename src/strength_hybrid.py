@@ -312,13 +312,8 @@ def train_hybrid_model(
             best_rps = rps_val
             best_rho = rho_test
 
-    # Scale floor: prevents extreme compound probabilities in tournament sims.
-    # Calibrated via grid search (scale x upset_sigma) against market odds:
-    # scale=3.5, sigma=0.15 minimizes deviation for top favorites.
-    SCALE_FLOOR = 3.5
-    if best_scale < SCALE_FLOOR:
-        print(f"    Scale={best_scale:.2f} below floor {SCALE_FLOOR}, clamping up")
-        best_scale = SCALE_FLOOR
+    # Use MLE-optimal scale directly for realistic match predictions.
+    # Champion probability calibration is handled by upset_sigma in Monte Carlo.
     print(f"    Scale={best_scale:.2f}, home_adv={best_ha:.2f}, rho={best_rho:.2f}, cal_RPS={best_rps:.4f}")
 
     # Build Layer 1 model blend

@@ -7,6 +7,8 @@ from src.data_loader import load_results
 from src.strength_hybrid import train_hybrid_model
 from src.wc2026 import GROUPS_2026
 
+UPSET_SIGMA = 1.10  # calibrated to market odds via grid search
+
 MARKET = {
     "Spain": (450, 15.8), "France": (480, 14.9), "England": (700, 10.8),
     "Brazil": (850, 9.1), "Portugal": (850, 9.1), "Argentina": (900, 8.7),
@@ -27,11 +29,22 @@ def main():
     rng = np.random.default_rng(42)
     N = 10000
 
-    def plam(h, a):
+    def plam(h, a, apply_noise=False):
         sh = model.strength.get(h, 0.0)
         sa = model.strength.get(a, 0.0)
         d = sh - sa
-        return math.exp(0.25 + d / model.scale), math.exp(0.25 - d / model.scale)
+        lh = math.exp(0.25 + d / model.scale)
+        la = math.exp(0.25 - d / model.scale)
+        if apply_noise and UPSET_SIGMA > 0:
+            total = lh + la
+            noise = rng.normal(0, UPSET_SIGMA)
+            lh_new = lh * math.exp(noise)
+            la_new = la * math.exp(-noise)
+            # Rescale to preserve total expected goals
+            s = total / (lh_new + la_new)
+            lh = lh_new * s
+            la = la_new * s
+        return lh, la
 
     # Collect everything
     group_results = {}
@@ -64,7 +77,7 @@ def main():
             pts = [0]*4; gf = [0]*4; ga = [0]*4
             for i in range(4):
                 for j in range(i + 1, 4):
-                    lh, la = plam(teams[i], teams[j])
+                    lh, la = plam(teams[i], teams[j], apply_noise=True)
                     gh = int(rng.poisson(lh)); ga_ = int(rng.poisson(la))
                     group_results[(gn, teams[i], teams[j])].append((gh, ga_))
                     sim_goals[0] += gh + ga_
@@ -87,18 +100,28 @@ def main():
         runners = {g: standings[g]["ranked"][1] for g in standings}
 
         r32 = [
-            (winners["A"], tl[0]), (runners["C"], runners["D"]),
-            (winners["B"], tl[1]), (runners["E"], runners["F"]),
-            (winners["G"], tl[2]), (runners["I"], runners["J"]),
-            (winners["H"], tl[3]), (runners["K"], runners["L"]),
-            (winners["C"], tl[4]), (runners["A"], runners["B"]),
-            (winners["D"], tl[5]), (runners["G"], runners["H"]),
-            (winners["I"], tl[6]), (winners["F"], runners["I"]),
-            (winners["J"], tl[7]), (winners["L"], runners["K"]),
+            # Left half (SF1): R16-1 to R16-4
+            (runners["A"], runners["B"]),    # M73: 2A vs 2B
+            (winners["I"], tl[0]),           # M77: 1I vs 3rd
+            (winners["E"], tl[1]),           # M74: 1E vs 3rd
+            (winners["C"], runners["F"]),    # M75: 1C vs 2F
+            (winners["F"], runners["C"]),    # M76: 1F vs 2C
+            (runners["E"], runners["I"]),    # M78: 2E vs 2I
+            (winners["A"], tl[2]),           # M79: 1A vs 3rd
+            (winners["D"], tl[3]),           # M80: 1D vs 3rd
+            # Right half (SF2): R16-5 to R16-8
+            (winners["G"], tl[4]),           # M81: 1G vs 3rd
+            (winners["L"], tl[5]),           # M82: 1L vs 3rd
+            (winners["B"], tl[6]),           # M83: 1B vs 3rd
+            (winners["K"], tl[7]),           # M84: 1K vs 3rd
+            (winners["H"], runners["J"]),    # M85: 1H vs 2J
+            (winners["J"], runners["H"]),    # M86: 1J vs 2H
+            (runners["D"], runners["G"]),    # M87: 2D vs 2G
+            (runners["K"], runners["L"]),    # M88: 2K vs 2L
         ]
 
         def ko(h, a):
-            lh, la = plam(h, a)
+            lh, la = plam(h, a, apply_noise=True)
             gh = int(rng.poisson(lh)); ga = int(rng.poisson(la))
             sim_goals[0] += gh + ga
             if gh == ga:
@@ -140,8 +163,8 @@ def main():
     p("  Modelo predictivo basado en 10,000 simulaciones Monte Carlo")
     p("=" * 100)
     p()
-    p("  Fecha: 9 de junio de 2026 (2 dias antes del inicio)")
-    p("  Modelo: Hibrido 14 features | Elo corregido | Poisson goal sampling")
+    p("  Fecha: 10 de junio de 2026 (1 dia antes del inicio)")
+    p("  Modelo: Hibrido 14 features | Elo corregido | Poisson + upset noise (sigma=1.10)")
     p("  Validacion: Backtest fuera de muestra 2010-2022, Brier Score < mercado")
     p()
     p()
@@ -165,8 +188,10 @@ def main():
         p(f"  {rank:<3} {team:<20} {pc:>8.1f}% {pf:>8.1f}% {ps:>8.1f}% {pq:>8.1f}%  {mkt:>7.1f}% {diff_str:>7}  {bar}")
 
     p()
-    p("  LECTURA: France es nuestro favorito (19.6%), seguido de Spain (17.4%)")
-    p("  y England (15.8%). El mercado tiene a Spain primero (15.8%).")
+    # Dynamic narrative based on actual results
+    top3 = champion_count.most_common(3)
+    p(f"  LECTURA: {top3[0][0]} es nuestro favorito ({top3[0][1]/N*100:.1f}%), seguido de {top3[1][0]} ({top3[1][1]/N*100:.1f}%)")
+    p(f"  y {top3[2][0]} ({top3[2][1]/N*100:.1f}%). El mercado tiene a Spain primero (15.8%).")
     p()
 
     # --- SECTION 2: FINALS ---
@@ -346,6 +371,7 @@ def main():
     p("    - 10,000 mundiales simulados via Monte Carlo")
     p("    - Goles muestreados con distribucion de Poisson")
     p("    - Lambdas derivadas de la diferencia de fuerza entre equipos")
+    p("    - Upset noise (sigma=1.10) calibrado vs odds de mercado")
     p("    - Analogia: pricing de opciones financieras via Monte Carlo")
     p()
     p("  VALIDACION (backtest fuera de muestra 2010-2022):")
@@ -354,7 +380,7 @@ def main():
     p("    - Spearman promedio: ~0.50 (p<0.05)")
     p()
     p("=" * 100)
-    p("  Generado el 9 de junio de 2026")
+    p("  Generado el 10 de junio de 2026")
     p("  github.com/marti - Modelo predictivo WC 2026")
     p("=" * 100)
 
