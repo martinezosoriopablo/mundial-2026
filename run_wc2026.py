@@ -187,27 +187,36 @@ def build_r32_bracket(standings, best_thirds):
     # Assign 3rd-place teams to bracket slots based on which groups they came from
     third_list = list(third_teams.values())
 
-    # R32 bracket (16 matches)
-    # Structure: group winners vs 3rd-place or runners-up vs runners-up
+    # R32 bracket per official FIFA 2026 knockout structure (M73-M88).
+    # Consecutive pairs feed into same R16 match.
+    tl = third_list
     bracket = [
-        # Left half
-        (winners["A"], third_list[0] if len(third_list) > 0 else "TBD"),
-        (runners["C"], runners["D"]),
-        (winners["B"], third_list[1] if len(third_list) > 1 else "TBD"),
-        (runners["E"], runners["F"]),
-        (winners["G"], third_list[2] if len(third_list) > 2 else "TBD"),
-        (runners["I"], runners["J"]),
-        (winners["H"], third_list[3] if len(third_list) > 3 else "TBD"),
-        (runners["K"], runners["L"]),
-        # Right half
-        (winners["C"], third_list[4] if len(third_list) > 4 else "TBD"),
-        (runners["A"], runners["B"]),
-        (winners["D"], third_list[5] if len(third_list) > 5 else "TBD"),
-        (runners["G"], runners["H"]),
-        (winners["I"], third_list[6] if len(third_list) > 6 else "TBD"),
-        (winners["F"], runners["I"]),
-        (winners["J"], third_list[7] if len(third_list) > 7 else "TBD"),
-        (winners["L"], runners["K"]),  # note: adjusted to avoid duplicate slots
+        # --- Left half -> QF1, QF2 -> SF1 ---
+        # R16-1 (M89): W73 vs W77
+        (runners["A"], runners["B"]),                          # M73: 2A vs 2B
+        (winners["I"], tl[0] if len(tl) > 0 else "TBD"),      # M77: 1I vs 3rd
+        # R16-2 (M90): W74 vs W75
+        (winners["E"], tl[1] if len(tl) > 1 else "TBD"),      # M74: 1E vs 3rd
+        (winners["C"], runners["F"]),                          # M75: 1C vs 2F
+        # R16-3 (M91): W76 vs W78
+        (winners["F"], runners["C"]),                          # M76: 1F vs 2C
+        (runners["E"], runners["I"]),                          # M78: 2E vs 2I
+        # R16-4 (M92): W79 vs W80
+        (winners["A"], tl[2] if len(tl) > 2 else "TBD"),      # M79: 1A vs 3rd
+        (winners["D"], tl[3] if len(tl) > 3 else "TBD"),      # M80: 1D vs 3rd
+        # --- Right half -> QF3, QF4 -> SF2 ---
+        # R16-5 (M93): W81 vs W82
+        (winners["G"], tl[4] if len(tl) > 4 else "TBD"),      # M81: 1G vs 3rd
+        (winners["L"], tl[5] if len(tl) > 5 else "TBD"),      # M82: 1L vs 3rd
+        # R16-6 (M94): W83 vs W84
+        (winners["B"], tl[6] if len(tl) > 6 else "TBD"),      # M83: 1B vs 3rd
+        (winners["K"], tl[7] if len(tl) > 7 else "TBD"),      # M84: 1K vs 3rd
+        # R16-7 (M95): W85 vs W86
+        (winners["H"], runners["J"]),                          # M85: 1H vs 2J
+        (winners["J"], runners["H"]),                          # M86: 1J vs 2H
+        # R16-8 (M96): W87 vs W88
+        (runners["D"], runners["G"]),                          # M87: 2D vs 2G
+        (runners["K"], runners["L"]),                          # M88: 2K vs 2L
     ]
 
     return bracket

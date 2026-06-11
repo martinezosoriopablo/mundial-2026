@@ -20,8 +20,23 @@ from run_wc2026 import (
 )
 
 
+ROTATION_FACTOR = 0.75  # strength reduction when team already qualified plays MD3 subs
+
+# Matchday pairings for a 4-team group (indices 0,1,2,3)
+_MD_PAIRINGS = [
+    [(0, 1), (2, 3)],  # MD1
+    [(0, 2), (1, 3)],  # MD2
+    [(0, 3), (1, 2)],  # MD3
+]
+
+
 def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.0):
-    """Simulate group stage, return (standings dict, best 3rd place teams)."""
+    """Simulate group stage by matchday, return (standings dict, best 3rd place teams).
+
+    After MD2, teams with 6 pts (won both) are considered qualified and
+    play MD3 with reduced strength (rotation/subs), reflecting real
+    tournament behavior where coaches rest starters.
+    """
     standings = {}
 
     for gname, teams in groups.items():
@@ -29,8 +44,9 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
         gf = [0] * 4
         ga = [0] * 4
 
-        for i in range(4):
-            for j in range(i + 1, 4):
+        # Play MD1 and MD2 normally
+        for md_idx in range(2):
+            for i, j in _MD_PAIRINGS[md_idx]:
                 lh, la = get_lambdas(model, teams[i], teams[j], neutral=True)
                 gh, ga_ = sample_scoreline(rng, lh, la, method, r)
                 gf[i] += gh; ga[i] += ga_
@@ -41,6 +57,27 @@ def sim_group_stage_fast(model, get_lambdas, groups, rng, method="poisson", r=8.
                     pts[i] += 1; pts[j] += 1
                 else:
                     pts[j] += 3
+
+        # Detect qualified teams (6 pts after MD2 = won both games)
+        qualified = {k for k in range(4) if pts[k] >= 6}
+
+        # Play MD3 with rotation adjustment for qualified teams
+        for i, j in _MD_PAIRINGS[2]:
+            lh, la = get_lambdas(model, teams[i], teams[j], neutral=True)
+            # Reduce lambdas for teams rotating subs
+            if i in qualified:
+                lh *= ROTATION_FACTOR
+            if j in qualified:
+                la *= ROTATION_FACTOR
+            gh, ga_ = sample_scoreline(rng, lh, la, method, r)
+            gf[i] += gh; ga[i] += ga_
+            gf[j] += ga_; ga[j] += gh
+            if gh > ga_:
+                pts[i] += 3
+            elif gh == ga_:
+                pts[i] += 1; pts[j] += 1
+            else:
+                pts[j] += 3
 
         indices = list(range(4))
         indices.sort(key=lambda k: (pts[k], gf[k] - ga[k], gf[k], rng.random()), reverse=True)
